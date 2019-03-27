@@ -35,7 +35,7 @@ export const login = user => dispatch => {
         dispatch(receiveCurrentUser(user))
     ), err => (
         dispatch(receiveSessionErrors(err.responseJSON))
-    ))
+    ));
 };
 
 export const logout = () => dispatch => {
