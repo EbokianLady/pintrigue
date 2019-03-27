@@ -3,6 +3,7 @@ import SessionForm from './session_form';
 import { signup } from '../../actions/session_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import React from 'react';
+import { Route, Redirect, Switch, Link, HashRouter, withRouter } from 'react-router-dom';
 
 const msp = state => ({
     formName: "Sign up",
@@ -21,4 +22,4 @@ const mdp = dispatch => ({
     closeModal: () => dispatch(closeModal())
 });
 
-export default connect(msp, mdp)(SessionForm);
+export default withRouter(connect(msp, mdp)(SessionForm));

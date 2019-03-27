@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import Modal from '../modal/modal';
 
 class Navbar extends React.Component {
     constructor(props) {
@@ -8,7 +9,7 @@ class Navbar extends React.Component {
     }
 
     handleLogout(e) {
-        this.props.logout().then(this.props.openModal());
+        this.props.logout().then(this.props.openModal);
     }
 
     render() {
@@ -23,6 +24,8 @@ class Navbar extends React.Component {
                     </div>
                 </nav>
             )
+        } else if (this.props.modal) {
+            return <Modal />
         } else {
             return (
                 <nav className="navbar signedout">
@@ -39,4 +42,4 @@ class Navbar extends React.Component {
     }
 }
 
-export default withRouter(Navbar);
+export default Navbar;

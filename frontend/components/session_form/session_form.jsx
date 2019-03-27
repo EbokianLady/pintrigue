@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
+import { Route, Redirect, Switch, Link, HashRouter, withRouter } from 'react-router-dom';
 
 class SessionForm extends React.Component {
     constructor(props) {
@@ -11,13 +11,17 @@ class SessionForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
-        this.props.action(user).then(this.props.closeModal());
+        this.props.action(user).then(this.props.closeModal);
     }
 
     update(field) {
         return (e) => {
             this.setState({ [field]: e.target.value });
         };
+    }
+
+    renderErrors() {
+
     }
 
     usernameConditional() {

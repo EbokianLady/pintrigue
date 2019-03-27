@@ -4,11 +4,13 @@ import React from 'react';
 import { logout } from "../../actions/session_actions";
 import { openModal, closeModal } from '../../actions/modal_actions';
 import Navbar from './navbar';
+import { Link, withRouter } from 'react-router-dom';
 
 const msp = (state) => {
-    const { session, entities } = state;
+    const { session, entities, ui } = state;
     return ({
-        currentUser: entities.users[session.id] || {}
+        currentUser: entities.users[session.id] || {},
+        modal: ui.modal,
     });
 };
 
@@ -20,18 +22,18 @@ const mdp = (dispatch) => {
                 className="nav-links nav-signup"
                 onClick={() => dispatch(openModal('signup'))}>
                 Sign Up
-        </button>
+            </button>
         ),
         openLogin: (
             <button 
                 className="nav-links nav-login"
                 onClick={() => dispatch(openModal('login'))}>
                 Log In
-        </button>
+            </button>
         ),
         closeModal: () => dispatch(closeModal()),
-        openModal: () => dispatch(openModal()),
+        openModal: () => dispatch(openModal('login')),
     })
 };
 
-export default connect(msp, mdp)(Navbar);
+export default withRouter(connect(msp, mdp)(Navbar));
