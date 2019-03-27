@@ -11,7 +11,7 @@ class SessionForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
-        this.props.action(user);
+        this.props.action(user).then(this.props.closeModal());
     }
 
     update(field) {
@@ -41,7 +41,7 @@ class SessionForm extends React.Component {
         return (
             <div className="session-page">
                 <div className="session-link-box">
-                    <Link to={this.props.link} className="session-link">{this.props.linkName}</Link>
+                    {this.props.otherForm}
                 </div>
                 <div className="session-form-box">
                     <h2>{this.props.formName} to see more</h2>
@@ -58,7 +58,7 @@ class SessionForm extends React.Component {
                             value={this.state.password}
                             onChange={this.update('password')} />
                         <br />
-                        <input className="sesh-submit" type="Submit" value={this.props.buttonName} readOnly />
+                        <input className="sesh-submit" type="Submit" value={this.props.formName} readOnly />
                     </form>
                 </div>
             </div>

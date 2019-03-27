@@ -2,19 +2,19 @@ import { connect } from 'react-redux';
 import SessionForm from './session_form';
 import { login } from '../../actions/session_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
+import React from 'react';
 
 const msp = state => ({
-    link: "/signup",
-    linkName: "Sign up",
     formName: "Log in",
-    buttonName: "Continue",
     errors: state.errors.session,
 });
 
 const mdp = dispatch => ({
     action: (user) => dispatch(login(user)),
     otherForm: (
-        <button onClick={() => dispatch(openModal())} >
+        <button 
+            className="session-link"
+            onClick={() => dispatch(openModal('signup'))} >
             Sign Up
         </button>
     ),

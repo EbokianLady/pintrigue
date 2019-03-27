@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class Navbar extends React.Component {
     constructor(props) {
@@ -8,13 +8,7 @@ class Navbar extends React.Component {
     }
 
     handleLogout(e) {
-        this.props.logout();
-        this.props.history.push("/login");
-        // use .then?
-    }
-
-    handleSignup(e) {
-        this.props.openModal();
+        this.props.logout().then(this.props.openModal());
     }
 
     render() {
@@ -36,8 +30,8 @@ class Navbar extends React.Component {
 
                     </div>
                     <div className="nav-right">
-                        <Link to="/signup" className="nav-links nav-signup" >Sign Up</Link>
-                        <Link className="nav-links nav-login" to="/login" >Log In</Link>
+                        {this.props.openSignup}
+                        {this.props.openLogin}
                     </div>
                 </nav>
             )
@@ -45,4 +39,4 @@ class Navbar extends React.Component {
     }
 }
 
-export default Navbar;
+export default withRouter(Navbar);
