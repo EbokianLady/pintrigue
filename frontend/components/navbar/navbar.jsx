@@ -13,6 +13,10 @@ class Navbar extends React.Component {
         // use .then?
     }
 
+    handleSignup(e) {
+        this.props.openModal();
+    }
+
     render() {
         if (this.props.currentUser.id) {
             return (
