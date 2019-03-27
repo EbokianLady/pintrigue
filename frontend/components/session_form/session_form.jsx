@@ -25,6 +25,7 @@ class SessionForm extends React.Component {
             return (
                 <div>
                     <input type="text"
+                        className="sesh-input"
                         placeholder="Username"
                         value={this.state.username}
                         onChange={this.update('username')} />
@@ -38,26 +39,26 @@ class SessionForm extends React.Component {
     render() {
         const usernameInput = this.usernameConditional();
         return (
-            <div>
-                <div className="session-links">
-                    <Link to={this.props.link} >{this.props.linkName}</Link>
+            <div className="session-page">
+                <div className="session-link-box">
+                    <Link to={this.props.link} className="session-link">{this.props.linkName}</Link>
                 </div>
                 <div className="session-form-box">
                     <h2>{this.props.formName} to see more</h2>
                     <p>Access Pintrigue's best ideas with a free account</p>
-                    <form onSubmit={this.handleSubmit}>
+                    <form onSubmit={this.handleSubmit} className="session-form">
                         {usernameInput}
-                        <input type="text"
+                        <input className="sesh-input" type="text"
                             placeholder="Email"
                             value={this.state.email}
                             onChange={this.update('email')} />
                         <br />
-                        <input type="password"
+                        <input className="sesh-input" type="password"
                             placeholder="Password"
                             value={this.state.password}
                             onChange={this.update('password')} />
                         <br />
-                        <input type="Submit" value={this.props.buttonName} readOnly />
+                        <input className="sesh-submit" type="Submit" value={this.props.buttonName} readOnly />
                     </form>
                 </div>
             </div>

@@ -1,3 +1,81 @@
-// Place all the styles related to the api/session controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "./base/colors.scss";
+@import "./base/fonts.scss";
+
+.session-page {
+    display: flex;
+}
+
+.session-link {
+    position: absolute;
+    margin-top: 48px;
+    margin-left: 24px;
+    font-family: $font;
+    height: 40px;
+    width: 130px;
+    border-radius: 12px;
+    padding: 10px, 14px;
+    font-size: 16px;
+    cursor: pointer;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 36px;
+    font-weight: 700;
+    color: $dark-gray;
+    background-color: $lightest-gray;
+}
+
+.session-form-box {
+    margin: auto;
+    margin-top: 200px;
+    background-color: $lightest-gray;
+    border-radius: 8px;
+    min-width: 440px;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: $font;
+}
+
+.session-form-box h2 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.session-form-box p {
+    width: 290px;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.session-form input {
+    font-size: 16px;
+    padding: 8px 14px;
+    width: 290px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.sesh-input {
+    border: 1px solid $med-gray;
+    border-radius: 2px;
+    cursor: text;
+    height: 40px;
+    background-color: $white;
+    letter-spacing: -.4px;
+    color: #333;
+}
+
+.sesh-submit {
+    border-radius: 4px;
+    cursor: pointer;
+    height: 36px;
+    background-color: $red;
+    color: $white;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+}
+
