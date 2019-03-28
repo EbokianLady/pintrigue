@@ -1,0 +1,103 @@
+@import "./base/colors.scss";
+@import "./base/fonts.scss";
+
+.user-profile-buffer {
+    min-height: 170px;
+    display: flex;
+    justify-content: center;
+}
+
+.user-profile-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    max-width: 800px;
+    width: 100%;
+    padding: 12px;
+}
+
+.user-profile {
+    font-family: $font;
+    width: 75%;
+}
+
+.profile-nav {
+    max-width: 800px;
+    height: 64px;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    margin-bottom: 4px;
+    margin-top: 4px;
+}
+
+.profile-body {
+    min-height: 90px;
+}
+
+.profile-name {
+    font-size: 36px;
+    font-weight: bold;
+    color: $darker-gray;
+    letter-spacing: -.4px;
+}
+
+.profile-follows {
+
+}
+
+.profile-description {
+    text-align: left;
+    font-size: 14px;
+    hyphens: auto;
+    word-wrap: break-word;
+    font-weight: 400;
+    letter-spacing: -.4px;
+}
+
+.profile-image-box {
+    
+}
+
+.profile-image-container {
+    height: 106px;
+    width: 106px;
+    background-color: $med-gray;
+    border-radius: 50%;
+}
+
+.profile-buttons {
+    max-width: 800px;
+    height: 64px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    margin-bottom: 4px;
+    margin-top: 4px;
+}
+
+.profile-buttons button {
+    font-size: 16px;
+    font-weight: 700px;
+    justify-content: center;
+    display: flex;
+    min-height: 40px;
+    cursor: pointer;
+    border-radius: 999px;
+    padding: 8px 16px;
+}
+
+.profile-buttons button:hover{
+    text-decoration: underline;
+}
+
+// when selected 
+// background-color: $lightest-gray;
+// color: $darker-gray;
