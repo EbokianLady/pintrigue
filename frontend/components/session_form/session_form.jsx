@@ -6,6 +6,13 @@ class SessionForm extends React.Component {
         super(props);
         this.state = { email: "", username: "", password: "" };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDemo = this.handleDemo.bind(this);
+    }
+
+    handleDemo(e) {
+        e.preventDefault();
+        const demoUser = { email: "juneberry@fakemail.com", password: "vault66" };
+        this.props.login(demoUser).then(this.props.closeModal);
     }
 
     handleSubmit(e) {
@@ -62,8 +69,9 @@ class SessionForm extends React.Component {
                             value={this.state.password}
                             onChange={this.update('password')} />
                         <br />
-                        <input className="sesh-submit" type="Submit" value={this.props.formName} readOnly />
                     </form>
+                    <button className="sesh-submit" onClick={this.handleSubmit}>{this.props.formName}</button>
+                    <button className="sesh-submit" onClick={this.handleDemo}>Demo</button>
                 </div>
             </div>
         )

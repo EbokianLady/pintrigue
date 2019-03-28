@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import SessionForm from './session_form';
-import { signup } from '../../actions/session_actions';
+import { signup, login } from '../../actions/session_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import React from 'react';
 import { Route, Redirect, Switch, Link, HashRouter, withRouter } from 'react-router-dom';
@@ -12,6 +12,7 @@ const msp = state => ({
 
 const mdp = dispatch => ({
     action: (user) => dispatch(signup(user)),
+    login: (user) => dispatch(login(user)),
     otherForm: (
         <button 
             className="session-link"
