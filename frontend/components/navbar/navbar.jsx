@@ -35,11 +35,13 @@ class Navbar extends React.Component {
                 <div>
                     <nav className="navbar signedin">
                         <div className="nav-left">
-                            <div className="profile-links small-logo"></div>
+                            <div className="profile-links">
+                                <img src={window.logo} className="nav-logo"/>
+                            </div>
                             <h2>Welcome, {this.props.currentUser.username}</h2>
                         </div>
                         <div className="nav-right">
-                            <button className="profile-links prof-btn" 
+                            <button className="profile-links" 
                                 onClick={this.toProfile}>
                                     <i className="fas fa-user-circle"></i>
                                 </button>

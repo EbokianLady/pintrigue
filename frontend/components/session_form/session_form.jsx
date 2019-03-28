@@ -91,6 +91,9 @@ class SessionForm extends React.Component {
                     {this.props.otherForm}
                 </div>
                 <div className="session-form-box">
+                    <div className="small-logo-box">
+                        <img src={window.logo} className="small-logo"/>
+                    </div>
                     <h2>{this.props.formName} to see more</h2>
                     <p>Access Pintrigue's best ideas with a free account</p>
                     <form onSubmit={this.handleSubmit} className="session-form">

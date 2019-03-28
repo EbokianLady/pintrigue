@@ -42,19 +42,21 @@
 
 .profile-links {
     @extend %flex-row;
+    box-sizing: border-box;
     border-radius: 50%;
     height: 48px;
+    width: 48px;
     justify-content: center;
     padding: 4px;
-    width: 48px;
 }
 
 .fas {
     color: $med-gray;
+    font-size: 24px;
 }
 
 .profile-links:hover {
-    background-color: $light-gray;
+    background-color: $lightest-gray;
 }
 
 .nav-login {
@@ -90,5 +92,12 @@
             font-weight: bold;
         }
     }
+}
+
+.nav-logo {
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    background-color: transparent;
 }
 
