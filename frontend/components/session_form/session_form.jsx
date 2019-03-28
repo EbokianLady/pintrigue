@@ -56,7 +56,7 @@ class SessionForm extends React.Component {
             return (
                 <div>
                     <input type="text"
-                        className="sesh-input"
+                        className="sesh-input" alt="U"
                         placeholder="Username"
                         value={this.state.username}
                         onChange={this.update('username')} />
@@ -66,6 +66,16 @@ class SessionForm extends React.Component {
             )
         } else {
             return null
+        }
+    }
+
+    componentDidUpdate() {
+        const inputs = document.querySelectorAll('input');
+        const errors = this.formatErrors();
+        for (let i=0; i < inputs.length; i++) {
+            if (errors[inputs[i].alt]) {
+                inputs[i].className += " invalid-input";
+            }
         }
     }
 
@@ -82,13 +92,13 @@ class SessionForm extends React.Component {
                     <p>Access Pintrigue's best ideas with a free account</p>
                     <form onSubmit={this.handleSubmit} className="session-form">
                         {usernameInput}
-                        <input className="sesh-input" type="text"
+                        <input className="sesh-input" alt="E" type="text"
                             placeholder="Email"
                             value={this.state.email}
                             onChange={this.update('email')} />
                         <br />
                         {this.renderErrors(errors, "E")}
-                        <input className="sesh-input" type="password"
+                        <input className="sesh-input" alt="P" type="password"
                             placeholder="Password"
                             value={this.state.password}
                             onChange={this.update('password')} />

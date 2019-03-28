@@ -1,0 +1,29 @@
+//colors
+$white: #FFFFFF; // nav signup
+$lightest-gray: #EFEFEF; // session links
+$lighter-gray: #EBEBEB; // nav login
+$light-gray: #E2E2E2;
+$med-gray: #8E8E8E; // input borders
+$dark-gray: #444444; // nav login
+$darker-gray: #333333; //user name
+
+$pop: #E60023; // nav signup
+$error: #e3780c; // errors
+$focus: rgba(0, 132, 255, .5);
+
+//fonts
+$font: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",メイリオ,Meiryo,"ＭＳ Ｐゴシック",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+$skinny: 'Roboto', sans-serif;
+
+//mixins
+%flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+%flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

@@ -28,7 +28,7 @@ class UserProfile extends React.Component {
     displayDescription() {
         const { user } = this.props;
         if (user.location || user.description) {
-            return [user.location, user.description].join(" * ");
+            return [user.location, user.description].join(" • ");
         } else if (user.location) {
             return user.location;
         } else if (user.description) {
