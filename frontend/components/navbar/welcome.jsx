@@ -1,29 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Modal from '../modal/modal';
+import NavbarContainer from './navbar_container';
 
-class Navbar extends React.Component {
+class Welcome extends React.Component {
     constructor(props) {
         super(props);
         this.handleLogout = this.handleLogout.bind(this);
     }
 
     handleLogout(e) {
-        this.props.logout().then(this.props.history.push("/"));
+        this.props.logout().then(this.props.openModal);
     }
 
     render() {
-        if (this.props.currentUser) {
-            return (
-                <nav className="navbar signedin">
-                    <div className="nav-left">
-                        <h3>Welcome, {this.props.currentUser.username}</h3>
-                    </div>
-                    <div className="nav-right">
-                        <button onClick={this.handleLogout} >Logout</button>
-                    </div>
-                </nav>
-            )
+        if (this.props.currentUser.id) {
+            return <NavbarContainer />
+        } else if (this.props.modal) {
+            return <Modal />
         } else {
             return (
                 <nav className="navbar signedout">
@@ -40,4 +34,4 @@ class Navbar extends React.Component {
     }
 }
 
-export default Navbar;
+export default Welcome;

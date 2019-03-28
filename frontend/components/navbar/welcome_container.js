@@ -4,7 +4,7 @@ import React from 'react';
 import { logout } from "../../actions/session_actions";
 import { openModal, closeModal } from '../../actions/modal_actions';
 import { Link, withRouter } from 'react-router-dom';
-import Navbar from './navbar';
+import Welcome from './welcome';
 
 const msp = (state) => {
     const { session, entities, ui } = state;
@@ -18,14 +18,14 @@ const mdp = (dispatch) => {
     return ({
         logout: () => dispatch(logout()),
         openSignup: (
-            <button
+            <button 
                 className="nav-links nav-signup"
                 onClick={() => dispatch(openModal('signup'))}>
                 Sign Up
             </button>
         ),
         openLogin: (
-            <button
+            <button 
                 className="nav-links nav-login"
                 onClick={() => dispatch(openModal('login'))}>
                 Log In
@@ -36,4 +36,4 @@ const mdp = (dispatch) => {
     })
 };
 
-export default withRouter(connect(msp, mdp)(Navbar));
+export default withRouter(connect(msp, mdp)(Welcome));
