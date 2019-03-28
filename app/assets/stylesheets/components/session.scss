@@ -74,6 +74,10 @@
 }
 
 .invalid-input {
+    border: 1px solid $error-focus;
+}
+
+.invalid-input:focus {
     box-shadow: 0 0 0 4px $error;
 }
 

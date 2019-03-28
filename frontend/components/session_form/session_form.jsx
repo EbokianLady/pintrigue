@@ -9,9 +9,29 @@ class SessionForm extends React.Component {
         this.handleDemo = this.handleDemo.bind(this);
         this.formatErrors = this.formatErrors.bind(this);
     }
+    
+    componentDidUpdate() {
+        const inputs = document.querySelectorAll('input');
+        const errors = this.formatErrors();
+        for (let i=0; i < inputs.length; i++) {
+            if (errors[inputs[i].alt]) {
+                inputs[i].className = "sesh-input invalid-input";
+            } else {
+                inputs[i].className = "sesh-input";
+            }
+        }
+    }
 
     componentWillUnmount() {
         this.props.clearErrors();
+    }
+
+    formatErrors() {
+        let errors = {};
+        this.props.errors.forEach(err => {
+            errors[err[0]] = err;
+        });
+        return errors;
     }
 
     handleDemo(e) {
@@ -32,13 +52,6 @@ class SessionForm extends React.Component {
         };
     }
 
-    formatErrors() {
-        let errors = {};
-        this.props.errors.forEach(err => {
-            errors[err[0]] = err;
-        });
-        return errors;
-    }
 
     renderErrors(errors, field) {
         if (errors[field]) {
@@ -69,16 +82,6 @@ class SessionForm extends React.Component {
         }
     }
 
-    componentDidUpdate() {
-        const inputs = document.querySelectorAll('input');
-        const errors = this.formatErrors();
-        for (let i=0; i < inputs.length; i++) {
-            if (errors[inputs[i].alt]) {
-                inputs[i].className += " invalid-input";
-            }
-        }
-    }
-
     render() {
         const usernameInput = this.usernameConditional();
         const errors = this.formatErrors();
@@ -92,7 +95,7 @@ class SessionForm extends React.Component {
                     <p>Access Pintrigue's best ideas with a free account</p>
                     <form onSubmit={this.handleSubmit} className="session-form">
                         {usernameInput}
-                        <input className="sesh-input" alt="E" type="text"
+                        <input className="sesh-input" alt="E" type="email"
                             placeholder="Email"
                             value={this.state.email}
                             onChange={this.update('email')} />
