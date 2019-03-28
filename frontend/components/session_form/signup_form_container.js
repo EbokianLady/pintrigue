@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import SessionForm from './session_form';
-import { signup, login } from '../../actions/session_actions';
+import { signup, login, clearSessionErrors } from '../../actions/session_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import React from 'react';
 import { Route, Redirect, Switch, Link, HashRouter, withRouter } from 'react-router-dom';
 
 const msp = state => ({
     formName: "Sign up",
-    errors: state.errors.session,
+    errors: state.errors.sessionErrors,
 });
 
 const mdp = dispatch => ({
@@ -20,7 +20,8 @@ const mdp = dispatch => ({
             Log In
         </button>
     ),
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
+    clearErrors: () => dispatch(clearSessionErrors())
 });
 
 export default withRouter(connect(msp, mdp)(SessionForm));

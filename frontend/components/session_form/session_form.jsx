@@ -7,6 +7,11 @@ class SessionForm extends React.Component {
         this.state = { email: "", username: "", password: "" };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDemo = this.handleDemo.bind(this);
+        this.formatErrors = this.formatErrors.bind(this);
+    }
+
+    componentWillUnmount() {
+        this.props.clearErrors();
     }
 
     handleDemo(e) {
@@ -27,11 +32,26 @@ class SessionForm extends React.Component {
         };
     }
 
-    renderErrors() {
+    formatErrors() {
+        let errors = {};
+        this.props.errors.forEach(err => {
+            errors[err[0]] = err;
+        });
+        return errors;
+    }
 
+    renderErrors(errors, field) {
+        if (errors[field]) {
+            return (
+                <div className="session-errors" >
+                    {errors[field]}
+                </div>
+            )
+        } 
     }
 
     usernameConditional() {
+        const errors = this.formatErrors();
         if (this.props.formName === "Sign up") {
             return (
                 <div>
@@ -40,6 +60,8 @@ class SessionForm extends React.Component {
                         placeholder="Username"
                         value={this.state.username}
                         onChange={this.update('username')} />
+                    <br />
+                    {this.renderErrors(errors, "U")}
                 </div>
             )
         } else {
@@ -49,6 +71,7 @@ class SessionForm extends React.Component {
 
     render() {
         const usernameInput = this.usernameConditional();
+        const errors = this.formatErrors();
         return (
             <div className="session-page">
                 <div className="session-link-box">
@@ -64,11 +87,13 @@ class SessionForm extends React.Component {
                             value={this.state.email}
                             onChange={this.update('email')} />
                         <br />
+                        {this.renderErrors(errors, "E")}
                         <input className="sesh-input" type="password"
                             placeholder="Password"
                             value={this.state.password}
                             onChange={this.update('password')} />
-                        <br />
+                        {this.renderErrors(errors, "P")}
+                        {this.renderErrors(errors, "I")}
                     </form>
                     <button className="sesh-submit" onClick={this.handleSubmit}>{this.props.formName}</button>
                     <button className="sesh-submit" onClick={this.handleDemo}>Demo</button>

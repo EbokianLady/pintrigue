@@ -5,7 +5,7 @@ import Root from './components/root';
 import { login, logout, signup } from './actions/session_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
-    let preloadedState = {};
+    let preloadedState = { ui: { modal: "login" }};
 
     if (window.currentUser) {
         preloadedState = {
