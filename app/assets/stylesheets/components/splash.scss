@@ -1,0 +1,57 @@
+@import "./base/constants.scss";
+
+.main-splash {
+  display: flex;
+  justify-content: center;
+}
+
+.splash-pic-box {
+  // box-sizing: border-box;
+  margin-bottom: 14px;
+}
+
+.splash-pic {
+  width: 236px;
+  border-radius: 10px;
+}
+
+.splash-container {
+  column-gap: 14px;
+  column-count: 2;
+  width: 500px;
+}
+
+@media screen and (min-width: 1034px) {
+  .splash-container {
+    column-count: 3;
+    width: 750px;
+  }
+}
+
+@media screen and (min-width: 1282px) {
+  .splash-container {
+    column-count: 4;
+    width: 1000px;
+  }
+}
+
+@media screen and (min-width: 1530px) {
+  .splash-container {
+    column-count: 5;
+    width: 1250px;
+  }
+}
+
+@media screen and (min-width: 1778px) {
+  .splash-container {
+    column-count: 6;
+    width: 1500px;
+  }
+}
+
+@media screen and (min-width: 2026px) {
+  .splash-container {
+    column-count: 7;
+    width: 1750px;
+  }
+}
