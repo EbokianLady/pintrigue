@@ -24,7 +24,7 @@ function Modal(props) {
 
     return (
         <div className="modal-transparency">
-            <SplashContainer />
+            {/* <SplashContainer /> */}
             <div className="modal-child">
                 {component}
             </div>
