@@ -52,6 +52,12 @@ class SessionForm extends React.Component {
         };
     }
 
+    // dummy action that makes state 'change' triggers 
+
+    // react events onSubmit onChange onSelect onFocus onUnfocus
+    // react component library (form) - infinite scroll 
+    // bootstrap material view
+    // medium
 
     renderErrors(errors, field) {
         if (errors[field]) {
