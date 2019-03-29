@@ -47,7 +47,7 @@ class UserProfile extends React.Component {
                     <div className="user-profile-box">
                         <div className="user-profile">
                             <nav className="profile-nav">
-                                
+
                             </nav>
                             <section className="profile-body">
                                 <h2 className="profile-name">
@@ -68,6 +68,7 @@ class UserProfile extends React.Component {
                             </div>
                         </div>
                     </div>
+                    <img src={user.photoUrl} />
                 </div>
             )
         } else {
