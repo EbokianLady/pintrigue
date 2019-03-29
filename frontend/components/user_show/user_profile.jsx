@@ -2,81 +2,81 @@ import React from 'react';
 import { Route, Redirect, Switch, Link, HashRouter, withRouter } from 'react-router-dom';
 
 class UserProfile extends React.Component {
-    constructor(props) {
-        super(props);
-        this.displayName = this.displayName.bind(this);
-        this.displayDescription = this.displayDescription.bind(this);
+  constructor(props) {
+    super(props);
+    this.displayName = this.displayName.bind(this);
+    this.displayDescription = this.displayDescription.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.fetchUser(this.props.username);
+  }
+
+  displayName() {
+    const { user } = this.props;
+    if (user.first_name || user.last_name ) {
+      return [user.first_name, user.last_name].join(" ");
+    } else if (user.first_name) {
+      return user.first_name;
+    } else if (user.last_name) {
+      return user.last_name;
+    } else {
+      return user.username;
     }
+  }
 
-    componentDidMount() {
-        this.props.fetchUser(this.props.username);
+  displayDescription() {
+    const { user } = this.props;
+    if (user.location || user.description) {
+      return [user.location, user.description].join(" • ");
+    } else if (user.location) {
+      return user.location;
+    } else if (user.description) {
+      return user.description;
+    } else {
+      return null;
     }
+  }
 
-    displayName() {
-        const { user } = this.props;
-        if (user.first_name || user.last_name ) {
-            return [user.first_name, user.last_name].join(" ");
-        } else if (user.first_name) {
-            return user.first_name;
-        } else if (user.last_name) {
-            return user.last_name;
-        } else {
-            return user.username;
-        }
-    }
+  render() {
+    const { user } = this.props;
 
-    displayDescription() {
-        const { user } = this.props;
-        if (user.location || user.description) {
-            return [user.location, user.description].join(" • ");
-        } else if (user.location) {
-            return user.location;
-        } else if (user.description) {
-            return user.description;
-        } else {
-            return null;
-        }
-    }
+    if (user) {
+      return (
+        <div className="user-profile-buffer">
+          <div className="user-profile-box">
+            <div className="user-profile">
+              <nav className="profile-nav">
 
-    render() {
-        const { user } = this.props;
-
-        if (user) {
-            return (
-                <div className="user-profile-buffer">
-                    <div className="user-profile-box">
-                        <div className="user-profile">
-                            <nav className="profile-nav">
-
-                            </nav>
-                            <section className="profile-body">
-                                <h2 className="profile-name">
-                                    {this.displayName()}
-                                </h2>
-                                <div className="profile-follows"></div>
-                                <div className="profile-description">
-                                    {this.displayDescription()}
-                                </div>
-                            </section>
-                            <nav className="profile-buttons">
-                                <button>Boards</button>
-                                <button>Pins</button>
-                            </nav>
-                        </div>
-                        <div className="profile-image-box">
-                            <div className="profile-image-container">
-                            </div>
-                        </div>
-                    </div>
-                    <img src={user.photoUrl} />
+              </nav>
+              <section className="profile-body">
+                <h2 className="profile-name">
+                  {this.displayName()}
+                </h2>
+                <div className="profile-follows"></div>
+                <div className="profile-description">
+                  {this.displayDescription()}
                 </div>
-            )
-        } else {
-            return (
-                <div></div>
-            )
-        }
+              </section>
+              <nav className="profile-buttons">
+                <button>Boards</button>
+                <button>Pins</button>
+              </nav>
+            </div>
+            <div className="profile-image-box">
+              <div className="profile-image-container">
+                {/* <img src={user.photoUrl} /> */}
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    } else {
+      return (
+        <div></div>
+      )
     }
+  }
 }
 
 export default UserProfile;

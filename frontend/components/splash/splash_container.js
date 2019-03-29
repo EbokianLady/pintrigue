@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import React from 'react';
-import Discovery from './discovery';
+import Splash from './splash';
 
 const msp = (state) => {
   return ({
@@ -15,4 +15,4 @@ const mdp = (dispatch) => {
   });
 };
 
-export default withRouter(connect(msp, mdp)(Discovery));
+export default withRouter(connect(msp, mdp)(Splash));

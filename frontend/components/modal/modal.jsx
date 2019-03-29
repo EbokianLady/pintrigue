@@ -3,6 +3,7 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import LoginFormContainer from '../session_form/login_form_container';
 import SignupFormContainer from '../session_form/signup_form_container';
+import SplashContainer from '../splash/splash_container';
 
 function Modal(props) {
     if (!props.modal) {
@@ -23,6 +24,7 @@ function Modal(props) {
 
     return (
         <div className="modal-transparency">
+            <SplashContainer />
             <div className="modal-child">
                 {component}
             </div>
