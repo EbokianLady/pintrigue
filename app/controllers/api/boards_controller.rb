@@ -1,7 +1,15 @@
+require "byebug"
+
 class Api::BoardsController < ApplicationController
   def index
-    @boards = current_user.boards
-    render "api/boards/index"
+    @user = User.find_by(username: params[:user_id])
+
+    if @user
+      @boards = @user.boards
+      render "api/boards/index"
+    else
+      render status: 404
+    end
   end
 
   def show
@@ -54,9 +62,4 @@ class Api::BoardsController < ApplicationController
   def board_params
     params.require(:board).permit(:name, :description, :is_public)
   end
-
-  creator_id  :integer          not null
-#  name        :string           not null
-#  description :text
-#  is_publ
 end

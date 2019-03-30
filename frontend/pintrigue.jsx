@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
-import { login, logout, signup } from './actions/session_actions';
+import { removeBoard, fetchBoards, fetchBoard } from './actions/board_actions';
+import { fetchUser } from './actions/user_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   let preloadedState = { ui: { modal: "login" }};
@@ -21,11 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const store = configureStore(preloadedState);
 
   // testing
-  window.login = login;
-  window.logout = logout;
-  window.signup = signup;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
+
+  window.removeBoard = removeBoard;
+  window.fetchBoard = fetchBoard;
+  window.fetchBoards = fetchBoards;
   // testing
 
   ReactDOM.render(<Root store={store} />, root);

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Redirect, Switch, Link, HashRouter, withRouter } from 'react-router-dom';
+import BoardIndexContainer from '../boards/board_index_container';
 
 class UserProfile extends React.Component {
   constructor(props) {
@@ -43,31 +44,36 @@ class UserProfile extends React.Component {
 
     if (user) {
       return (
-        <div className="user-profile-buffer">
-          <div className="user-profile-box">
-            <div className="user-profile">
-              <nav className="profile-nav">
+        <div>
+          <div className="user-profile-buffer">
+            <div className="user-profile-box">
+              <div className="user-profile">
+                <nav className="profile-nav">
 
-              </nav>
-              <section className="profile-body">
-                <h2 className="profile-name">
-                  {this.displayName()}
-                </h2>
-                <div className="profile-follows"></div>
-                <div className="profile-description">
-                  {this.displayDescription()}
+                </nav>
+                <section className="profile-body">
+                  <h2 className="profile-name">
+                    {this.displayName()}
+                  </h2>
+                  <div className="profile-follows"></div>
+                  <div className="profile-description">
+                    {this.displayDescription()}
+                  </div>
+                </section>
+                <nav className="profile-buttons">
+                  <button>Boards</button>
+                  <button>Pins</button>
+                </nav>
+              </div>
+              <div className="profile-image-box">
+                <div className="profile-image-container">
+                  {/* <img src={user.photoUrl} /> */}
                 </div>
-              </section>
-              <nav className="profile-buttons">
-                <button>Boards</button>
-                <button>Pins</button>
-              </nav>
-            </div>
-            <div className="profile-image-box">
-              <div className="profile-image-container">
-                {/* <img src={user.photoUrl} /> */}
               </div>
             </div>
+          </div>
+          <div className="user-index-buffer">
+            <BoardIndexContainer />
           </div>
         </div>
       )
