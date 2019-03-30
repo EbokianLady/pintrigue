@@ -16,9 +16,9 @@ class Api::UsersController < ApplicationController
         if @user && @user.update_attributes(user_params)
             render "api/users/show"
         elsif @user
-            render json: @user.errors.full_messages
+            render json: @user.errors.full_messages, status: 422
         else
-            render json: ['Missing Current User']
+            render json: ['Missing Current User'], status: 404
         end
     end
 
@@ -28,7 +28,7 @@ class Api::UsersController < ApplicationController
         if @user
             render "api/users/show"
         else
-            render json: ['No one has that username']
+            render json: ['No one has that username'], status: 404
         end
     end
 
@@ -39,7 +39,7 @@ class Api::UsersController < ApplicationController
             @user.destroy!
             redirect_to root
         else
-            render json: ['Missing Current User']
+            render json: ['Missing Current User'], status: 404
         end
     end
 

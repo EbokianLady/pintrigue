@@ -26,6 +26,18 @@ class User < ApplicationRecord
 
     has_one_attached :photo
 
+    has_many :boards,
+      foreign_key: :creator_id,
+      class_name: :Board
+
+    has_many :pin_joins,
+      through: :boards,
+      source: :pin_joins
+
+    has_many :pins,
+      through: :pin_joins,
+      source: :pins
+
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)
         return nil unless user && user.is_password?(password)

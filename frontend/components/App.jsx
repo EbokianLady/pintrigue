@@ -8,17 +8,17 @@ import WelcomeContainer from './navbar/welcome_container';
 import SplashContainer from './splash/splash_container';
 
 const App = () => {
-    return (
-        <div>
-            <Route path="/splash" component={SplashContainer} />
-            <Switch>
-                <Route exact path="/" component={WelcomeContainer} />
-                <Route path="/" component={NavbarContainer} />
-            </Switch>
-            {/* <Route path="/discovery" component={DiscoveryContainer} */}
-            <Route path="/:username" component={UserProfileContainer} />
-        </div>
-    )
+  return (
+    <div>
+      <Route path="/splash" component={SplashContainer} />
+      <Switch>
+        <Route exact path="/" component={WelcomeContainer} />
+        <Route path="/" component={NavbarContainer} />
+      </Switch>
+      {/* <Route path="/discovery" component={DiscoveryContainer} */}
+      <Route path="/:username" component={UserProfileContainer} />
+    </div>
+  )
 };
 
 export default App;

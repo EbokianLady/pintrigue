@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_29_013048) do
+ActiveRecord::Schema.define(version: 2019_03_30_172942) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,31 @@ ActiveRecord::Schema.define(version: 2019_03_29_013048) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "boards", force: :cascade do |t|
+    t.integer "creator_id", null: false
+    t.string "name", null: false
+    t.text "description"
+    t.boolean "is_public", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["creator_id"], name: "index_boards_on_creator_id"
+  end
+
+  create_table "pin_joins", force: :cascade do |t|
+    t.integer "pin_id", null: false
+    t.integer "board_id", null: false
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pin_id", "board_id"], name: "index_pin_joins_on_pin_id_and_board_id", unique: true
+  end
+
+  create_table "pins", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "link_url"
   end
 
   create_table "users", force: :cascade do |t|

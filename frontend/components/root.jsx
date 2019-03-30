@@ -5,13 +5,13 @@ import App from './App';
 
 
 const Root = ({ store }) => {
-    return (
-        <Provider store={store}>
-            <HashRouter>
-                <App />
-            </HashRouter>
-        </Provider>
-    )
+  return (
+    <Provider store={store}>
+      <HashRouter>
+        <App />
+      </HashRouter>
+    </Provider>
+  )
 }
 
 export default Root;
