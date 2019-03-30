@@ -6,42 +6,44 @@ import SignupFormContainer from '../session_form/signup_form_container';
 import SplashContainer from '../splash/splash_container';
 
 function Modal(props) {
-    if (!props.modal) {
-        return null;
-    }
+  if (!props.modal) {
+    return null;
+  }
 
-    let component;
-    switch(props.modal) {
-        case 'login':
-            component = <LoginFormContainer />;
-            break;
-        case 'signup':
-            component = <SignupFormContainer />;
-            break;
-        default:
-            return null;
-    }
+  let component;
+  switch(props.modal) {
+    case 'login':
+      component = <LoginFormContainer />;
+      break;
+    case 'signup':
+      component = <SignupFormContainer />;
+      break;
+    default:
+      return null;
+  }
 
-    return (
-        <div className="modal-transparency">
-            {/* <SplashContainer /> */}
-            <div className="modal-child">
-                {component}
-            </div>
+  return (
+    <div>
+      <div className="modal-transparency">
+        <div className="modal-child">
+          {component}
         </div>
-    )
+      </div>
+      <SplashContainer />
+    </div>
+  )
 }
 
 const mapStateToProps = state => {
-    return {
-        modal: state.ui.modal
-    };
+  return {
+    modal: state.ui.modal
+  };
 };
 
 const mapDispatchToProps = dispatch => {
-    return {
-        closeModal: () => dispatch(closeModal()) // do I need this here?
-    };
+  return {
+    closeModal: () => dispatch(closeModal()) // do I need this here?
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Modal);

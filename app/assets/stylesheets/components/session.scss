@@ -1,131 +1,135 @@
 @import "./base/constants.scss";
 
 .session-page {
-    display: flex;
-    color: $darker-gray;
-    font-family: $font;
+  display: flex;
+  color: $darker-gray;
+  font-family: $font;
 }
 
 .session-link {
-    background-color: $lightest-gray;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 700;
-    height: 40px;
-    line-height: 36px;
-    margin-top: 48px;
-    margin-left: 24px;
-    padding: 10px, 14px;
-    position: absolute;
-    text-align: center;
-    vertical-align: middle;
-    width: 130px;
+  background-color: $lightest-gray;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  height: 40px;
+  line-height: 36px;
+  margin-top: 48px;
+  margin-left: 24px;
+  padding: 10px, 14px;
+  position: absolute;
+  text-align: center;
+  vertical-align: middle;
+  width: 130px;
 }
 
 .session-link:hover {
-    background-color: $light-gray;
+  background-color: $light-gray;
 }
 
 .session-form-box {
-    align-items: center;
-    background-color: $white;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    margin-top: 200px;
-    min-width: 440px;
-    padding: 20px 10px;
+  align-items: center;
+  background-color: $white;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 200px;
+  min-width: 440px;
+  padding: 20px 10px;
 }
 
 .session-form-box h2 {
-    font-size: 32px;
-    font-weight: bold;
-    margin-bottom: 10px;
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .session-form-box p {
-    font-size: 16px;
-    margin-bottom: 20px;
-    text-align: center;
-    width: 290px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  text-align: center;
+  width: 290px;
 }
 
 .session-form input {
-    box-sizing: border-box;
-    font-size: 16px;
-    margin-bottom: 10px;
-    padding: 8px 14px;
-    width: 290px;
+  box-sizing: border-box;
+  font-size: 16px;
+  margin-bottom: 10px;
+  padding: 8px 14px;
+  width: 290px;
 }
 
 .sesh-input {
-    background-color: $white;
-    border: 1px solid $med-gray;
-    border-radius: 2px;
-    cursor: text;
-    height: 40px;
-    letter-spacing: -.4px;
+  background-color: $white;
+  border: 1px solid $med-gray;
+  border-radius: 2px;
+  cursor: text;
+  height: 40px;
+  letter-spacing: -.4px;
 }
 
 .sesh-input:focus {
-    box-shadow: 0 0 0 4px $focus;
+  box-shadow: 0 0 0 4px $focus;
 }
 
 .invalid-input {
-    border: 1px solid $error-focus;
+  border: 1px solid $error-focus;
 }
 
 .invalid-input:focus {
-    box-shadow: 0 0 0 4px $error;
+  box-shadow: 0 0 0 4px $error;
 }
 
 ::-webkit-input-placeholder {
-    color: $med-gray;
-    font: $skinny;
-    font-weight: thin;
+  color: $med-gray;
+  font: $skinny;
+  font-weight: thin;
 }
 
 .sesh-submit {
-    background-color: $pop;
-    border-radius: 4px;
-    box-sizing: border-box;
-    cursor: pointer;
-    color: $white;
-    font-size: 15px;
-    font-weight: 400;
-    height: 36px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    padding: 8px 14px;
-    text-align: center;
-    width: 290px;
+  background-color: $pop;
+  border-radius: 4px;
+  box-sizing: border-box;
+  cursor: pointer;
+  color: $white;
+  font-size: 15px;
+  font-weight: 400;
+  height: 36px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 8px 14px;
+  text-align: center;
+  width: 290px;
 }
 
 .modal-transparency {
-    background: rgba(85, 85, 85, 0.7);
-    bottom: 0;
-    left: 0;
-    right: 0;
-    position: fixed;
-    top: 0;
-    z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+}
+
+.modal-child {
+  
 }
 
 .session-errors {
-    color: $error;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 400;
-    letter-spacing: -.4px;
-    margin-bottom: 10px;
+  color: $error;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -.4px;
+  margin-bottom: 10px;
 }
 
 .small-logo-box {
-    width: 50px;
+  width: 50px;
 }
 
 .small-logo {
-    width: 42.44px;
+  width: 42.44px;
 }

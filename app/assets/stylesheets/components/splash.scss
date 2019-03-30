@@ -3,55 +3,56 @@
 .main-splash {
   display: flex;
   justify-content: center;
+  margin-top: 24px;
 }
 
 .splash-pic-box {
   // box-sizing: border-box;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .splash-pic {
   width: 236px;
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
 .splash-container {
-  column-gap: 14px;
+  column-gap: 12px;
   column-count: 2;
-  width: 500px;
+  width: 484px;
+}
+
+@media screen and (min-width: 786px) {
+  .splash-container {
+    column-count: 3;
+    width: 732px;
+  }
 }
 
 @media screen and (min-width: 1034px) {
   .splash-container {
-    column-count: 3;
-    width: 750px;
+    column-count: 4;
+    width: 980px;
   }
 }
 
 @media screen and (min-width: 1282px) {
   .splash-container {
-    column-count: 4;
-    width: 1000px;
+    column-count: 5;
+    width: 1228px;
   }
 }
 
 @media screen and (min-width: 1530px) {
   .splash-container {
-    column-count: 5;
-    width: 1250px;
+    column-count: 6;
+    width: 1476px;
   }
 }
 
 @media screen and (min-width: 1778px) {
   .splash-container {
-    column-count: 6;
-    width: 1500px;
-  }
-}
-
-@media screen and (min-width: 2026px) {
-  .splash-container {
     column-count: 7;
-    width: 1750px;
+    width: 1724px;
   }
 }

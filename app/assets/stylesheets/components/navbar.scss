@@ -1,103 +1,103 @@
 @import "./base/constants.scss";
 
 .navbar {
+  @extend %flex-row;
+  box-sizing: border-box;
+  font-family: $font;
+  justify-content: space-between;
+
+  padding-bottom: 4px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 4px;
+
+  .nav-left {
     @extend %flex-row;
-    box-sizing: border-box;
-    font-family: $font;
-    justify-content: space-between;
+  }
 
-    padding-bottom: 4px;
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-top: 4px;
-
-    .nav-left {
-        @extend %flex-row;
-    }
-
-    .nav-right {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-    }
+  .nav-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
 }
 
 .signedin h2 {
-    color: $med-gray;
-    padding-left: 16px;
-    padding-right:16px;
+  color: $med-gray;
+  padding-left: 16px;
+  padding-right:16px;
 }
 
 .nav-links {
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: bold;
-    height: 40px;
-    line-height: 36px;
-    text-align: center;
-    width: 128px;
-    vertical-align: middle;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  height: 40px;
+  line-height: 36px;
+  text-align: center;
+  width: 128px;
+  vertical-align: middle;
 }
 
 .profile-links {
-    @extend %flex-row;
-    box-sizing: border-box;
-    border-radius: 50%;
-    height: 48px;
-    width: 48px;
-    justify-content: center;
-    padding: 4px;
+  @extend %flex-row;
+  box-sizing: border-box;
+  border-radius: 50%;
+  height: 48px;
+  width: 48px;
+  justify-content: center;
+  padding: 4px;
 }
 
 .fas {
-    color: $med-gray;
-    font-size: 24px;
+  color: $med-gray;
+  font-size: 24px;
 }
 
 .profile-links:hover {
-    background-color: $lightest-gray;
+  background-color: $lightest-gray;
 }
 
 .nav-login {
-    background-color: $light-gray;
-    color: $dark-gray;
+  background-color: $light-gray;
+  color: $dark-gray;
 }
 
 .nav-signup {
-    background-color: $pop;
-    color: $white;
-    margin-right: 8px;
+  background-color: $pop;
+  color: $white;
+  margin-right: 8px;
 }
 
 .nav-visible {
-    @extend %flex-column;
-    position: absolute;
-    width: 328px;
-    box-sizing: border-box;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, .18);
-    border-radius: 8px;
-    font-family: $font;
-    color: $darker-gray;
-    right: 0px;
-    top: 68px;
+  @extend %flex-column;
+  position: absolute;
+  width: 328px;
+  box-sizing: border-box;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .18);
+  border-radius: 8px;
+  font-family: $font;
+  color: $darker-gray;
+  right: 0px;
+  top: 68px;
 
-    .nav-dropdown-item {
-        height: 42px;
-        padding: 8px 16px;
-        font-size: 16px;
-        letter-spacing: -.4px;
+  .nav-dropdown-item {
+    height: 42px;
+    padding: 8px 16px;
+    font-size: 16px;
+    letter-spacing: -.4px;
 
-        p {
-            font-weight: bold;
-        }
+    p {
+      font-weight: bold;
     }
+  }
 }
 
 .nav-logo {
-    border-radius: 50%;
-    width: 28px;
-    height: 28px;
-    background-color: transparent;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  background-color: transparent;
 }
 

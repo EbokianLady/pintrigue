@@ -6,22 +6,22 @@ import React from 'react';
 import { Route, Redirect, Switch, Link, HashRouter, withRouter } from 'react-router-dom';
 
 const msp = state => ({
-    formName: "Log in",
-    errors: state.errors.sessionErrors,
+  formName: "Log in",
+  errors: state.errors.sessionErrors,
 });
 
 const mdp = dispatch => ({
-    action: (user) => dispatch(login(user)),
-    login: (user) => dispatch(login(user)),
-    otherForm: (
-        <button 
-            className="session-link"
-            onClick={() => dispatch(openModal('signup'))} >
-            Sign Up
-        </button>
-    ),
-    closeModal: () => dispatch(closeModal()),
-    clearErrors: () => dispatch(clearSessionErrors())
+  action: (user) => dispatch(login(user)),
+  login: (user) => dispatch(login(user)),
+  otherForm: (
+    <button 
+      className="session-link"
+      onClick={() => dispatch(openModal('signup'))} >
+      Sign Up
+    </button>
+  ),
+  closeModal: () => dispatch(closeModal()),
+  clearErrors: () => dispatch(clearSessionErrors())
 });
 
 export default withRouter(connect(msp, mdp)(SessionForm));

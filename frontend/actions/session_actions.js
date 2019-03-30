@@ -6,46 +6,47 @@ export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const CLEAR_SESSION_ERRORS = "CLEAR_SESSION_ERRORS";
 
 export const receiveCurrentUser = (currentUser) => {
-    return {
-        type: RECEIVE_CURRENT_USER,
-        currentUser,
-    };
+  return {
+    type: RECEIVE_CURRENT_USER,
+    currentUser,
+  };
 };
 
 export const logoutCurrentUser = () => ({
-    type: LOGOUT_CURRENT_USER,
+  type: LOGOUT_CURRENT_USER,
 });
 
 export const receiveSessionErrors = (errors) => ({
-    type: RECEIVE_SESSION_ERRORS,
-    errors
+  type: RECEIVE_SESSION_ERRORS,
+  errors
 });
 
 export const clearSessionErrors = () => ({
-    type: CLEAR_SESSION_ERRORS,
+  type: CLEAR_SESSION_ERRORS,
 });
 
 //thunk actions
 
 export const signup = user => dispatch => (
-    SessionApiUtil.signup(user).then(user => (
-        dispatch(receiveCurrentUser(user))
-    ), err => (
-        dispatch(receiveSessionErrors(err.responseJSON))
-    ))
+  SessionApiUtil.signup(user).then(user => (
+    dispatch(receiveCurrentUser(user))
+  ), err => (
+    dispatch(receiveSessionErrors(err.responseJSON))
+  ))
 );
 
 export const login = user => dispatch => (
-    SessionApiUtil.login(user).then(user => (
-        dispatch(receiveCurrentUser(user))
-    ), err => (
-        dispatch(receiveSessionErrors(err.responseJSON))
-    ))
+  SessionApiUtil.login(user).then(user => (
+    dispatch(receiveCurrentUser(user))
+  ), err => (
+    dispatch(receiveSessionErrors(err.responseJSON))
+  ))
 );
 
 export const logout = () => dispatch => {
-    return (
-        SessionApiUtil.logout().then(user => (
-            dispatch(logoutCurrentUser())
-        )));
+  return (
+    SessionApiUtil.logout().then(user => (
+      dispatch(logoutCurrentUser())
+    ))
+  );
 };
