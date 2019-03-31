@@ -117,6 +117,37 @@
   text-decoration: underline;
 }
 
+.prof-plus {
+  position: relative;
+}
+
+.profile-visible {
+  @extend %flex-column;
+  position: absolute;
+  width: 232px;
+  box-sizing: border-box;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .18);
+  border-radius: 8px;
+  font-family: $font;
+  background-color: $white;
+  border: 1px solid $lightest-gray;
+  color: $darker-gray;
+  left: -20px;
+  top: 56px;
+
+  .profile-dropdown-item {
+    height: 42px;
+    padding: 8px 16px;
+    font-size: 16px;
+    letter-spacing: -.4px;
+
+    p {
+      font-weight: bold;
+    }
+  }
+}
+
+
 // when selected 
 // background-color: $lightest-gray;
 // color: $darker-gray;

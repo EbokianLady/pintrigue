@@ -7,6 +7,7 @@ class UserProfile extends React.Component {
     super(props);
     this.displayName = this.displayName.bind(this);
     this.displayDescription = this.displayDescription.bind(this);
+    this.toggleDropdown = this.toggleDropdown.bind(this);
   }
 
   componentDidMount() {
@@ -39,6 +40,17 @@ class UserProfile extends React.Component {
     }
   }
 
+  toggleDropdown(e) {
+    const dropdown = document.getElementById('profile-dropdown');
+    if (dropdown.hidden) {
+      dropdown.hidden = false;
+      dropdown.className = "profile-visible";
+    } else {
+      dropdown.hidden = true;
+      dropdown.className = "profile-hidden";
+    }
+  }
+
   render() {
     const { user } = this.props;
 
@@ -49,8 +61,21 @@ class UserProfile extends React.Component {
             <div className="user-profile-box">
               <div className="user-profile">
                 <nav className="profile-nav">
-                  <button className="prof-buttons">
+                  <button className="prof-buttons prof-plus"
+                    onClick={this.toggleDropdown}>
                     <i className="fas fa-plus p2-fas"></i>
+                    <div id="profile-dropdown" className="profile-hidden" hidden={true}>
+                      <button className="profile-dropdown-item">
+                        <p>
+                          Create board
+                        </p>
+                      </button>
+                      <button className="profile-dropdown-item">
+                        <p>
+                          Create pin
+                        </p>
+                      </button>
+                    </div>
                   </button>
                   <button className="prof-buttons">
                     <i className="fas fa-pen p2-fas"></i>
