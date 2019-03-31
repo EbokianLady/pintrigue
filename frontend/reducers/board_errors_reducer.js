@@ -5,7 +5,7 @@ const boardErrorsReducer = (state = [], action) => {
 
   switch (action.type) {
     case RECEIVE_BOARD_ERRORS:
-      return action.errors || [];
+      return action.errors.error_message || [];
     // case CLEAR_BOARD_ERRORS:
     //   return [];
     default:

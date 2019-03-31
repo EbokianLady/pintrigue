@@ -15,58 +15,57 @@
 #  description     :text
 #
 
+# User Model
 class User < ApplicationRecord
-    validates :session_token, :email, :username, presence: true, uniqueness: true
-    validates :password_digest, presence: true
-    validates :password, length: { minimum: 6, allow_nil: true }
+  validates :session_token, :email, :username, presence: true, uniqueness: true
+  validates :password_digest, presence: true
+  validates :password, length: { minimum: 6, allow_nil: true }
 
-    after_initialize :ensure_session_token
+  after_initialize :ensure_session_token
 
-    attr_reader :password
+  attr_reader :password
 
-    has_one_attached :photo
+  has_one_attached :photo
 
-    has_many :boards,
-      foreign_key: :creator_id,
-      class_name: :Board
+  has_many :boards, foreign_key: :creator_id
+  has_many :pin_joins, through: :boards, source: :pin_joins
+  has_many :pins, through: :pin_joins, source: :pins
 
-    has_many :pin_joins,
-      through: :boards,
-      source: :pin_joins
+  def self.find_by_credentials(params)
+    user = User.find_by(email: params[:email])
+    user&.matching_password?(params[:password])
+  end
 
-    has_many :pins,
-      through: :pin_joins,
-      source: :pins
+  def self.find_by_credentials!(params)
+    user = User.find_by_credentials(params)
+    return user if user
 
-    def self.find_by_credentials(email, password)
-        user = User.find_by(email: email)
-        return nil unless user && user.is_password?(password)
-        user
-    end
+    raise ActiveRecord::RecordNotFound
+  end
 
-    def password=(password)
-        @password = password
-        self.password_digest = BCrypt::Password.create(password)
-    end
+  def password=(password)
+    @password = password
+    self.password_digest = BCrypt::Password.create(password)
+  end
 
-    def is_password?(password)
-        encrypted = BCrypt::Password.new(self.password_digest)
-        encrypted.is_password?(password)
-    end
+  def matching_password?(password)
+    encrypted = BCrypt::Password.new(self.password_digest)
+    encrypted.is_password?(password)
+  end
 
-    def reset_session_token!
-        self.session_token = User.generate_session_token
-        self.save!
-        self.session_token
-    end
+  def reset_session_token!
+    self.session_token = User.generate_session_token
+    self.save!
+    self.session_token
+  end
 
-    private
+  private
 
-    def self.generate_session_token
-        SecureRandom.urlsafe_base64
-    end
+  def self.generate_session_token
+    SecureRandom.urlsafe_base64
+  end
 
-    def ensure_session_token
-        self.session_token ||= User.generate_session_token
-    end
+  def ensure_session_token
+    self.session_token ||= User.generate_session_token
+  end
 end
