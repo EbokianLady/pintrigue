@@ -1,5 +1,3 @@
-require "byebug"
-
 class Api::BoardsController < ApplicationController
   def index
     @user = User.find_by(username: params[:user_id])
@@ -48,7 +46,7 @@ class Api::BoardsController < ApplicationController
   def destroy
     @board = current_user.boards.find(params[:id])
     @user = current_user
-    
+
     if @board
       @board.destroy
       render "api/users/show"
