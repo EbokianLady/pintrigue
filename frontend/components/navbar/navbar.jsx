@@ -43,12 +43,12 @@ class Navbar extends React.Component {
               <div className="nav-right">
                 <button className="profile-links" 
                   onClick={this.toProfile}>
-                    <i className="fas fa-user-circle"></i>
+                    <i className="fas fa-user-circle p-fas"></i>
                 </button>
                 <button
                   className="profile-links"
                   onClick={this.toggleDropdown} >
-                    <i className="fas fa-ellipsis-h"></i>
+                  <i className="fas fa-ellipsis-h p-fas"></i>
                 </button>
               </div>
             </nav>

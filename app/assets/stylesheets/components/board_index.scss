@@ -1,0 +1,74 @@
+@import "./base/constants.scss";
+
+.user-index-buffer {
+  @extend %flex-column;
+}
+
+.board-index {
+  @extend %flex-row;
+  color: $darker-gray;
+  flex-wrap: wrap;
+  font-family: $font;
+  justify-content: center;
+}
+
+.b-index-frame {
+  align-items: center;
+  border-radius: 8px;
+  box-sizing: border-box;
+  display: flex;
+  height: 280px;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0px 4px;
+  margin-bottom: 25px;
+  padding: 8px 8px;
+  width: 316px;
+}
+
+.b-index-frame:hover {
+  background-color: $lightest-gray;
+}
+
+.b-cover {
+  border-radius: 8px;
+  background-color: $med-gray;
+  height: 200px;
+  width: 300px;
+}
+
+.b-info {
+  @extend %flex-row;
+  justify-content: space-between;
+  width: 300px;
+  padding: 8px;
+
+  .b-index-title {
+    font-size: 20px;
+    margin: 0px;
+  }
+  
+  .b-index-pincount {
+    font-family: $font;
+    font-size: 14px;
+  }
+}
+
+.b-index-link {
+  @extend %flex-row;
+  box-sizing: border-box;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  justify-content: center;
+}
+
+.b-index-link:hover {
+  background-color: $light-gray;
+}
+
+.b-fas {
+  font-size: 16px;
+  color: $med-gray;
+}
+

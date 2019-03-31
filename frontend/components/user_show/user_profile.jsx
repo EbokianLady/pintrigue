@@ -49,7 +49,12 @@ class UserProfile extends React.Component {
             <div className="user-profile-box">
               <div className="user-profile">
                 <nav className="profile-nav">
-
+                  <button className="prof-buttons">
+                    <i className="fas fa-plus p2-fas"></i>
+                  </button>
+                  <button className="prof-buttons">
+                    <i className="fas fa-pen p2-fas"></i>
+                  </button>
                 </nav>
                 <section className="profile-body">
                   <h2 className="profile-name">
@@ -65,15 +70,16 @@ class UserProfile extends React.Component {
                   <button>Pins</button>
                 </nav>
               </div>
-              <div className="profile-image-box">
                 <div className="profile-image-container">
-                  {/* <img src={user.photoUrl} /> */}
+                  <img className="profile-image" src={user.photoUrl}></img>
                 </div>
-              </div>
             </div>
           </div>
           <div className="user-index-buffer">
-            <BoardIndexContainer />
+            <Switch>
+              <Route path="/:username/boards" component={BoardIndexContainer} />
+              <Route path="/:username" component={BoardIndexContainer} />
+            </Switch>
           </div>
         </div>
       )

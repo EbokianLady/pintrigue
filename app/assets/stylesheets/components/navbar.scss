@@ -50,13 +50,13 @@
   padding: 4px;
 }
 
-.fas {
-  color: $med-gray;
-  font-size: 24px;
-}
-
 .profile-links:hover {
   background-color: $lightest-gray;
+}
+
+.p-fas {
+  color: $med-gray;
+  font-size: 24px;
 }
 
 .nav-login {

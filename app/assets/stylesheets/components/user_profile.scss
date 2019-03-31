@@ -23,15 +23,35 @@
 }
 
 .profile-nav {
+  @extend %flex-row;
   max-width: 800px;
   height: 64px;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   box-sizing: border-box;
   padding-bottom: 8px;
   padding-top: 8px;
   margin-bottom: 4px;
   margin-top: 4px;
+}
+
+.prof-buttons {
+  @extend %flex-row;
+  box-sizing: border-box;
+  border-radius: 50%;
+  height: 48px;
+  width: 48px;
+  justify-content: center;
+  padding: 4px;
+}
+
+.prof-buttons:hover {
+  background-color: $lightest-gray;
+}
+
+.p2-fas {
+  color: $med-gray;
+  font-size: 24px;
 }
 
 .profile-body {
@@ -58,7 +78,7 @@
   letter-spacing: -.4px;
 }
 
-.profile-image-box {
+.profile-image {
     
 }
 
@@ -93,7 +113,7 @@
   padding: 8px 16px;
 }
 
-.profile-buttons button:hover{
+.profile-buttons button:hover {
   text-decoration: underline;
 }
 
