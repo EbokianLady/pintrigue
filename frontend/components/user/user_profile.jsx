@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Redirect, Switch, Link, HashRouter, withRouter } from 'react-router-dom';
 import BoardIndexContainer from '../boards/board_index_container';
+import PinUserIndexContainer from '../pins/pin_user_index_container';
 
 class UserProfile extends React.Component {
   constructor(props) {
@@ -53,6 +54,14 @@ class UserProfile extends React.Component {
 
   render() {
     const { user } = this.props;
+    const path = this.props.history.location.pathname;
+    let pinClassName = "pin-btn";
+    let boardClassName = "board-btn";
+    if (path.match(/pins/)) {
+      pinClassName += ' btn-selected';
+    } else {
+      boardClassName += ' btn-selected';
+    }
 
     if (user) {
       return (
@@ -91,8 +100,12 @@ class UserProfile extends React.Component {
                   </div>
                 </section>
                 <nav className="profile-buttons">
-                  <button>Boards</button>
-                  <button>Pins</button>
+                  <button className={boardClassName}>
+                    <Link to={`/${this.props.username}/boards`}>Boards</Link>
+                  </button>
+                  <button className={pinClassName}>
+                    <Link to={`/${this.props.username}/pins`}>Pins</Link>
+                  </button>
                 </nav>
               </div>
                 <div className="profile-image-container">
@@ -103,6 +116,7 @@ class UserProfile extends React.Component {
           <div className="user-index-buffer">
             <Switch>
               <Route path="/:username/boards" component={BoardIndexContainer} />
+              <Route path="/:username/pins" component={PinUserIndexContainer} />
               <Route path="/:username" component={BoardIndexContainer} />
             </Switch>
           </div>
