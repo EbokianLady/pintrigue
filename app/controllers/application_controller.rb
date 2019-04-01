@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Application Controller, handles current user
 class ApplicationController < ActionController::Base
   include ErrorHandler
 

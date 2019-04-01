@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 module PintrigueError
+  # Failed login called in session controller
   class FailedLogin < PintrigueError::Base
     def initialize
       super(

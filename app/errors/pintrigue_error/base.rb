@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 module PintrigueError
+  # Base for Pintrigue Errors
   class Base < StandardError
     attr_reader :message, :status
 

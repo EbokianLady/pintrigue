@@ -6,4 +6,25 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(email: "juneberry@fakemail.com", password: "vault66", username: "juneberry", first_name: "Juniper", last_name: "Moore", location: "Chicago", description: "My favorite things to do are gardening and cooking!")
+User.delete_all
+Board.delete_all
+
+u = User.create(
+  email: 'juneberry@fakemail.com',
+  password: 'vault66',
+  username: 'juneberry',
+  first_name: 'Juniper',
+  last_name: 'Moore',
+  location: 'Chicago',
+  description: 'My favorite things to do are gardening and cooking!'
+)
+
+Board.create(
+  name: 'Garden Scenes',
+  creator_id: u.id
+)
+
+Board.create(
+  name: 'Kitchen Fun',
+  creator_id: u.id
+)

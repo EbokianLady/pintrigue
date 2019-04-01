@@ -11,18 +11,13 @@
 #  updated_at  :datetime         not null
 #
 
+# Board Model
 class Board < ApplicationRecord
   validates :creator_id, :name, presence: true
 
-  belongs_to :creator,
-  foreign_key: :creator_id,
-  class_name: :User
-  
+  belongs_to :creator, foreign_key: :creator_id, class_name: :User
   has_many :pin_joins
-  
-  has_many :pins,
-  through: :pin_joins,
-  source: :pin
+  has_many :pins, through: :pin_joins, source: :pin
 
   # has many pictures through pins?
 end

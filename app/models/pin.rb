@@ -8,12 +8,11 @@
 #  link_url   :string
 #
 
+# Pin Model
 class Pin < ApplicationRecord
   # has a photo through aws
   # has_one_attached :picture
 
   has_many :pin_joins
-  has_many :boards, 
-    through: :pin_joins,
-    source: :board
+  has_many :boards, through: :pin_joins, source: :board
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Global Error Handler
 module ErrorHandler
   def self.included(klass)

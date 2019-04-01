@@ -10,14 +10,12 @@
 #  updated_at  :datetime         not null
 #
 
+# Joins table for Boards and Pins
 class PinJoin < ApplicationRecord
   validates :pin_id, :board_id, presence: true
   validates :pin_id, uniqueness: { scope: :board_id }
-  
+
   belongs_to :pin
   belongs_to :board
-
-  has_one :creator,
-    through: :board, 
-    source: :creator
+  has_one :creator, through: :board, source: :creator
 end
