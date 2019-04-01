@@ -1,15 +1,28 @@
 @import "./base/constants.scss";
 
-.session-page {
-  display: flex;
-  color: $darker-gray;
-  font-family: $font;
+.modal-transparency {
+  background-color: rgba(0, 0, 0, 0.5);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+
+  .modal-child {
+    height: 100%;
+
+    .session-format {
+      height: inherit;
+    }
+  }
 }
 
 .session-link {
   background-color: $lightest-gray;
   border-radius: 12px;
   cursor: pointer;
+  font-family: $font;
   font-size: 16px;
   font-weight: 700;
   height: 40px;
@@ -21,35 +34,44 @@
   text-align: center;
   vertical-align: middle;
   width: 130px;
+
+  &:hover {
+    background-color: $light-gray;
+  }
 }
 
-.session-link:hover {
-  background-color: $light-gray;
-}
-
-.session-form-box {
-  align-items: center;
-  background-color: $white;
-  border-radius: 8px;
+.session-page {
   display: flex;
   flex-direction: column;
-  margin: auto;
-  margin-top: 200px;
-  min-width: 440px;
-  padding: 20px 10px;
-}
+  align-items: center;
+  color: $darker-gray;
+  font-family: $font;
+  height: inherit;
 
-.session-form-box h2 {
-  font-size: 32px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
+  .session-form-box {
+    align-items: center;
+    justify-content: center;
+    background-color: $white;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    min-width: 440px;
+    padding: 20px 10px;
 
-.session-form-box p {
-  font-size: 16px;
-  margin-bottom: 20px;
-  text-align: center;
-  width: 290px;
+    h2 {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    p {
+     font-size: 16px;
+     margin-bottom: 20px;
+     text-align: center;
+     width: 290px;
+    }
+  }
 }
 
 .session-form input {
@@ -81,6 +103,16 @@
   }
 }
 
+.list-errors {
+  color: $error;
+  width: 290px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -.4px;
+  margin-bottom: 10px;
+}
+
 ::-webkit-input-placeholder {
   color: $med-gray;
   font: $skinny;
@@ -101,29 +133,6 @@
   padding: 8px 14px;
   text-align: center;
   width: 290px;
-}
-
-.modal-transparency {
-  background-color: rgba(0, 0, 0, 0.5);
-  bottom: 0;
-  left: 0;
-  right: 0;
-  position: fixed;
-  top: 0;
-  z-index: 10;
-}
-
-.modal-child {
-
-}
-
-.list-errors {
-  color: $error;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: -.4px;
-  margin-bottom: 10px;
 }
 
 .small-logo-box {

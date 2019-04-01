@@ -1,6 +1,11 @@
+# frozen_string_literal: true
+
 module Api
+  # Sessions Controller
   class SessionsController < ApplicationController
     def create
+      User.create!(email: '') if params[:user][:email] == ''
+
       @user = User.find_by_credentials!(user_params)
       login!(@user)
       render 'api/users/show'
@@ -8,7 +13,6 @@ module Api
 
     def destroy
       logout!
-      render status: 200
     end
 
     private

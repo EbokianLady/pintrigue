@@ -27,10 +27,17 @@ class SessionForm extends React.Component {
   }
 
   update(field) {
-    let clearErrors;
-    if (field === 'username') clearErrors = this.props.clearSessionUsernameErrors;
-    if (field === 'password') clearErrors = this.props.clearSessionPasswordErrors;
-    if (field === 'email') clearErrors = this.props.clearSessionEmailErrors;
+    let clearErrors = () => {}; // dummy function
+
+    if (field === 'username' && this.props.errors.usernameError.length > 0) {
+      clearErrors = this.props.clearSessionUsernameErrors;
+    }
+    if (field === 'password' && this.props.errors.passwordError.length > 0) {
+      clearErrors = this.props.clearSessionPasswordErrors;
+    }
+    if (field === 'email' && this.props.errors.emailError.length > 0) {
+      clearErrors = this.props.clearSessionEmailErrors;
+    }
 
     return (e) => {
       this.setState({ [field]: e.target.value });
@@ -38,19 +45,13 @@ class SessionForm extends React.Component {
     };
   }
 
-  // dummy action that makes state 'change' triggers
-
-  // react events onSubmit onChange onSelect onFocus onUnfocus
-  // react component library (form) - infinite scroll
-  // bootstrap material view
-  // medium
-
   render() {
     return (
+      <div className="session-format">
+      <div className="session-link-box">
+        {this.props.otherForm}
+      </div>
       <div className="session-page">
-        <div className="session-link-box">
-          {this.props.otherForm}
-        </div>
         <div className="session-form-box">
           <div className="small-logo-box">
             <img src={window.logo} className="small-logo"/>
@@ -88,6 +89,7 @@ class SessionForm extends React.Component {
           <button className="sesh-submit" onClick={this.handleSubmit}>{this.props.formName}</button>
           <button className="sesh-submit" onClick={this.handleDemo}>Demo</button>
         </div>
+      </div>
       </div>
     )
   }

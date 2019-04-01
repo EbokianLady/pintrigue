@@ -30,4 +30,23 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "You missed a spot! Don't forget to add your email."
+              taken: "Hmm...looks like you already have an account."
+              invalid: "Hmm...that doesn't look like an email address or phone number."
+            username:
+              blank: "You missed a spot! Don't forget to add your username."
+              taken: "Hmm...looks like that username is already taken."
+            password:
+              invalid: "The password you entered is incorrect."
+              too_short: "Your password is too short! You need 6+ characters."
+              blank: "Your password is too short! You need 6+ characters."
+            # password_digest:
+            #   invalid: "The password you entered is incorrect."
+            #   too_short: "Your password is too short! You need 6+ characters."
+            #   blank: "Your password is too short! You need 6+ characters."

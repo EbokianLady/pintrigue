@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module Api
-  # User Controller
+  # Users Controller
   class UsersController < ApplicationController
     def create
       @user = User.new(user_params)
@@ -22,7 +24,6 @@ module Api
     def destroy
       @user = current_user
       @user.destroy!
-      redirect_to root
     end
 
     private

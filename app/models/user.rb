@@ -33,14 +33,14 @@ class User < ApplicationRecord
 
   def self.find_by_credentials(params)
     user = User.find_by(email: params[:email])
-    user&.matching_password?(params[:password])
+    user&.matching_password?(params[:password]) ? user : nil
   end
 
   def self.find_by_credentials!(params)
     user = User.find_by_credentials(params)
     return user if user
 
-    raise ActiveRecord::RecordNotFound
+    raise PintrigueError::FailedLogin
   end
 
   def password=(password)

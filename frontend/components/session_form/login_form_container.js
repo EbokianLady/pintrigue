@@ -9,15 +9,9 @@ import { Route, Redirect, Switch, Link, HashRouter, withRouter } from 'react-rou
 
 const formatErrors = (error) => {
   return ({
-    usernameError: (
-      error.username && error.username.map(err => `Username ${err}.`) || []
-    ),
-    passwordError: (
-      error.password &&
-      error.password.map(err => `Password ${err}.`) ||
-      []
-    ),
-    emailError: error.email && error.email.map(err => `Email ${err}.`) || [],
+    usernameError: error.username || [],
+    passwordError: error.password || [],
+    emailError: error.email || [],
   });
 };
 
