@@ -40,10 +40,8 @@ module Api
 
     def destroy
       @pin = current_user.pins.find(params[:id])
-      board = @pin.board
+      @board = @pin.board
       @pin.destroy
-      # how do I find current_board
-      @board = current_board
       render 'api/boards/show'
     end
 
