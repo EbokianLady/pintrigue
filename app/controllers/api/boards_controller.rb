@@ -16,35 +16,22 @@ module Api
 
     def update
       @board = current_user.boards.find(params[:id])
-
-      if @board.update_attributes(board_params)
-        render 'api/boards/show'
-      elsif @board
-        render json: @board.errors.full_messages, status: 422
-      end
+      @board.update!(board_params)
+      render 'api/boards/show'
     end
 
     def create
       @board = Board.new(board_params)
       @board.creator_id = current_user.id
-
-      if @board.save
-        render 'api/boards/show'
-      else
-        render json: @board.errors.full_messages, status: 422
-      end
+      @board.save!
+      render 'api/boards/show'
     end
 
     def destroy
       @board = current_user.boards.find(params[:id])
       @user = current_user
-
-      if @board
-        @board.destroy
-        render 'api/users/show'
-      else
-        render status: 401
-      end
+      @board.destroy
+      render 'api/users/show'
     end
 
     private

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, Redirect, Switch, Link, HashRouter, withRouter } from 'react-router-dom';
-import BoardIndexContainer from '../boards/board_index_container';
-import PinUserIndexContainer from '../pins/pin_user_index_container';
+import PinBoardIndexContainer from '../pins/pin_board_index_container';
 
 class BoardShow extends React.Component {
   constructor(props) {
@@ -47,11 +46,7 @@ class BoardShow extends React.Component {
             </div>
           </div>
           <div className="index-buffer">
-            {/* <Switch>
-              <Route path="/:username/boards" component={BoardIndexContainer} />
-              <Route path="/:username/pins" component={PinUserIndexContainer} />
-              <Route path="/:username" component={BoardIndexContainer} />
-            </Switch> */}
+            <PinBoardIndexContainer />
           </div>
         </div>
       )

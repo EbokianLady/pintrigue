@@ -29,7 +29,7 @@ class User < ApplicationRecord
 
   has_many :boards, foreign_key: :creator_id
   has_many :pin_joins, through: :boards, source: :pin_joins
-  has_many :pins, through: :pin_joins, source: :pins
+  has_many :pins, through: :pin_joins, source: :pin
 
   def self.find_by_credentials(params)
     user = User.find_by(email: params[:email])

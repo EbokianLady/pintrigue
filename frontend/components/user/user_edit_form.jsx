@@ -6,22 +6,20 @@ class UserEdit extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.props.user;
-    this.update = this.update.bind(this);
   }
 
   componentDidMount() {
 
   }
 
-  // WHY ISN'T THIS WORKING?
   update(field) {
     return (e) => {
-      this.setState({ [field]: e.target.value });
+      this.setState({ [field]: e.currentTarget.value });
     };
   }
 
   render() {
-    const { user } = this.props;
+    const user = this.state;
     return (
       <div className="user-edit-container">
         <div className="user-edit-box">

@@ -20,6 +20,7 @@ const App = () => {
         <Route path="/:username" component={UserProfileContainer} />
       </Switch>
       <Route exact path="/boards/:boardId" component={BoardShowContainer} />
+      <Route exact path="/boards/:boardId/edit" component={BoardShowContainer} />
       {/* <Route path="/discovery" component={DiscoveryContainer} */}
     </div>
   )

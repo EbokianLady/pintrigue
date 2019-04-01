@@ -22,7 +22,7 @@ class PinIndex extends React.Component {
       //   {pins}
       // </ul>
     return (
-      <div className="pin-index-box">All User Pins
+      <div className="pin-index-box">All The Pins
       </div>
     )
   }
