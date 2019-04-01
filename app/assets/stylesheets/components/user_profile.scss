@@ -1,12 +1,12 @@
 @import "./base/constants.scss";
 
-.user-profile-buffer {
+.profile-buffer {
   min-height: 170px;
   display: flex;
   justify-content: center;
 }
 
-.user-profile-box {
+.profile-box {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -17,7 +17,7 @@
   padding: 12px;
 }
 
-.user-profile {
+.profile {
   font-family: $font;
   width: 75%;
 }

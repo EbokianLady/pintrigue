@@ -1,6 +1,6 @@
 @import "./base/constants.scss";
 
-.user-index-buffer {
+.index-buffer {
   @extend %flex-column;
 }
 
@@ -56,16 +56,21 @@
 
 .b-index-link {
   @extend %flex-row;
-  box-sizing: border-box;
+  align-items: center;
   border-radius: 50%;
+  box-sizing: border-box;
   height: 40px;
-  width: 40px;
   justify-content: center;
+  margin-left: 125px;
+  margin-top: 220px;
+  position: absolute;
+  width: 40px;
+
+  &:hover {
+    background-color: $light-gray;
+  }
 }
 
-.b-index-link:hover {
-  background-color: $light-gray;
-}
 
 .b-fas {
   font-size: 16px;

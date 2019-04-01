@@ -4,35 +4,23 @@ module Api
   # Boards Controller
   class BoardsController < ApplicationController
     def index
-      @user = User.find_by(username: params[:user_id])
-
-      if @user
-        @boards = @user.boards
-        render 'api/boards/index'
-      else
-        render status: 404
-      end
+      @user = User.find_by!(username: params[:user_id])
+      @boards = @user.boards
+      render 'api/boards/index'
     end
 
     def show
       @board = Board.find(params[:id])
-
-      if @board
-        render 'api/boards/show'
-      else
-        render status: 404
-      end
+      render 'api/boards/show'
     end
 
     def update
-      @board = Board.find(params[:id])
+      @board = current_user.boards.find(params[:id])
 
-      if @board && @board.update_attributes(board_params)
+      if @board.update_attributes(board_params)
         render 'api/boards/show'
       elsif @board
         render json: @board.errors.full_messages, status: 422
-      else
-        render json: ['Missing Board'], status: 404
       end
     end
 

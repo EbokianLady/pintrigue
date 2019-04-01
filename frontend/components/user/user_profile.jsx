@@ -66,9 +66,9 @@ class UserProfile extends React.Component {
     if (user) {
       return (
         <div>
-          <div className="user-profile-buffer">
-            <div className="user-profile-box">
-              <div className="user-profile">
+          <div className="profile-buffer">
+            <div className="profile-box">
+              <div className="profile">
                 <nav className="profile-nav">
                   <div className="prof-buttons prof-plus"
                     onClick={this.toggleDropdown}>
@@ -115,7 +115,7 @@ class UserProfile extends React.Component {
                 </div>
             </div>
           </div>
-          <div className="user-index-buffer">
+          <div className="index-buffer">
             <Switch>
               <Route path="/:username/boards" component={BoardIndexContainer} />
               <Route path="/:username/pins" component={PinUserIndexContainer} />

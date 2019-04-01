@@ -6,6 +6,7 @@ import NavbarContainer from './navbar/navbar_container';
 import UserProfileContainer from './user/user_profile_container';
 import WelcomeContainer from './navbar/welcome_container';
 import UserEditContainer from './user/user_edit_container';
+import BoardShowContainer from './boards/board_show_continer';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route exact path="/:username/edit" component={UserEditContainer}/>
         <Route path="/:username" component={UserProfileContainer} />
       </Switch>
+      <Route exact path="/boards/:boardId" component={BoardShowContainer} />
       {/* <Route path="/discovery" component={DiscoveryContainer} */}
     </div>
   )
