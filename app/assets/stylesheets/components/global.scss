@@ -1,0 +1,49 @@
+@import "./base/constants.scss";
+
+.dropdown-item {
+  height: 42px;
+  width: 100%;
+  padding: 8px 16px;
+  font-size: 16px;
+  letter-spacing: -.4px;
+  font-weight: bold;
+
+  &:hover {
+    background-color: $lightest-gray;
+  }
+}
+
+.input {
+  background-color: $white;
+  border: 1px solid $med-gray;
+  border-radius: 4px;
+  box-sizing: border-box;
+  cursor: text;
+  font-size: 16px;
+  height: 40px;
+  letter-spacing: -.4px;
+  margin-bottom: 10px;
+  padding: 8px 14px;
+  width: 290px;
+
+  &:focus {
+    box-shadow: 0 0 0 4px $focus;
+  }
+}
+
+.rectangle-btn {
+  @extend %flex-row;
+  align-items: center;
+  background-color: $lightest-gray;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: $darker-gray;
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 8px;
+  padding: 10px 14px;
+
+  &:hover {
+    background-color: $light-gray;
+  }
+}

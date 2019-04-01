@@ -1,0 +1,120 @@
+@import "./base/constants.scss";
+
+.user-edit-container {
+  @extend %flex-row;
+  justify-content: center;
+}
+
+.user-edit-box {
+  @extend %flex-column;
+  box-sizing: border-box;
+  color: $darker-gray;
+  font-family: $font;
+  min-width: 400px;
+  max-width: 600px;
+  margin-top: 55px;
+
+  h4 {
+    font-weight: 300;
+    margin: 0;
+  }
+
+  > div {
+    justify-content: flex-start;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  input {
+    margin-top: 5px;
+  }
+}
+
+.user-edit-header {
+  @extend %flex-row;
+  align-items: center;
+
+  .user-edit-text {
+    width: 60%;
+
+    h2 {
+      font-size: 34px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
+
+  .user-edit-links {
+    @extend %flex-row;
+    justify-content: flex-end;
+    width: 40%;
+  }
+}
+
+.user-edit-photo {
+
+  div {
+    @extend %flex-row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .edit-image {
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+    background-color: $med-gray;
+  }
+}
+
+.user-name {
+  @extend %flex-row;
+
+  div {
+    width: 100%;
+
+    input {
+      width: 100%;
+    }
+  }
+
+  div:first-child {
+    margin-right: 8px;
+  }
+}
+
+.user-username {
+  div {
+    @extend %flex-row;
+    align-items: center;
+    justify-content: flex-start;
+
+    p {
+      font-weight: 300;
+      margin-right: 4px;
+    }
+
+    input {
+      max-width: 197px;
+    }
+  }
+}
+
+.user-about {
+  input {
+    height: 94px;
+    width: 100%;
+  }
+}
+
+.user-location {
+  div {
+    input {
+      // width: 100%;
+    }
+  }
+}

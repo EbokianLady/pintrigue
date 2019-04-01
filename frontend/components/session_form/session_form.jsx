@@ -62,7 +62,7 @@ class SessionForm extends React.Component {
             {
               this.props.formName === "Sign up" ?
                 <TextInput
-                  className='sesh-input'
+                  className='input'
                   name='Username'
                   value={this.state.username}
                   onChange={this.update('username')}
@@ -71,7 +71,7 @@ class SessionForm extends React.Component {
                 null
             }
             <TextInput
-              className='sesh-input'
+              className='input'
               name='Email'
               value={this.state.email}
               onChange={this.update('email')}
@@ -79,7 +79,7 @@ class SessionForm extends React.Component {
             />
             <TextInput
               type='password'
-              className='sesh-input'
+              className='input'
               name='Password'
               value={this.state.password}
               onChange={this.update('password')}

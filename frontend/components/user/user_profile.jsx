@@ -55,12 +55,12 @@ class UserProfile extends React.Component {
   render() {
     const { user } = this.props;
     const path = this.props.history.location.pathname;
-    let pinClassName = "pin-btn";
-    let boardClassName = "board-btn";
+    let pinClassName = '';
+    let boardClassName = '';
     if (path.match(/pins/)) {
-      pinClassName += ' btn-selected';
+      pinClassName += ' link-selected';
     } else {
-      boardClassName += ' btn-selected';
+      boardClassName += ' link-selected';
     }
 
     if (user) {
@@ -70,25 +70,23 @@ class UserProfile extends React.Component {
             <div className="user-profile-box">
               <div className="user-profile">
                 <nav className="profile-nav">
-                  <button className="prof-buttons prof-plus"
+                  <div className="prof-buttons prof-plus"
                     onClick={this.toggleDropdown}>
                     <i className="fas fa-plus p2-fas"></i>
                     <div id="profile-dropdown" className="profile-hidden" hidden={true}>
-                      <button className="profile-dropdown-item">
-                        <p>
-                          Create board
-                        </p>
+                      <button className="dropdown-item">
+                        Create board
                       </button>
-                      <button className="profile-dropdown-item">
-                        <p>
-                          Create pin
-                        </p>
+                      <button className="dropdown-item">
+                        Create pin
                       </button>
                     </div>
-                  </button>
-                  <button className="prof-buttons">
+                  </div>
+                  <Link 
+                    to={`/${this.props.username}/edit`}
+                    className="prof-buttons" >
                     <i className="fas fa-pen p2-fas"></i>
-                  </button>
+                  </Link>
                 </nav>
                 <section className="profile-body">
                   <h2 className="profile-name">
@@ -100,12 +98,16 @@ class UserProfile extends React.Component {
                   </div>
                 </section>
                 <nav className="profile-buttons">
-                  <button className={boardClassName}>
-                    <Link to={`/${this.props.username}/boards`}>Boards</Link>
-                  </button>
-                  <button className={pinClassName}>
-                    <Link to={`/${this.props.username}/pins`}>Pins</Link>
-                  </button>
+                  <Link 
+                    to={`/${this.props.username}/boards`}
+                    className={'oval-link' + boardClassName}>
+                    Boards
+                  </Link>
+                  <Link 
+                    to={`/${this.props.username}/pins`}
+                    className={'oval-link' + pinClassName}>
+                    Pins
+                  </Link>
                 </nav>
               </div>
                 <div className="profile-image-container">

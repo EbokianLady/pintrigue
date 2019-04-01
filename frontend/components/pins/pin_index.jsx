@@ -8,7 +8,9 @@ class PinIndex extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.fetchUserPins(this.props.username);
+    // props.fetchPins > the container will know which pin method to call
+    // nevermind. fetchPins gets called with different arguments ...
+    // this.props.fetchPins(this.props.username);
   }
 
   render() {

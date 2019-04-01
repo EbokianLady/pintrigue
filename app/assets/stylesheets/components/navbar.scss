@@ -13,6 +13,7 @@
 
   .nav-left {
     @extend %flex-row;
+    align-items: center;
   }
 
   .nav-right {
@@ -46,18 +47,19 @@
   border-radius: 50%;
   height: 48px;
   width: 48px;
-  justify-content: center;
+  align-items: center;
   padding: 4px;
+
+  &:hover {
+    background-color: $lightest-gray;
+  }
+  
+  .p-fas {
+    color: $med-gray;
+    font-size: 24px;
+  }
 }
 
-.profile-links:hover {
-  background-color: $lightest-gray;
-}
-
-.p-fas {
-  color: $med-gray;
-  font-size: 24px;
-}
 
 .nav-login {
   background-color: $light-gray;
@@ -72,27 +74,17 @@
 
 .nav-visible {
   @extend %flex-column;
-  position: absolute;
-  width: 328px;
-  box-sizing: border-box;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, .18);
-  border-radius: 8px;
-  border: 1px solid $lightest-gray;
-  font-family: $font;
+  background-color: $white;
   color: $darker-gray;
+  border: 1px solid $lightest-gray;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .18);
+  box-sizing: border-box;
+  font-family: $font;
+  position: absolute;
   right: 0px;
   top: 68px;
-
-  .nav-dropdown-item {
-    height: 42px;
-    padding: 8px 16px;
-    font-size: 16px;
-    letter-spacing: -.4px;
-
-    p {
-      font-weight: bold;
-    }
-  }
+  width: 328px;
 }
 
 .nav-logo {

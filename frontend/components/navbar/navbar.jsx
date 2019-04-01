@@ -55,11 +55,9 @@ class Navbar extends React.Component {
             <div id="nav-dropdown" className="nav-hidden" hidden={true}>
               <ul>
                 <li>
-                  <button className="nav-dropdown-item"
+                  <button className="dropdown-item"
                     onClick={this.handleLogout}>
-                    <p>
-                      Logout
-                    </p>
+                    Logout
                   </button>
                 </li>
               </ul>
