@@ -51,7 +51,6 @@ class Navbar extends React.Component {
 
   // TO-DO write a clear current user function/reducer for logout
   // TO-DO fix login/logout buttons for unsignedin user
-  // TO-DO change queries selectors to state changes
   render() {
     if (this.props.currentUser.username) {
       return (

@@ -1,0 +1,51 @@
+@import "./base/constants.scss";
+
+.board-form-box {
+  align-items: center;
+  justify-content: center;
+  background-color: $white;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 544px;
+
+  .form-header {
+    padding: 20px 50px;
+
+    h3 {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 0px;
+    }
+  }
+  
+  .board-form {
+    width :100%;
+    
+    .board-name {
+      @extend %flex-row;
+      align-items: center;
+      padding: 18px 16px;
+      justify-content: space-between;
+
+      .input {
+        width: 384px;
+      }
+    }
+  }
+  
+  .button-footer {
+    @extend %flex-row;
+    box-sizing: border-box;
+    width: 544px;
+    padding: 18px 16px;
+    justify-content: flex-end;
+  }
+  
+  p {
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+}

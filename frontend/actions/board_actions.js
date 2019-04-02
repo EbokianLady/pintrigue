@@ -49,7 +49,7 @@ export const fetchBoard = id => dispatch => (
   ))
 );
 
-export const createBoard = board => dispatch => (
+export const createBoard = (board) => dispatch => (
   BoardApiUtil.createBoard(board).then(board => (
     dispatch(receiveBoard(board))
   ), err => (

@@ -1,49 +1,41 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import LoginFormContainer from '../session_form/login_form_container';
-import SignupFormContainer from '../session_form/signup_form_container';
-import SplashContainer from '../splash/splash_container';
+import CreateBoardForContainer from '../boards/create_board_form_container';
 
-function Modal(props) {
-  if (!props.modal) {
+function Modal({ modal, closeModal }) {
+  if (!modal) {
     return null;
   }
 
   let component;
-  switch(props.modal) {
-    case 'login':
-      component = <LoginFormContainer />;
-      break;
-    case 'signup':
-      component = <SignupFormContainer />;
+  switch(modal) {
+    case 'createBoard':
+      component = <CreateBoardForContainer />;
       break;
     default:
       return null;
   }
 
   return (
-    <div>
-      <div className="modal-transparency">
-        <div className="modal-child">
-          {component}
-        </div>
+    <div className="modal-transparency" onClick={closeModal} >
+      <div className="modal-child" onClick={e => e.stopPropagation()}>
+        {component}
       </div>
-      <SplashContainer />
     </div>
   )
 }
 
-const mapStateToProps = state => {
+const msp = state => {
   return {
     modal: state.ui.modal
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mdp = dispatch => {
   return {
-    closeModal: () => dispatch(closeModal()) // do I need this here?
+    closeModal: () => dispatch(closeModal())
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Modal);
+export default connect(msp, mdp)(Modal);

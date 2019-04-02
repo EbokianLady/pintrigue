@@ -9,10 +9,12 @@ import UserEditContainer from './user/user_edit_container';
 import BoardShowContainer from './boards/board_show_continer';
 import DiscoveryContainer from './pins/pin_discovery_container';
 import SignupContainer from './welcome/signup_container';
+import Modal from './modal/modal';
 
 const App = () => {
   return (
     <div>
+      <Modal />
       <Switch>
         <Route exact path="/" component={SignupContainer}/>
         <Route exact path="/login" component={LoginContainer}/>

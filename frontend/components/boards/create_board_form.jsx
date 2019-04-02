@@ -6,16 +6,22 @@ class CreateBoardForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { name: "", is_public: true };
+    this.handleCancel = this.handleCancel.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // componentWillUnmount() {
-  //   this.props.clearErrors();
-  // }
+  componentWillUnmount() {
+    // this.props.clearErrors();
+  }
+
+  handleCancel(e) {
+    e.preventDefault();
+    this.props.closeModal();
+  }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.action(user).then(this.props.closeModal);
+    this.props.createBoard(this.state).then(this.props.closeModal());
   }
 
   update(field) {
@@ -27,28 +33,27 @@ class CreateBoardForm extends React.Component {
   // onclick close modal
   render() {
     return (
-      <div className="session-format">
-        <div className="session-page">
-          <div className="board-form-box">
-            <div className="form-header">
-              <h2>Create Board</h2>
-              <i class="fas fa-times"></i>
-            </div>
-
-            <form onSubmit={this.handleSubmit} className="session-form">
-              <div className="board-name">
-                <h4>Name</h4>
-                <TextInput
-                  className="input board-name"
-                  name="Like 'Places to Go' or 'Recipes to Make'"
-                  value={this.state.name}
-                  onChange={this.update('name')}
-                />
-              </div>
-            </form>
-            <button className="rectangle-btn" onClick={this.handleSubmit}>Create</button>
-            <button className="rectangle-btn" onClick={this.handleDemo}>Demo</button>
+      <div className="modal-page">
+        <div className="board-form-box">
+          <div className="form-header">
+            <h3>Create board</h3>
           </div>
+          <form className="board-form">
+            <div className="board-name">
+              <p>Name</p>
+              <TextInput
+                className="input board-name"
+                name="Like 'Places to Go' or 'Recipes to Make'"
+                value={this.state.name}
+                onChange={this.update('name')}
+              />
+            </div>
+          </form>
+          <div className="button-footer">
+            <button className="rectangle-btn" onClick={this.handleCancel}>Cancel</button>
+            <button className="rectangle-btn" onClick={this.handleSubmit}>Create</button>
+          </div>
+            {/* <i class="fas fa-times"></i> */}
         </div>
       </div>
     )

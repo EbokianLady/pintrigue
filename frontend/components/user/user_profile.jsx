@@ -11,6 +11,7 @@ class UserProfile extends React.Component {
     this.displayDescription = this.displayDescription.bind(this);
     this.showDropdown = this.showDropdown.bind(this);
     this.hideDropdown = this.hideDropdown.bind(this);
+    this.showModal = this.showModal.bind(this);
   }
 
   componentWillUnmount() {
@@ -30,11 +31,14 @@ class UserProfile extends React.Component {
     }
   }
 
-  displayDropDown(e) {
+  displayDropDown() {
     if (this.state.dropdown) {
       return (
         <div ref={node => this.node = node} className="profile-visible">
-          <button className="dropdown-item">
+          <button 
+            className="dropdown-item"
+            onClick={this.showModal}
+            >
             Create board
           </button>
           <button className="dropdown-item">
@@ -43,6 +47,10 @@ class UserProfile extends React.Component {
         </div>
       )
     }
+  }
+
+  showModal(e) {
+    this.props.openModal('createBoard');
   }
 
   displayName() {

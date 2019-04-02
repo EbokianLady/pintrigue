@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { fetchUser } from '../../actions/user_actions';
 import UserProfile from './user_profile';
+import { openModal } from '../../actions/modal_actions';
 
 const msp = (state, ownProps) => {
   const username = ownProps.match.params.username;
@@ -11,7 +12,8 @@ const msp = (state, ownProps) => {
 };
 
 const mdp = dispatch => ({
-  fetchUser: (username) => dispatch(fetchUser(username))
+  fetchUser: (username) => dispatch(fetchUser(username)),
+  openModal: (modal) => dispatch(openModal(modal)),
 });
 
 export default connect(msp, mdp)(UserProfile);

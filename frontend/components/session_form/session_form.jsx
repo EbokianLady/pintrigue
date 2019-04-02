@@ -46,9 +46,8 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    return (
-      <div className="session-format">
-      <div className="session-page">
+    return ( 
+      <div className="modal-page">
         <div className="session-form-box">
           <div className="small-logo-box">
             <img src={window.logo} className="small-logo"/>
@@ -86,7 +85,6 @@ class SessionForm extends React.Component {
           <button className="sesh-submit" onClick={this.handleSubmit}>{this.props.formName}</button>
           <button className="sesh-submit" onClick={this.handleDemo}>Demo</button>
         </div>
-      </div>
       </div>
     )
   }

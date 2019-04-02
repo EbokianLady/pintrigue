@@ -1,23 +1,5 @@
 @import "./base/constants.scss";
 
-.modal-transparency {
-  background-color: rgba(0, 0, 0, 0.5);
-  bottom: 0;
-  left: 0;
-  right: 0;
-  position: fixed;
-  top: 0;
-  z-index: 10;
-
-  .modal-child {
-    height: 100%;
-
-    .session-format {
-      height: inherit;
-    }
-  }
-}
-
 .session-link {
   background-color: $lightest-gray;
   border-radius: 12px;
@@ -40,37 +22,28 @@
   }
 }
 
-.session-page {
+.session-form-box {
+  align-items: center;
+  justify-content: center;
+  background-color: $white;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  color: $darker-gray;
-  font-family: $font;
-  height: inherit;
+  margin: auto;
+  min-width: 440px;
+  padding: 20px 10px;
 
-  .session-form-box {
-    align-items: center;
-    justify-content: center;
-    background-color: $white;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    min-width: 440px;
-    padding: 20px 10px;
+  h2 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
 
-    h2 {
-      font-size: 32px;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    p {
-     font-size: 16px;
-     margin-bottom: 20px;
-     text-align: center;
-     width: 290px;
-    }
+  p {
+   font-size: 16px;
+   margin-bottom: 20px;
+   text-align: center;
+   width: 290px;
   }
 }
 
