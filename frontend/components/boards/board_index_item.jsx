@@ -33,7 +33,7 @@ class BoardIndexItem extends React.Component {
     const { board } = this.props;
 
     return (
-      <div 
+      <div
         className="b-index-frame"
         onMouseEnter={this.turnOnVisibility}
         onMouseLeave={this.turnOffVisibility}>
@@ -57,4 +57,3 @@ class BoardIndexItem extends React.Component {
 
 
 export default BoardIndexItem;
-
