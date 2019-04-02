@@ -1,6 +1,8 @@
 @import "./base/constants.scss";
 
 .session-link {
+  @extend %flex-row;
+  align-items: center;
   background-color: $lightest-gray;
   border-radius: 12px;
   cursor: pointer;
@@ -13,7 +15,6 @@
   margin-left: 24px;
   padding: 10px, 14px;
   position: absolute;
-  text-align: center;
   vertical-align: middle;
   width: 130px;
 

@@ -48,11 +48,7 @@ class UserProfile extends React.Component {
       )
     }
   }
-
-  showModal(e) {
-    this.props.openModal('createBoard');
-  }
-
+  
   displayName() {
     const { user } = this.props;
     if (user.first_name || user.last_name ) {
@@ -65,19 +61,23 @@ class UserProfile extends React.Component {
       return user.username;
     }
   }
-
+  
   hideDropdown(e) {
     if (!this.node.contains(e.target)) {
       this.setState({ dropdown: false });
       document.removeEventListener('mousedown', this.hideDropdown);
     }
   }
-
+  
   showDropdown(e) {
     this.setState({ dropdown: true });
     document.addEventListener('mousedown', this.hideDropdown);
   }
-
+  
+  showModal(e) {
+    this.props.openModal('createBoard');
+  }
+  
   render() {
     const { user } = this.props;
     const path = this.props.history.location.pathname;

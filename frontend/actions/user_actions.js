@@ -24,3 +24,11 @@ export const fetchUser = username => dispatch => (
     dispatch(receiveUserErrors(err.responseJSON))
   ))
 );
+
+export const updateUser = user => dispatch => (
+  UserApiUtil.updateUser(user).then(user => (
+    dispatch(receiveUser(user))
+  ), err => (
+    dispatch(receiveUserErrors(err.receiveUserErrors))
+  ))
+);

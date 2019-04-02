@@ -9,3 +9,11 @@ export const fetchUsers = () => {
   // how do you fetch only specific users? followers/followees
   // custom routes that take in data?
 };
+
+export const updateUser = (user) => (
+  $.ajax({
+    method: 'PATCH',
+    url: `api/users/${user.id}`,
+    data: { user }
+  })
+);

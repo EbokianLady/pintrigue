@@ -35,7 +35,8 @@ module Api
         :username,
         :first_name,
         :last_name,
-        :location
+        :location,
+        :description
       )
     end
   end

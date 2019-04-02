@@ -108,6 +108,8 @@
   input {
     height: 94px;
     width: 100%;
+    @extend %flex-row;
+    justify-content: flex-start;
   }
 }
 

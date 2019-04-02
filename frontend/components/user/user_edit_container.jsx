@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchUser } from '../../actions/user_actions';
+import { fetchUser, updateUser } from '../../actions/user_actions';
 import UserEdit from './user_edit_form';
 
 const msp = (state, ownProps) => {
@@ -11,7 +11,8 @@ const msp = (state, ownProps) => {
 };
 
 const mdp = dispatch => ({
-  fetchUser: (username) => dispatch(fetchUser(username))
+  fetchUser: (username) => dispatch(fetchUser(username)),
+  updateUser: (user) => dispatch(updateUser(user))
 });
 
 export default connect(msp, mdp)(UserEdit);
