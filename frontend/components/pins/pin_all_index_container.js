@@ -1,25 +1,19 @@
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import PinIndex from './pin_index';
-import { fetchUserPins } from '../../actions/pin_actions';
-import { fetchUser } from '../../actions/user_actions';
-
+import { fetchAllPins } from '../../actions/pin_actions';
 
 const msp = (state, ownProps) => {
-  const username = ownProps.match.params.username;
-  const user = state.entities.users[username];
   const pins = Object.values(state.entities.pins);
 
   return ({
-    type: 'User',
-    pins,
-    username,
-    user
+    type: 'All',
+    pins
   });
 };
 
 const mdp = dispatch => ({
-  fetchPins: (username) => dispatch(fetchUserPins(username))
+  fetchPins: () => dispatch(fetchAllPins())
 });
 
 export default withRouter(connect(msp, mdp)(PinIndex));

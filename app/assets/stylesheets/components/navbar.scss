@@ -53,7 +53,7 @@
   &:hover {
     background-color: $lightest-gray;
   }
-  
+
   .p-fas {
     color: $med-gray;
     font-size: 24px;
@@ -85,6 +85,7 @@
   right: 0px;
   top: 68px;
   width: 328px;
+  z-index: 5;
 }
 
 .nav-logo {
@@ -93,4 +94,3 @@
   height: 28px;
   background-color: transparent;
 }
-

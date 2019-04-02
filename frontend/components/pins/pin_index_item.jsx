@@ -9,23 +9,23 @@ const PinIndexItem = (props) => {
           {/* {image} */}
         </div>
         <div className="p-description">
-
+          {props.pin.description}
         </div>
         <div className="p-links">
           <div className="top-links">
             <button
               className="p-btn">
-              <i class="fas fa-pen"></i>
+              <i className="fas fa-pen"></i>
             </button>
             <button
               className="save-btn">
-              <i class="fas fa-map-pin"></i> 
+              <i className="fas fa-map-pin"></i>
               <p>Save</p>
             </button>
           </div>
           <div className="bottom-links">
-            <a href="#">
-              <i class="fas fa-chevron-right"></i>
+            <a href="">
+              <i className="fas fa-chevron-right"></i>
               <p>Link</p>
             </a>
           </div>

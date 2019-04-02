@@ -2,6 +2,7 @@
 
 .pin-index {
   @extend %flex-row;
+  flex-wrap: wrap;
 }
 
 .grid-item {
@@ -11,11 +12,19 @@
 
 .p-index-frame{
   @extend %flex-column;
+  font-family: $font;
   padding: 8px;
 
   &:hover {
     background-color: $lightest-gray;
     border-radius: 8px;
+  }
+
+  .p-description{
+    box-sizing: border-box;
+    font-size: 14px;
+    padding: 8px;
+    width: 100%;
   }
 }
 
@@ -28,9 +37,6 @@
   border-radius: 8px;
 }
 
-.p-description{
-
-}
 
 .p-links{
   @extend %flex-column;
@@ -43,16 +49,16 @@
   padding: 10px;
   position: absolute;
   width: 236px;
-  
+
   .top-links {
     @extend %flex-row;
     justify-content: space-between;
     width: 216px;
-    
+
     i {
       font-size: 20px;
     }
-    
+
     .p-btn{
       @extend %flex-row;
       align-items: center;
@@ -60,12 +66,12 @@
       border-radius: 50%;
       height: 40px;
       width: 40px;
-      
+
       &:hover {
         background-color: $light-gray;
       }
     }
-    
+
     .save-btn{
       @extend %flex-row;
       align-items: center;

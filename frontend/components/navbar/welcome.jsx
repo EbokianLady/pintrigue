@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Modal from '../modal/modal';
 import NavbarContainer from './navbar_container';
+import DiscoveryContainer from '../pins/pin_all_index_container';
 
 class Welcome extends React.Component {
   constructor(props) {
@@ -15,7 +16,12 @@ class Welcome extends React.Component {
 
   render() {
     if (this.props.currentUser.id) {
-      return <NavbarContainer />
+      return (
+        <div>
+          <NavbarContainer />
+          <DiscoveryContainer />
+        </div>
+      )
     } else if (this.props.modal) {
       return <Modal />
     } else {

@@ -13,35 +13,40 @@ module Api
       render 'api/pins/index'
     end
 
-    #something is wrong here / check my queries later.
+    # TO-DO something is wrong here / check my queries later.
     def user_index
-      user = User.find(params[:user_id])
+      user = User.find_by!(username: params[:user_id])
       @pinjoins = user.pin_joins.includes(:pin)
       render 'api/pins/index'
     end
 
     def show
-      @pin = Pin.find(params[:id])
+      @pinjoin = PinJoin.find(params[:id])
       render 'api/pins/show'
     end
 
     def update
-      @pin = current_user.pins.find(params[:id])
-      @pin.update!(pin_params)
+      @pinjoin = current_user.pin_joins.find(params[:id])
+      @pinjoin.update!(pinjoin_params)
       render 'api/pins/show'
     end
 
+    # TO-DO this should rollback if any part fails. How?
     def create
       board = Board.find(params[:board_id])
-      @pin = Pin.create!(pin_params)
-      board.pins << @pin
+      pin = Pin.create!(pin_params)
+      @pinjoin = PinJoin.create!(
+        pin_id: pin.id,
+        board_id: board.id,
+        description: params[:pin][:description]
+      )
       render 'api/pins/show'
     end
 
     def destroy
-      @pin = current_user.pins.find(params[:id])
-      @board = @pin.board
-      @pin.destroy
+      pinjoin = current_user.pin_joins.find(params[:id])
+      pinjoin.destroy
+      @board = pinjoin.board
       render 'api/boards/show'
     end
 
@@ -49,6 +54,10 @@ module Api
 
     def pin_params
       params.require(:pin).permit(:link_url)
+    end
+
+    def pinjoin_params
+      params.require(:pin).permit(:description)
     end
   end
 end

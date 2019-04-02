@@ -10,22 +10,22 @@ class PinIndex extends React.Component {
   componentDidMount() {
     if (this.props.type === 'Board') {
       this.props.fetchPins(this.props.boardId);
+    } else if (this.props.type === 'User') {
+      this.props.fetchPins(this.props.username);
+    } else {
+      this.props.fetchPins();
     }
-
- 
-    // props.fetchPins > the container will know which pin method to call
-
   }
 
   render() {
-    // const pins = this.props.pins.map((pin, i) => {
-    //   return <PinIndexItem pin={pin} key={i} />
-    // });
-      
+    const pins = this.props.pins.map((pin, i) => {
+      return <PinIndexItem pin={pin} key={i} />
+    });
+
     return (
-      <div className="pin-index-box">All The Pins
+      <div className="pin-index-box">
         <ul className="pin-index">
-          {/* {pins} */}
+          {pins}
         </ul>
       </div>
     )

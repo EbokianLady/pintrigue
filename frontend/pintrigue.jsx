@@ -5,7 +5,7 @@ import Root from './components/root';
 
 // testing
 import { removeBoard, fetchBoards, fetchBoard } from './actions/board_actions';
-import { fetchAllPins, fetchUserPins, fetchBoardPins } from './actions/pin_actions';
+import { fetchAllPins, fetchUserPins, fetchBoardPins, createPin } from './actions/pin_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   let preloadedState = { ui: { modal: "login" }};
@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.fetchAllPins = fetchAllPins;
   window.fetchUserPins = fetchUserPins;
   window.fetchBoardPins = fetchBoardPins;
+  window.createPin = createPin;
   // testing
 
   ReactDOM.render(<Root store={store} />, root);

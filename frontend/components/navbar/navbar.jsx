@@ -29,19 +29,24 @@ class Navbar extends React.Component {
     this.props.history.push(`/${currentUser.username}`);
   }
 
+  // TO-DO write a clear current user function/reducer for logout
+  // TO-DO fix login/logout buttons for unsignedin user
+  // TO-DO change queries selectors to state changes
   render() {
-    if (this.props.currentUser) {
+    if (this.props.currentUser.username) {
       return (
           <div>
             <nav className="navbar signedin">
               <div className="nav-left">
-                  <div className="profile-links">
-                    <img src={window.logo} className="nav-logo"/>
-                  </div>
-                  <h2>Welcome, {this.props.currentUser.username}</h2>
+                <div className="profile-links">
+                  <Link to="/" >
+                    <img src={window.logo} className="nav-logo" />
+                  </Link>
+                </div>
+                <h2>Welcome, {this.props.currentUser.username}</h2>
               </div>
               <div className="nav-right">
-                <button className="profile-links" 
+                <button className="profile-links"
                   onClick={this.toProfile}>
                     <i className="fas fa-user-circle p-fas"></i>
                 </button>
@@ -53,14 +58,10 @@ class Navbar extends React.Component {
               </div>
             </nav>
             <div id="nav-dropdown" className="nav-hidden" hidden={true}>
-              <ul>
-                <li>
-                  <button className="dropdown-item"
-                    onClick={this.handleLogout}>
-                    Logout
-                  </button>
-                </li>
-              </ul>
+              <button className="dropdown-item"
+                onClick={this.handleLogout}>
+                Logout
+              </button>
             </div>
           </div>
         )
@@ -68,7 +69,12 @@ class Navbar extends React.Component {
       return (
         <nav className="navbar signedout">
           <div className="nav-left">
-
+            <div className="profile-links">
+              <Link to="/" >
+                <img src={window.logo} className="nav-logo" />
+              </Link>
+            </div>
+            <h2>Welcome to Pintrigue</h2>
           </div>
           <div className="nav-right">
             {this.props.openSignup}
