@@ -41,9 +41,11 @@ class UserProfile extends React.Component {
             >
             Create board
           </button>
-          <button className="dropdown-item">
+          <Link 
+            to={`/${this.props.username}/pin-builder`}
+            className="dropdown-item">
             Create pin
-          </button>
+          </Link>
         </div>
       )
     }

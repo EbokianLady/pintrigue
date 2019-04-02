@@ -1,0 +1,74 @@
+@import "./base/constants.scss";
+
+.pin-form-buffer {
+  background-color: $lighter-gray;
+  position:fixed;
+  top: 64px;
+  left: 0;
+  width:100%;
+  height:100%;
+  @extend %flex-row;
+
+  .pin-form-box {
+    width: 880px;
+    height: 630px;
+    margin-top: 40px;
+    padding: 20px 40px 40px 40px;
+    border-radius: 16px;
+    box-sizing: border-box;
+    background-color: $white;
+    @extend %flex-column;
+
+    .pin-form-header {
+      box-sizing: border-box;
+      margin-bottom: 20px;
+      width: 840px;
+      height: 40px;
+      @extend %flex-row;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .pin-form {
+      box-sizing: border-box;
+      @extend %flex-row;
+      justify-content: space-between;
+      width: 800px;
+      height: 510px;
+    }
+  }
+}
+
+.upload-box {
+  height: inherit;
+  width: 340px;
+  background-color: $lighter-gray;
+  @extend %flex-row;
+  align-items: center;
+  padding: 12px;
+  border-radius: 12px;
+
+  .upload-outline {
+    @extend %flex-column;
+    justify-content: center;
+    border: 2px dashed rgb(218, 218, 218);
+    border-radius: 6px;
+    height: 100%;
+    width: 100%;
+    color: $med-gray;
+
+    // .upload-btn {
+    //   height: 48px;
+    //   width: 48px;
+    //   font-size: 32px;
+    // }
+
+    // p {
+
+    // }
+  }
+}
+
+.pin-form-content {
+
+}

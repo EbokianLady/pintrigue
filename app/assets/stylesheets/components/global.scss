@@ -71,3 +71,22 @@
     } 
   }
 }
+
+.save-btn{
+  @extend %flex-row;
+  align-items: center;
+  background-color: $pop;
+  border-radius: 10px;
+  color: $white;
+  cursor: pointer;
+  height: 40px;
+  padding: 10px 14px;
+
+  &:hover {
+    background-color: $pop-hover;
+  }
+
+  i {
+    margin-right: 8px;
+  }
+}
