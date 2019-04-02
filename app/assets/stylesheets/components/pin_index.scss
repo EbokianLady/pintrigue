@@ -1,0 +1,111 @@
+@import "./base/constants.scss";
+
+.pin-index {
+  @extend %flex-row;
+}
+
+.grid-item {
+  @extend %flex-column;
+  width: 256px;
+}
+
+.p-index-frame{
+  @extend %flex-column;
+  padding: 8px;
+
+  &:hover {
+    background-color: $lightest-gray;
+    border-radius: 8px;
+  }
+}
+
+.p-image-box{
+  box-sizing: border-box;
+  cursor: zoom-in;
+  width: 236px;
+  height: 250px;
+  background-color: $med-gray;
+  border-radius: 8px;
+}
+
+.p-description{
+
+}
+
+.p-links{
+  @extend %flex-column;
+  box-sizing: border-box;
+  color: $darker-gray;
+  cursor: zoom-in;
+  font-family: $font;
+  height: 250px;
+  justify-content: space-between;
+  padding: 10px;
+  position: absolute;
+  width: 236px;
+  
+  .top-links {
+    @extend %flex-row;
+    justify-content: space-between;
+    width: 216px;
+    
+    i {
+      font-size: 20px;
+    }
+    
+    .p-btn{
+      @extend %flex-row;
+      align-items: center;
+      background-color: $lightest-gray;
+      border-radius: 50%;
+      height: 40px;
+      width: 40px;
+      
+      &:hover {
+        background-color: $light-gray;
+      }
+    }
+    
+    .save-btn{
+      @extend %flex-row;
+      align-items: center;
+      background-color: $pop;
+      border-radius: 10px;
+      color: $white;
+      cursor: pointer;
+      height: 40px;
+      padding: 10px 14px;
+
+      &:hover {
+        background-color: $pop-hover;
+      }
+
+      i {
+        margin-right: 8px;
+      }
+    }
+  }
+
+  .bottom-links {
+    @extend %flex-row;
+    justify-content: flex-start;
+    width: 216px;
+
+    a {
+      @extend %flex-row;
+      align-items: center;
+      box-sizing: border-box;
+      height: 32px;
+      padding: 8px;
+      background-color: $lightest-gray;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 14px;
+
+      i {
+        margin-right: 8px;
+        font-size: 14px;
+      }
+    }
+  }
+}

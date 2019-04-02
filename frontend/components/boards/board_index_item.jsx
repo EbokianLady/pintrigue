@@ -5,7 +5,7 @@ const BoardIndexItem = (props) => {
   return (
     <div className="b-index-frame">
       <Link
-        to={`boards/${props.board.id}`} >
+        to={`/boards/${props.board.id}`} >
         <div className="b-cover">
           {/* {images} */}
         </div>

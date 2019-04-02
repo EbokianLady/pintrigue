@@ -17,8 +17,8 @@ export const receiveUserErrors = (errors) => ({
 
 // thunk 
 
-export const fetchUser = id => dispatch => (
-  UserApiUtil.fetchUser(id).then(user => (
+export const fetchUser = username => dispatch => (
+  UserApiUtil.fetchUser(username).then(user => (
     dispatch(receiveUser(user))
   ), err => (
     dispatch(receiveUserErrors(err.responseJSON))
