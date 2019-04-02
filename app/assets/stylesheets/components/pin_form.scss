@@ -41,12 +41,14 @@
 
 .upload-box {
   height: inherit;
+  cursor: pointer;
   width: 340px;
   background-color: $lighter-gray;
   @extend %flex-row;
   align-items: center;
   padding: 12px;
   border-radius: 12px;
+  font-family: $font;
 
   .upload-outline {
     @extend %flex-column;
@@ -57,18 +59,88 @@
     width: 100%;
     color: $med-gray;
 
-    // .upload-btn {
-    //   height: 48px;
-    //   width: 48px;
-    //   font-size: 32px;
-    // }
+    .upload-btn {
+      @extend %flex-row;
+      justify-content: center;
+      height: 48px;
+      width: 48px;
+      margin-bottom: 14px;
+      
+      i {
+        font-size: 32px;
+      }
+    }
 
-    // p {
-
-    // }
+    p {
+      font-size: 16px;
+      color: $darker-gray;
+    }
   }
 }
 
 .pin-form-content {
+  font-family: $font;
+  width: 420px;
+  height: 510px;
+  box-sizing: border-box;
+  @extend %flex-column;
+
+  > div {
+    width: 100%;
+  }
+
+  .pin-title {
+    @extend %flex-row;
+    align-items: center;
+    border-bottom: 1px solid $med-gray;
+    height: 55px;
+    margin-top: 38px;
+
+    textarea {
+      @extend %text-area;
+      color: $med-gray;
+      font-size: 36px;
+      font-weight: 500;
+      height: 43px;
+      resize: none;
+    }
+  }
+
+  .pin-description {
+    @extend %flex-row;
+    align-items: center;
+    min-height: 40px;
+    margin-top: 24px;
+    width: 100%;
+    
+    textarea {
+      @extend %text-area;
+      color: $dark-gray;
+      font-size: 18px;
+      height: 250px;
+      resize: vertical;
+      width: 420px;
+      display: inline-block;
+    }
+  }
+
+  .pin-url {
+    @extend %flex-row;
+    align-items: center;
+    border-bottom: 1px solid $med-gray;
+    min-height: 40px;
+    margin-top: 24px;
+    width: 100%;
+
+    textarea {
+      @extend %text-area;
+      color: $dark-gray;
+      font-size: 18px;
+      height: 21px;
+      resize: none;
+      width: 420px;
+    }
+  }
+
 
 }

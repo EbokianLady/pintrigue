@@ -45,8 +45,8 @@ class CreatePinForm extends React.Component {
           <div className="pin-form">
             <div className="upload-box">
               <div className="upload-outline">
-                <button className="upload_btn">
-                  <i class="fas fa-arrow-circle-up"></i>
+                <button className="upload-btn">
+                  <i className="fas fa-arrow-circle-up"></i>
                 </button>
                 <p>Click to upload</p>
               </div>
