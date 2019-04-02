@@ -4,25 +4,46 @@ import { Link } from 'react-router-dom';
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { dropdown: false };
     this.handleLogout = this.handleLogout.bind(this);
-    this.toggleDropdown = this.toggleDropdown.bind(this);
     this.toProfile = this.toProfile.bind(this);
+    this.showDropdown = this.showDropdown.bind(this);
+    this.hideDropdown = this.hideDropdown.bind(this);
   }
 
   handleLogout(e) {
     this.props.logout().then(this.props.history.push("/"));
   }
 
-  toggleDropdown(e) {
-    const dropdown = document.getElementById('nav-dropdown');
-    if (dropdown.hidden) {
-      dropdown.hidden = false;
-      dropdown.className = "nav-visible";
-    } else {
-      dropdown.hidden = true;
-      dropdown.className = "nav-hidden";
+  displayDropdown() {
+    if (this.state.dropdown) {
+      return (
+        <div ref={node => this.node = node} className="nav-visible">
+          <button className="dropdown-item"
+            onClick={this.handleLogout}>
+            Logout
+          </button>
+        </div>
+      )
     }
   }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.hideDropdown);
+  }
+
+  hideDropdown(e) {
+    if (!this.node.contains(e.target)) {
+      this.setState({ dropdown: false });
+      document.removeEventListener('mousedown', this.hideDropdown);
+    }
+  }
+
+  showDropdown(e) {
+    this.setState({ dropdown: true });
+    document.addEventListener('mousedown', this.hideDropdown);
+  }
+
 
   toProfile(e) {
     const { currentUser } = this.props;
@@ -52,17 +73,12 @@ class Navbar extends React.Component {
                 </button>
                 <button
                   className="profile-links"
-                  onClick={this.toggleDropdown} >
+                  onClick={this.showDropdown} >
                   <i className="fas fa-ellipsis-h p-fas"></i>
                 </button>
               </div>
             </nav>
-            <div id="nav-dropdown" className="nav-hidden" hidden={true}>
-              <button className="dropdown-item"
-                onClick={this.handleLogout}>
-                Logout
-              </button>
-            </div>
+            {this.displayDropdown()}
           </div>
         )
     } else {

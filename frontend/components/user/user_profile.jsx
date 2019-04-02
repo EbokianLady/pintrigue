@@ -6,13 +6,43 @@ import PinUserIndexContainer from '../pins/pin_user_index_container';
 class UserProfile extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { dropdown: false };
     this.displayName = this.displayName.bind(this);
     this.displayDescription = this.displayDescription.bind(this);
-    this.toggleDropdown = this.toggleDropdown.bind(this);
+    this.showDropdown = this.showDropdown.bind(this);
+    this.hideDropdown = this.hideDropdown.bind(this);
   }
 
-  componentDidMount() {
-    this.props.fetchUser(this.props.username);
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.hideDropdown);
+  }
+  
+  displayDescription() {
+    const { user } = this.props;
+    if (user.location || user.description) {
+      return [user.location, user.description].join(" • ");
+    } else if (user.location) {
+      return user.location;
+    } else if (user.description) {
+      return user.description;
+    } else {
+      return null;
+    }
+  }
+
+  displayDropDown(e) {
+    if (this.state.dropdown) {
+      return (
+        <div ref={node => this.node = node} className="profile-visible">
+          <button className="dropdown-item">
+            Create board
+          </button>
+          <button className="dropdown-item">
+            Create pin
+          </button>
+        </div>
+      )
+    }
   }
 
   displayName() {
@@ -28,28 +58,16 @@ class UserProfile extends React.Component {
     }
   }
 
-  displayDescription() {
-    const { user } = this.props;
-    if (user.location || user.description) {
-      return [user.location, user.description].join(" • ");
-    } else if (user.location) {
-      return user.location;
-    } else if (user.description) {
-      return user.description;
-    } else {
-      return null;
+  hideDropdown(e) {
+    if (!this.node.contains(e.target)) {
+      this.setState({ dropdown: false });
+      document.removeEventListener('mousedown', this.hideDropdown);
     }
   }
 
-  toggleDropdown(e) {
-    const dropdown = document.getElementById('profile-dropdown');
-    if (dropdown.hidden) {
-      dropdown.hidden = false;
-      dropdown.className = "profile-visible";
-    } else {
-      dropdown.hidden = true;
-      dropdown.className = "profile-hidden";
-    }
+  showDropdown(e) {
+    this.setState({ dropdown: true });
+    document.addEventListener('mousedown', this.hideDropdown);
   }
 
   render() {
@@ -71,16 +89,9 @@ class UserProfile extends React.Component {
               <div className="profile">
                 <nav className="profile-nav">
                   <div className="prof-buttons prof-plus"
-                    onClick={this.toggleDropdown}>
+                    onClick={this.showDropdown}>
                     <i className="fas fa-plus p2-fas"></i>
-                    <div id="profile-dropdown" className="profile-hidden" hidden={true}>
-                      <button className="dropdown-item">
-                        Create board
-                      </button>
-                      <button className="dropdown-item">
-                        Create pin
-                      </button>
-                    </div>
+                    {this.displayDropDown()}
                   </div>
                   <Link 
                     to={`/${this.props.username}/edit`}
