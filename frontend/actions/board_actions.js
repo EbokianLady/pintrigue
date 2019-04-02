@@ -1,9 +1,9 @@
-import * as BoardApiUtil from "../util/board_api_util";
+import * as BoardApiUtil from '../util/board_api_util';
 
-export const RECEIVE_BOARDS = "RECEIVE_BOARDS";
-export const RECEIVE_BOARD = "RECEIVE_BOARD";
-export const REMOVE_BOARD = "REMOVE_BOARD";
-export const RECEIVE_BOARD_ERRORS = "RECEIVE_BOARD_ERRORS";
+export const RECEIVE_BOARDS = 'RECEIVE_BOARDS';
+export const RECEIVE_BOARD = 'RECEIVE_BOARD';
+export const REMOVE_BOARD = 'REMOVE_BOARD';
+export const RECEIVE_BOARD_ERRORS = 'RECEIVE_BOARD_ERRORS';
 
 export const receiveBoards = (boards) => {
   return {
@@ -43,6 +43,22 @@ export const fetchBoards = (username) => dispatch => (
 
 export const fetchBoard = id => dispatch => (
   BoardApiUtil.fetchBoard(id).then(board => (
+    dispatch(receiveBoard(board))
+  ), err => (
+    dispatch(receiveBoardErrors(err.responseJSON))
+  ))
+);
+
+export const createBoard = board => dispatch => (
+  BoardApiUtil.createBoard(board).then(board => (
+    dispatch(receiveBoard(board))
+  ), err => (
+    dispatch(receiveBoardErrors(err.responseJSON))
+  ))
+);
+
+export const updateBoard = board => dispatch => (
+  BoardApiUtil.createBoard(board).then(board => (
     dispatch(receiveBoard(board))
   ), err => (
     dispatch(receiveBoardErrors(err.responseJSON))

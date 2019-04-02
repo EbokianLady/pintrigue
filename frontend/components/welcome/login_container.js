@@ -3,12 +3,11 @@ import React from 'react';
 
 import { logout } from "../../actions/session_actions";
 import { Link, withRouter } from 'react-router-dom';
-import Navbar from './navbar';
+import Welcome from './welcome';
 
-const msp = (state) => {
-  const { session, entities, ui } = state;
+const msp = (state, ownProps) => {
   return ({
-    currentUser: entities.users[session.id] || {},
+    linkText: 'Sign Up'
   });
 };
 
@@ -18,4 +17,4 @@ const mdp = (dispatch) => {
   });
 };
 
-export default withRouter(connect(msp, mdp)(Navbar));
+export default withRouter(connect(msp, mdp)(Welcome));

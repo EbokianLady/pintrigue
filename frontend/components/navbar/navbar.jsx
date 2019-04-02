@@ -5,8 +5,8 @@ class Navbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = { dropdown: false };
-    this.handleLogout = this.handleLogout.bind(this);
     this.toProfile = this.toProfile.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
     this.showDropdown = this.showDropdown.bind(this);
     this.hideDropdown = this.hideDropdown.bind(this);
   }
@@ -44,7 +44,6 @@ class Navbar extends React.Component {
     document.addEventListener('mousedown', this.hideDropdown);
   }
 
-
   toProfile(e) {
     const { currentUser } = this.props;
     this.props.history.push(`/${currentUser.username}`);
@@ -60,7 +59,7 @@ class Navbar extends React.Component {
             <nav className="navbar signedin">
               <div className="nav-left">
                 <div className="profile-links">
-                  <Link to="/" >
+                  <Link to="/discovery" >
                     <img src={window.logo} className="nav-logo" />
                   </Link>
                 </div>
@@ -86,15 +85,21 @@ class Navbar extends React.Component {
         <nav className="navbar signedout">
           <div className="nav-left">
             <div className="profile-links">
-              <Link to="/" >
+              <Link to="/discovery" >
                 <img src={window.logo} className="nav-logo" />
               </Link>
             </div>
             <h2>Welcome to Pintrigue</h2>
           </div>
           <div className="nav-right">
-            {this.props.openSignup}
-            {this.props.openLogin}
+            <Link to='/'
+              className="nav-links nav-signup"
+              >Sign Up
+            </Link>
+            <Link to='/login'
+              className="nav-links nav-login"
+              >Login
+            </Link>
           </div>
         </nav>
       )

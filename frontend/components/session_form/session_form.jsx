@@ -17,13 +17,13 @@ class SessionForm extends React.Component {
   handleDemo(e) {
     e.preventDefault();
     const demoUser = { email: "juneberry@fakemail.com", password: "vault66" };
-    this.props.login(demoUser).then(this.props.closeModal);
+    this.props.login(demoUser).then(() => this.props.history.push("/discovery"));
   }
 
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.action(user).then(this.props.closeModal);
+    this.props.action(user).then(() => this.props.history.push("/discovery"));
   }
 
   update(field) {
@@ -48,9 +48,6 @@ class SessionForm extends React.Component {
   render() {
     return (
       <div className="session-format">
-      <div className="session-link-box">
-        {this.props.otherForm}
-      </div>
       <div className="session-page">
         <div className="session-form-box">
           <div className="small-logo-box">

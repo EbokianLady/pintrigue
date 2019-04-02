@@ -8,7 +8,7 @@ import { removeBoard, fetchBoards, fetchBoard } from './actions/board_actions';
 import { fetchAllPins, fetchUserPins, fetchBoardPins, createPin } from './actions/pin_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
-  let preloadedState = { ui: { modal: "login" }};
+  let preloadedState = { };
 
   if (window.currentUser) {
     preloadedState = {

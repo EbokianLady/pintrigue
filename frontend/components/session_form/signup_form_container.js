@@ -24,13 +24,7 @@ const msp = state => ({
 const mdp = dispatch => ({
   action: (user) => dispatch(signup(user)),
   login: (user) => dispatch(login(user)),
-  otherForm: (
-    <button
-      className="session-link"
-      onClick={() => dispatch(openModal('login'))} >
-      Log In
-    </button>
-  ),
+
   closeModal: () => dispatch(closeModal()),
   clearErrors: () => dispatch(clearSessionErrors()),
   clearSessionEmailErrors: () => dispatch(clearSessionEmailErrors()),

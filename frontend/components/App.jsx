@@ -4,24 +4,28 @@ import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import NavbarContainer from './navbar/navbar_container';
 import UserProfileContainer from './user/user_profile_container';
-import WelcomeContainer from './navbar/welcome_container';
+import LoginContainer from './welcome/login_container';
 import UserEditContainer from './user/user_edit_container';
 import BoardShowContainer from './boards/board_show_continer';
+import DiscoveryContainer from './pins/pin_discovery_container';
+import SignupContainer from './welcome/signup_container';
 
 const App = () => {
   return (
     <div>
       <Switch>
-        <Route exact path="/" component={WelcomeContainer} />
+        <Route exact path="/" component={SignupContainer}/>
+        <Route exact path="/login" component={LoginContainer}/>
         <Route path="/" component={NavbarContainer} />
       </Switch>
       <Switch>
         <Route exact path="/:username/edit" component={UserEditContainer}/>
         <Route path="/:username" component={UserProfileContainer} />
       </Switch>
+
+      <Route path="/discovery" component={DiscoveryContainer} />
       <Route exact path="/boards/:boardId" component={BoardShowContainer} />
       <Route exact path="/boards/:boardId/edit" component={BoardShowContainer} />
-      {/* <Route path="/discovery" component={DiscoveryContainer} */}
     </div>
   )
 };
