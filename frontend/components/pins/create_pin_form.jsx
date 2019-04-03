@@ -6,7 +6,7 @@ import SelectBoard from './select_board';
 class CreatePinForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       pin: { pin_id: '', description: '', link_url: '', title: ''},
       boardscroll: false,
       choiceDialogue: 'Choose a board (required)',
@@ -39,8 +39,8 @@ class CreatePinForm extends React.Component {
         return (
           <SelectBoard
             onSelectBoard={this.handleBoard}
-            board={board} 
-            key={i} 
+            board={board}
+            key={i}
           />
         )
       });
@@ -55,8 +55,9 @@ class CreatePinForm extends React.Component {
 
   // TO-DO this doesn't work. But why?
   update(field) {
+    const that = this;
     return (e) => {
-      this.setState({ [field]: e.target.value });
+      that.setState({ pin: { ...this.state.pin, [field]: e.target.value } });
     };
   }
 
@@ -75,7 +76,8 @@ class CreatePinForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createPin(this.state.pin, this.state.boardId);
+    this.props.createPin(this.state.pin, this.state.boardId)
+      .then(this.props.history.push(`/boards/${this.state.boardId}`));
   }
 
   render() {
@@ -103,21 +105,21 @@ class CreatePinForm extends React.Component {
             </div>
             <div className='pin-form-content'>
               <div className='pin-title'>
-                <textarea 
+                <textarea
                   placeholder='Add your title'
                   onChange={this.update('title')}>
                 </textarea>
               </div>
 
               <div className='pin-description'>
-                <textarea 
+                <textarea
                   placeholder='Tell everyone what your Pin is about'
                   onChange={this.update('description')}>
                 </textarea>
               </div>
 
               <div className='pin-url'>
-                <textarea 
+                <textarea
                   placeholder='Add a destination link'
                   onChange={this.update('link_url')}>
                 </textarea>

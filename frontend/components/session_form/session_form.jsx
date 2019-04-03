@@ -46,14 +46,14 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    return ( 
+    return (
       <div className="modal-page">
         <div className="session-form-box">
           <div className="small-logo-box">
             <img src={window.logo} className="small-logo"/>
           </div>
-          <h2>{this.props.formName} to see more</h2>
-          <p>Access Pintrigue's best ideas with a free account</p>
+          <h2>Welcome to Pintrigue</h2>
+          <p>Find new ideas to try</p>
           <form onSubmit={this.handleSubmit} className="session-form">
             {
               this.props.formName === "Sign up" ?
