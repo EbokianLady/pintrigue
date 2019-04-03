@@ -10,9 +10,16 @@
 
 # Pin Model
 class Pin < ApplicationRecord
-  # has a photo through aws
-  # has_one_attached :picture
+  validate :ensure_photo
+
+  has_one_attached :picture
 
   has_many :pin_joins
   has_many :boards, through: :pin_joins, source: :board
+
+  def ensure_photo
+    unless self.photo.attached?
+      errors[:photo] << "Must be attached"
+    end
+  end
 end

@@ -6,6 +6,7 @@ import PinUserIndexContainer from '../pins/pin_user_index_container';
 class UserProfile extends React.Component {
   constructor(props) {
     super(props);
+    // TO-DO add edited: false/true to change button colors
     this.state = { dropdown: false };
     this.displayName = this.displayName.bind(this);
     this.displayDescription = this.displayDescription.bind(this);

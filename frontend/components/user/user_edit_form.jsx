@@ -5,12 +5,15 @@ import { TextInput } from '../global/form';
 class UserEdit extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.user;
+    this.state = { user: this.props.user, selectPhoto: false };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.hidePhotoChoice = this.hidePhotoChoice.bind(this);
+    this.showPhotoChoice = this.showPhotoChoice.bind(this);
+    this.displayPhoto = this.displayPhoto.bind(this);
   }
 
   componentDidMount() {
-    // this.props.fetchUser(this.props.username);
+    this.props.fetchUser(this.props.username);
   }
 
   update(field) {
@@ -19,16 +22,89 @@ class UserEdit extends React.Component {
     };
   }
 
+  handleFile(e) {
+    const file = e.currentTarget.files[0];
+    const fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      this.setState({ photoFile: file, photoUrl: fileReader.result });
+    };
+    if (file) {
+      fileReader.readAsDataURL(file);
+    }
+    this.hidePhotoChoice();
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    this.props.updateUser(this.state)
+    const formData = new FormData();
+    formData.append('user[description]', this.state.user.description);
+    formData.append('user[location]', this.state.user.location);
+    formData.append('user[first_name]', this.state.user.first_name);
+    formData.append('user[last_name]', this.state.user.last_name);
+    formData.append('user[username]', this.state.user.username);
+    formData.append('user[id]', this.state.user.id);
+    formData.append('user[photo]', this.state.photoFile);
+    this.props.updateUser(formData, this.state.user.id)
       .then(() => this.props.history.push(`/${this.props.username}`));
   }
 
+  displayPhoto() {
+    if (this.state.photoUrl) {
+      return (
+        <div className="edit-image" >
+          <img src={this.state.photoUrl} />
+        </div>
+      )
+    } else {
+      return (
+        <div className='edit-image'>image</div>
+      )
+    }
+  }
+
+  displayChoosePhoto() {
+    if (this.state.selectPhoto) {
+      return (
+        <div className="modal-transparency">
+          <div className="modal-child">
+            <div className="modal-page">
+              <div className="pic-selector-box">
+                <div className="mini-header">
+                  <h3>Change your picture</h3>
+                  <div onClick={this.hidePhotoChoice}>
+                    <i className="fas fa-times"></i>
+                  </div>
+                </div>
+                <div className="mini-body">
+                  <button className="save-btn">
+                    <input type="file"
+                      onChange={this.handleFile.bind(this)}>
+                    </input>
+                    <p>Choose photo</p>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    }
+  }
+
+  hidePhotoChoice(e) {
+    this.setState({ selectPhoto: false });
+  }
+
+  showPhotoChoice(e) {
+    this.setState({ selectPhoto: true });
+  }
+
   render() {
-    const user = this.state;
+    const { user } = this.state;
+
     return (
       <div className='user-edit-container'>
+        {this.displayChoosePhoto()}
         <div className='user-edit-box'>
           <div className='user-edit-header'>
             <div className='user-edit-text'>
@@ -52,8 +128,11 @@ class UserEdit extends React.Component {
           <div className='user-edit-photo'>
             <h4>Photo</h4>
             <div>
-              <div className='edit-image'>image</div>
-              <button className='rectangle-btn'>Change</button>
+              {this.displayPhoto()}
+              <button className='rectangle-btn'
+                onClick={this.showPhotoChoice}>
+                Change
+              </button>
             </div>
           </div>
 

@@ -10,10 +10,12 @@ export const fetchUsers = () => {
   // custom routes that take in data?
 };
 
-export const updateUser = (user) => (
+export const updateUser = (formData, id) => (
   $.ajax({
     method: 'PATCH',
-    url: `api/users/${user.id}`,
-    data: { user }
+    url: `api/users/${id}`,
+    data: formData,
+    contentType: false,
+    processData: false,
   })
 );

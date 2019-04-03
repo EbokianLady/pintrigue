@@ -12,7 +12,7 @@ const msp = (state, ownProps) => {
 
 const mdp = dispatch => ({
   fetchUser: (username) => dispatch(fetchUser(username)),
-  updateUser: (user) => dispatch(updateUser(user))
+  updateUser: (user) => dispatch(updateUser(user)),
 });
 
 export default connect(msp, mdp)(UserEdit);

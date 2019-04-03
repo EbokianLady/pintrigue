@@ -12,9 +12,13 @@ module Api
 
     def update
       @user = current_user
-      @user.update!(user_params)
-      render 'api/users/show'
+      if @user.update(user_params)
+        render 'api/users/show'
+      else
+        render @user.errors.full_messages, status: 422
+      end
     end
+    # @user.custom_method(params[:photo])
 
     def show
       @user = User.find_by!(username: params[:id])
@@ -36,7 +40,8 @@ module Api
         :first_name,
         :last_name,
         :location,
-        :description
+        :description,
+        :photo
       )
     end
   end

@@ -68,6 +68,10 @@
     width: 75px;
     border-radius: 50%;
     background-color: $med-gray;
+
+    img {
+      border-radius: 50%;
+    }
   }
 }
 
@@ -120,3 +124,59 @@
     }
   }
 }
+
+.pic-selector-box {
+  width: 265px;
+  height: 126px;
+  @extend %flex-column;
+  background-color: $white;
+  border-radius: 6px;
+
+  .mini-header {
+    @extend %flex-row;
+    box-sizing: border-box;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid $light-gray;
+    padding: 13px 18px;
+
+    h3 {
+      margin: 0px;
+      color: $darker-gray;
+    }
+
+    i {
+      font-size: 28px;
+      color: $med-gray;
+      cursor: pointer;
+    }
+  }
+  
+  .mini-body {
+    box-sizing: border-box;
+    @extend %flex-row;
+    align-items: center;
+    justify-content: flex-start;
+    height: 72px;
+    padding: 16px;
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+
+    input {
+      cursor: inherit;
+      display: block;
+      font-size: 999px;
+      filter: alpha(opacity=0);
+      min-height: 100%;
+      min-width: 100%;
+      opacity: 0;
+      position: absolute;
+      right: 0;
+      text-align: right;
+      top: 0;
+    }
+  }
+}
+
