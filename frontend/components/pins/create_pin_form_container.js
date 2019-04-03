@@ -7,9 +7,9 @@ import CreatePinForm from './create_pin_form';
 
 const msp = (state, ownProps) => {
   const username = ownProps.match.params.username;
-  // list of board ids and names
+  const boards = Object.values(state.entities.boards);
   return ({
-    username
+    username, boards
   });
 };
 

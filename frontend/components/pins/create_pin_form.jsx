@@ -1,17 +1,63 @@
 import React from 'react';
 import { Route, Redirect, Switch, Link, HashRouter, withRouter } from 'react-router-dom';
 import { TextInput } from '../global/form';
+import SelectBoard from './select_board';
 
 class CreatePinForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { name: "", is_public: true };
+    this.state = { 
+      pin: { pin_id: "", description: "", link_url: "" },
+      boardscroll: false,
+      choiceDialogue: 'Choose a board (required)',
+    };
+    this.showBoardScroll = this.showBoardScroll.bind(this);
+    this.hideBoardScroll = this.hideBoardScroll.bind(this);
+    this.displayBoardScroll = this.displayBoardScroll.bind(this);
+    this.handleBoard = this.handleBoard.bind(this);
     // this.handleCancel = this.handleCancel.bind(this);
     // this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    this.props.fetchBoards(this.props.username);
+  }
+
   componentWillUnmount() {
     // this.props.clearErrors();
+  }
+
+  handleBoard(board) {
+    this.setState({ boardId: board.id, choiceDialogue: board.name });
+    this.hideBoardScroll();
+  }
+
+  displayBoardScroll() {
+    if (this.state.boardscroll) {
+      const boards = this.props.boards.map((board, i) => {
+        return (
+          <SelectBoard
+            onSelectBoard={this.handleBoard}
+            board={board} 
+            key={i} 
+          />
+        )
+      });
+
+      return (
+        <div className="board-scroll-container">
+          {boards}
+        </div>
+      )
+    }
+  }
+
+  hideBoardScroll(e) {
+    this.setState({ boardscroll: false });
+  }
+
+  showBoardScroll(e) {
+    this.setState({ boardscroll: true });
   }
 
   // handleCancel(e) {
@@ -30,7 +76,6 @@ class CreatePinForm extends React.Component {
     };
   }
 
-  // onclick close modal
   render() {
     return (
       <div className="pin-form-buffer">
@@ -69,12 +114,17 @@ class CreatePinForm extends React.Component {
 
                 </textarea>
               </div>
-
-              <div className="board-choices">
-                Board Choices
+              <div
+                className="board-choices"
+                onClick={this.showBoardScroll} >
+                <p>{this.state.choiceDialogue}</p>
+                <div className="arrow-down">
+                  <i className="fas fa-chevron-down"></i>
+                </div>
               </div>
             </div>
           </div>
+          {this.displayBoardScroll()}
         </div>
       </div>
     )
