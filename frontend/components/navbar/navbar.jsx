@@ -49,6 +49,19 @@ class Navbar extends React.Component {
     this.props.history.push(`/${currentUser.username}`);
   }
 
+  profilePic() {
+    if (this.props.currentUser.username) {
+      const user = this.props.currentUser
+      return (
+        <img className="profile-image" src={user.photoUrl} />
+      )
+    } else {
+      return (
+        <i className="fas fa-user-circle p-fas"></i>
+      )
+    }
+  }
+
   // TO-DO write a clear current user function/reducer for logout
   // TO-DO fix login/logout buttons for unsignedin user
   render() {
@@ -67,7 +80,9 @@ class Navbar extends React.Component {
               <div className="nav-right">
                 <button className="profile-links"
                   onClick={this.toProfile}>
-                    <i className="fas fa-user-circle p-fas"></i>
+                  <div className="nav-img">
+                    {this.profilePic()}
+                  </div>
                 </button>
                 <button
                   className="profile-links"

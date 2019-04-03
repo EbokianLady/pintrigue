@@ -55,9 +55,17 @@ class UserEdit extends React.Component {
           <img src={this.state.photoUrl} />
         </div>
       )
+    } else if (this.state.user.photoUrl !== '') {
+      return (
+        <div className='edit-image'>
+          <img src={this.state.user.photoUrl} />
+        </div>
+      )
     } else {
       return (
-        <div className='edit-image'>image</div>
+        <div className='edit-image'>
+          default
+        </div>
       )
     }
   }

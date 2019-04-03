@@ -13,12 +13,36 @@ class UserProfile extends React.Component {
     this.showDropdown = this.showDropdown.bind(this);
     this.hideDropdown = this.hideDropdown.bind(this);
     this.showModal = this.showModal.bind(this);
+    this.allowProfileNav = this.allowProfileNav.bind(this);
   }
-
+  
+  componentDidMount() {
+    this.props.fetchUser(this.props.username);
+  }
+  
   componentWillUnmount() {
     document.removeEventListener('mousedown', this.hideDropdown);
   }
   
+  allowProfileNav() {
+    if (this.props.currentUser === this.props.user) {
+      return (
+        <>
+          <div className="prof-buttons prof-plus"
+            onClick={this.showDropdown}>
+            <i className="fas fa-plus p2-fas"></i>
+            {this.displayDropDown()}
+          </div>
+          <Link
+            to={`/${this.props.username}/edit`}
+            className="prof-buttons" >
+            <i className="fas fa-pen p2-fas"></i>
+          </Link>
+        </>
+      ) 
+    }
+  }
+
   displayDescription() {
     const { user } = this.props;
     if (user.location || user.description) {
@@ -80,7 +104,7 @@ class UserProfile extends React.Component {
   showModal(e) {
     this.props.openModal('createBoard');
   }
-  
+
   render() {
     const { user } = this.props;
     const path = this.props.history.location.pathname;
@@ -99,16 +123,7 @@ class UserProfile extends React.Component {
             <div className="profile-box">
               <div className="profile">
                 <nav className="profile-nav">
-                  <div className="prof-buttons prof-plus"
-                    onClick={this.showDropdown}>
-                    <i className="fas fa-plus p2-fas"></i>
-                    {this.displayDropDown()}
-                  </div>
-                  <Link 
-                    to={`/${this.props.username}/edit`}
-                    className="prof-buttons" >
-                    <i className="fas fa-pen p2-fas"></i>
-                  </Link>
+                  {this.allowProfileNav()}
                 </nav>
                 <section className="profile-body">
                   <h2 className="profile-name">

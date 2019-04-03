@@ -35,7 +35,7 @@
   font-size: 14px;
   font-weight: bold;
   height: 40px;
-  line-height: 36px;
+  line-height: 40px;
   text-align: center;
   width: 128px;
   vertical-align: middle;
@@ -57,6 +57,11 @@
   .p-fas {
     color: $med-gray;
     font-size: 24px;
+  }
+
+  .nav-img {
+    height: 24px;
+    width: 24px;
   }
 }
 
