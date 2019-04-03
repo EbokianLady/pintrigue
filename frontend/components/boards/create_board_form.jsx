@@ -5,7 +5,7 @@ import { TextInput } from '../global/form';
 class CreateBoardForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { name: "", is_public: true };
+    this.state = { name: '', is_public: true };
     this.handleCancel = this.handleCancel.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -33,27 +33,27 @@ class CreateBoardForm extends React.Component {
   // onclick close modal
   render() {
     return (
-      <div className="modal-page">
-        <div className="board-form-box">
-          <div className="form-header">
+      <div className='modal-page'>
+        <div className='board-form-box'>
+          <div className='form-header'>
             <h3>Create board</h3>
           </div>
-          <form className="board-form">
-            <div className="board-name">
+          <form className='board-form'>
+            <div className='board-name'>
               <p>Name</p>
               <TextInput
-                className="input board-name"
+                className='input board-name'
                 name="Like 'Places to Go' or 'Recipes to Make'"
                 value={this.state.name}
                 onChange={this.update('name')}
               />
             </div>
           </form>
-          <div className="button-footer">
-            <button className="rectangle-btn" onClick={this.handleCancel}>Cancel</button>
-            <button className="rectangle-btn" onClick={this.handleSubmit}>Create</button>
+          <div className='button-footer'>
+            <button className='rectangle-btn' onClick={this.handleCancel}>Cancel</button>
+            <button className='rectangle-btn' onClick={this.handleSubmit}>Create</button>
           </div>
-            {/* <i class="fas fa-times"></i> */}
+            {/* <i class='fas fa-times'></i> */}
         </div>
       </div>
     )

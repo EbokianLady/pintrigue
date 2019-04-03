@@ -38,7 +38,8 @@ module Api
       @pinjoin = PinJoin.create!(
         pin_id: pin.id,
         board_id: board.id,
-        description: params[:pin][:description]
+        description: params[:pin][:description],
+        title: params[:pin][:title]
       )
       render 'api/pins/show'
     end
@@ -57,7 +58,7 @@ module Api
     end
 
     def pinjoin_params
-      params.require(:pin).permit(:description)
+      params.require(:pin).permit(:description, :title)
     end
   end
 end

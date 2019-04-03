@@ -18,8 +18,21 @@ class PinIndexItem extends React.Component {
     this.setState({ visible: true });
   }
 
+  // TO-DO regex the link name later
   displayLinks() {
     if (this.state.visible) {
+      const { pin } = this.props;
+      let link;
+
+      if (pin.link_url !== '') {
+        link = (
+          <a href={pin.link_url}>
+            <i className='fas fa-chevron-right'></i>
+            <p>Check it out</p>
+          </a>
+        )
+      }
+
       return (
         <div className='p-links visible'>
           <div className='top-links'>
@@ -34,10 +47,7 @@ class PinIndexItem extends React.Component {
             </button>
           </div>
           <div className='bottom-links'>
-            <a href=''>
-              <i className='fas fa-chevron-right'></i>
-              <p>Link</p>
-            </a>
+            {link}
           </div>
         </div>
       )

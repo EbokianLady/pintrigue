@@ -22,8 +22,8 @@ class BoardIndexItem extends React.Component {
     if (this.state.visible) {
       return (
         <button
-          className="b-index-link">
-          <i className="fas fa-pen b-fas"></i>
+          className='b-index-link'>
+          <i className='fas fa-pen b-fas'></i>
         </button>
       )
     }
@@ -34,18 +34,18 @@ class BoardIndexItem extends React.Component {
 
     return (
       <div
-        className="b-index-frame"
+        className='b-index-frame'
         onMouseEnter={this.turnOnVisibility}
         onMouseLeave={this.turnOffVisibility}>
         <Link
           to={`/boards/${board.id}`} >
-          <div className="b-cover">
+          <div className='b-cover'>
             {/* {images} */}
           </div>
-          <div className="b-info">
+          <div className='b-info'>
             <div>
-              <h3 className="b-index-title">{board.name}</h3>
-              <p className="b-index-pincount">15 Pins</p>
+              <h3 className='b-index-title'>{board.name}</h3>
+              <p className='b-index-pincount'>15 Pins</p>
             </div>
           </div>
         </Link>

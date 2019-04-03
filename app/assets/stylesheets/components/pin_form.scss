@@ -166,6 +166,7 @@
   height: 510px;
   margin-left: 380px;
   margin-top: -510px;
+  overflow: scroll;
   position: relative;
   width: 420px;
   z-index: 5;
@@ -177,7 +178,7 @@
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    width: 440px;
+    width: 400px;
     height: 52px;
 
     &:hover {
