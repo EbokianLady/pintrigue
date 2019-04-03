@@ -56,7 +56,6 @@
 }
 
 .user-edit-photo {
-
   div {
     @extend %flex-row;
     align-items: center;
@@ -64,13 +63,15 @@
   }
 
   .edit-image {
-    height: 75px;
     width: 75px;
+    height: 75px;
     border-radius: 50%;
     background-color: $med-gray;
-
+    
     img {
       border-radius: 50%;
+      height: 75px;
+      object-fit: cover;
     }
   }
 }

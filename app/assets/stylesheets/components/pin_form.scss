@@ -31,6 +31,7 @@
 
     .pin-form {
       box-sizing: border-box;
+      position: relative;
       @extend %flex-row;
       justify-content: space-between;
       width: 800px;
@@ -58,6 +59,20 @@
     height: 100%;
     width: 100%;
     color: $med-gray;
+    position: relative;
+
+    input {
+      cursor: inherit;
+      display: block;
+      font-size: 999px;
+      filter: alpha(opacity=0);
+      height: 100%;
+      min-width: 100%;
+      opacity: 0;
+      position: absolute;
+      right: 0;
+      text-align: right;
+    }
 
     .upload-btn {
       @extend %flex-row;
@@ -75,6 +90,18 @@
       font-size: 16px;
       color: $darker-gray;
     }
+  }
+}
+
+.preview-picture {
+  position: absolute;
+  height: 510px;
+  width: 340px;
+  background-color: $white;
+  z-index: 5;
+
+  img {
+    border-radius: 12px;
   }
 }
 

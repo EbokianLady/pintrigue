@@ -12,11 +12,8 @@ module Api
 
     def update
       @user = current_user
-      if @user.update(user_params)
-        render 'api/users/show'
-      else
-        render @user.errors.full_messages, status: 422
-      end
+      @user.update!(user_params)
+      render 'api/users/show'
     end
     # @user.custom_method(params[:photo])
 

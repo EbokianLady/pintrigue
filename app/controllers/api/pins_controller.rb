@@ -54,7 +54,7 @@ module Api
     private
 
     def pin_params
-      params.require(:pin).permit(:link_url)
+      params.require(:pin).permit(:link_url, :picture)
     end
 
     def pinjoin_params

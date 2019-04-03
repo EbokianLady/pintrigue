@@ -1,3 +1,3 @@
-json.extract! pinjoin, :id, :board_id, :pin_id, :description
+json.extract! pinjoin, :id, :board_id, :pin_id, :description, :title
 json.extract! pinjoin.pin, :link_url
-# json.photoUrl url_for(user.photo)
+json.pictureUrl url_for(pinjoin.pin.picture)

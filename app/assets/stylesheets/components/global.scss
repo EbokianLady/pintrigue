@@ -1,6 +1,9 @@
 @import "./base/constants.scss";
 
 .dropdown-item {
+  @extend %flex-row;
+  justify-content: flex-start;
+  align-items: center;
   height: 42px;
   width: 100%;
   padding: 8px 16px;

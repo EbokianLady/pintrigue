@@ -20,23 +20,26 @@
     border-radius: 8px;
   }
 
-  .p-description{
+  .p-title{
     box-sizing: border-box;
     font-size: 14px;
     padding: 8px;
     width: 100%;
+    font-weight: bold;
   }
 }
 
-.p-image-box{
-  box-sizing: border-box;
+.p-image-box {
   cursor: zoom-in;
-  width: 236px;
-  height: 250px;
   background-color: $med-gray;
   border-radius: 8px;
+  box-sizing: border-box;
+  width: 236px;
+  
+  .p-picture {
+    border-radius: 8px;
+  }
 }
-
 
 .p-links{
   @extend %flex-column;

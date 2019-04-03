@@ -58,15 +58,15 @@ class PinIndexItem extends React.Component {
     const { pin } = this.props;
 
     return (
-      <div className="grid-item">
-        <div className="p-index-frame"
+      <div className='grid-item'>
+        <div className='p-index-frame'
               onMouseEnter={this.turnOnVisibility}
               onMouseLeave={this.turnOffVisibility}>
-          <div className="p-image-box">
-            {/* {image} */}
+          <div className='p-image-box'>
+            <img className='p-picture' src={pin.pictureUrl} />
           </div>
-          <div className="p-description">
-            {pin.description}
+          <div className='p-title'>
+            {pin.title}
           </div>
           {this.displayLinks()}
         </div>

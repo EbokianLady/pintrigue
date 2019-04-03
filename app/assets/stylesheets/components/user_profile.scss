@@ -78,15 +78,18 @@
   letter-spacing: -.4px;
 }
 
-.profile-image {
-  border-radius: 50%;
-}
 
 .profile-image-container {
-    height: 106px;
-    width: 106px;
-    background-color: $med-gray;
+  height: 106px;
+  width: 106px;
+  background-color: $med-gray;
+  border-radius: 50%;
+
+  .profile-image {
     border-radius: 50%;
+    height: 106px;
+    object-fit: cover;
+  }
 }
 
 .profile-buttons {

@@ -65,8 +65,8 @@ export const fetchPin = id => dispatch => (
   ))
 );
 
-export const createPin = (pin, board_id) => dispatch => (
-  PinApiUtil.createPin(pin, board_id).then(pin => (
+export const createPin = (formData, boardId) => dispatch => (
+  PinApiUtil.createPin(formData, boardId).then(pin => (
     dispatch(receivePin(pin))
   ), err => (
     dispatch(receivePinErrors(err.responseJSON))

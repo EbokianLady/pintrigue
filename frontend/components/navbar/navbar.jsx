@@ -53,7 +53,7 @@ class Navbar extends React.Component {
     if (this.props.currentUser.username) {
       const user = this.props.currentUser
       return (
-        <img className="profile-image" src={user.photoUrl} />
+        <img className="small-profile-image" src={user.photoUrl} />
       )
     } else {
       return (

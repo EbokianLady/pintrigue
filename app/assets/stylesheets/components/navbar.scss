@@ -99,3 +99,9 @@
   height: 28px;
   background-color: transparent;
 }
+
+.small-profile-image {
+  border-radius: 50%;
+  height: 24px;
+  object-fit: cover;
+}

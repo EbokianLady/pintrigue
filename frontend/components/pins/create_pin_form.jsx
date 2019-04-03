@@ -10,6 +10,8 @@ class CreatePinForm extends React.Component {
       pin: { pin_id: '', description: '', link_url: '', title: ''},
       boardscroll: false,
       choiceDialogue: 'Choose a board (required)',
+      photoFile: null,
+      photoUrl: null,
     };
     this.showBoardScroll = this.showBoardScroll.bind(this);
     this.hideBoardScroll = this.hideBoardScroll.bind(this);
@@ -17,6 +19,7 @@ class CreatePinForm extends React.Component {
     this.handleBoard = this.handleBoard.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
+    this.displayPhoto = this.displayPhoto.bind(this);
     // this.handleCancel = this.handleCancel.bind(this);
   }
 
@@ -31,6 +34,17 @@ class CreatePinForm extends React.Component {
   handleBoard(board) {
     this.setState({ boardId: board.id, choiceDialogue: board.name });
     this.hideBoardScroll();
+  }
+
+  handleFile(e) {
+    const file = e.currentTarget.files[0];
+    const fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      this.setState({ photoFile: file, photoUrl: fileReader.result });
+    };
+    if (file) {
+      fileReader.readAsDataURL(file);
+    }
   }
 
   displayBoardScroll() {
@@ -76,8 +90,23 @@ class CreatePinForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createPin(this.state.pin, this.state.boardId)
-      .then(this.props.history.push(`/boards/${this.state.boardId}`));
+    const formData = new FormData();
+    formData.append('pin[title]', this.state.pin.title);
+    formData.append('pin[description]', this.state.pin.description);
+    formData.append('pin[link_url]', this.state.pin.link_url);
+    formData.append('pin[picture]', this.state.photoFile);
+    this.props.createPin(formData, this.state.boardId)
+      .then(() => this.props.history.push(`/boards/${this.state.boardId}`));
+  }
+
+  displayPhoto() {
+    if (this.state.photoUrl) {
+      return (
+        <div className="preview-picture" >
+          <img src={this.state.photoUrl} />
+        </div>
+      )
+    } 
   }
 
   render() {
@@ -95,12 +124,16 @@ class CreatePinForm extends React.Component {
             </button>
           </div>
           <div className='pin-form'>
+            {this.displayPhoto()}
             <div className='upload-box'>
               <div className='upload-outline'>
                 <button className='upload-btn'>
                   <i className='fas fa-arrow-circle-up'></i>
                 </button>
                 <p>Click to upload</p>
+                <input type="file"
+                  onChange={this.handleFile.bind(this)}>
+                </input>
               </div>
             </div>
             <div className='pin-form-content'>

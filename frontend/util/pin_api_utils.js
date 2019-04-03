@@ -26,11 +26,13 @@ export const fetchPin = (id) => {
   });
 };
 
-export const createPin = (pin, id) => {
+export const createPin = (formData, id) => {
   return $.ajax({
     method: 'POST',
     url: `api/boards/${id}/pins`,
-    data: { pin }
+    data: formData,
+    contentType: false,
+    processData: false,
   });
 };
 
