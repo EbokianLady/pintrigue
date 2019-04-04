@@ -4,22 +4,9 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, 256px);
   grid-auto-rows: 10px;
-  background-color: $med-gray;
   width: 100%;
   justify-items: center;
   justify-content: center;
-}
-
-.p-span-24 {
-  grid-row-end: span 26;
-}
-
-.p-span-22 {
-  grid-row-end: span 24;
-}
-
-.p-span-31 {
-  grid-row-end: span 33;
 }
 
 .p-index-frame{

@@ -70,18 +70,18 @@ class PinIndexItem extends React.Component {
 
   render() {
     const { pin } = this.props;
-    const height = (pin.span * 10) + 50;
-    const rowEnd = 'span 17'
+    const frameHeight = (pin.span * 10) + 50;
+    const imageHeight = (pin.span * 10);
     // this.calculateSpan();
 
     return (
       <div className={`p-index-frame p-span-${pin.span + 5}`}
         // style={{ 'height': ((pin.span * 10) + 50), 'gridRowEnd': rowEnd }}
-        style={{ 'height': height }}
+        style={{ 'height': frameHeight }}
         onMouseEnter={this.turnOnVisibility}
         onMouseLeave={this.turnOffVisibility}>
         <div className='p-image-box'>
-        <img className='p-picture' src={pin.pictureUrl} style={{ 'height': (pin.span * 10) }}/>
+        <img className='p-picture' src={pin.pictureUrl} style={{ 'height': imageHeight }}/>
         </div>
         <div className='p-title'>
           <p>{pin.title}</p>

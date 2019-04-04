@@ -41,11 +41,12 @@ class CreatePinForm extends React.Component {
     const fileReader = new FileReader();
 
     fileReader.onloadend = () => {
-      // const img = new Image();
-      // img.onload = () => {
-      //   console.log(`width: ${img.width}, height: ${img.height}`);
-      // };
-      // img.src = fileReader.result;
+      const img = new Image();
+      img.onload = () => {
+        const span = (`${Math.round(img.height / (img.width / 23.6))}`);
+        this.setState({ span: span });
+      };
+      img.src = fileReader.result;
       this.setState({ photoFile: file, photoUrl: fileReader.result });
     };
     if (file) {
@@ -73,7 +74,6 @@ class CreatePinForm extends React.Component {
     }
   }
 
-  // TO-DO this doesn't work. But why?
   update(field) {
     const that = this;
     return (e) => {
@@ -101,6 +101,7 @@ class CreatePinForm extends React.Component {
     formData.append('pin[description]', this.state.pin.description);
     formData.append('pin[link_url]', this.state.pin.link_url);
     formData.append('pin[picture]', this.state.photoFile);
+    formData.append('pin[span]', this.state.span);
     this.props.createPin(formData, this.state.boardId)
       .then(() => this.props.history.push(`/boards/${this.state.boardId}`));
   }
