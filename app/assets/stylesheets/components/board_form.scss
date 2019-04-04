@@ -21,6 +21,8 @@
   }
   
   .board-form {
+    border-top: 1px solid $lighter-gray;
+    border-bottom: 1px solid $lighter-gray;
     width :100%;
     
     .board-name {
@@ -31,6 +33,11 @@
 
       .input {
         width: 384px;
+        margin: 0px;
+      }
+
+      p {
+        margin: 0px;
       }
     }
   }

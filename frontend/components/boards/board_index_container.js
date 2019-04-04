@@ -1,20 +1,23 @@
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import { fetchBoards } from '../../actions/board_actions';
+import { fetchUserPins } from '../../actions/pin_actions';
 import BoardIndex from './board_index';
 
 const msp = (state, ownProps) => {
   const username = ownProps.match.params.username;
   const user = state.entities.users[username];
   const boards = Object.values(state.entities.boards);
+  const pins = Object.values(state.entities.pins);
 
   return ({
-    username, user, boards
+    username, user, boards, pins
   });
 };
 
 const mdp = dispatch => ({
-  fetchBoards: (username) => dispatch(fetchBoards(username))
+  fetchBoards: (username) => dispatch(fetchBoards(username)),
+  fetchUserPins: (username) => dispatch(fetchUserPins(username)),
 });
 
 export default withRouter(connect(msp, mdp)(BoardIndex));

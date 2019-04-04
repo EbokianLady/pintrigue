@@ -29,8 +29,26 @@ class BoardIndexItem extends React.Component {
     }
   }
 
+  displayImage() {
+    const { pins } = this.props;
+    if (pins.length > 2) {
+      return (
+        <div className="board-display" >
+          <img className="b3-pic1" src={pins[0].pictureUrl} />
+          <img className="b3-pic2" src={pins[1].pictureUrl} />
+          <img className="b3-pic3" src={pins[2].pictureUrl} />
+        </div>
+      )
+    } else if (pins.length > 0 ) {
+      return (
+        <img src={pins[0].pictureUrl} />
+      )
+    }
+  }
+
   render() {
     const { board } = this.props;
+    this.displayImage();
 
     return (
       <div
@@ -40,7 +58,7 @@ class BoardIndexItem extends React.Component {
         <Link
           to={`/boards/${board.id}`} >
           <div className='b-cover'>
-            {/* {images} */}
+            {this.displayImage()}
           </div>
           <div className='b-info'>
             <div>

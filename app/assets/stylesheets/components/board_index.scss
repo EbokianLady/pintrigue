@@ -35,16 +35,54 @@
 
 .b-cover {
   border-radius: 8px;
-  background-color: $med-gray;
+  background-color: $lighter-gray;
   height: 200px;
   width: 300px;
+
+  img {
+    border-radius: 8px;
+    height: 200px;
+    width: 300px;
+    object-fit: cover;
+  }
+}
+
+.board-display {
+  column-count: 2;
+  column-gap: 3px;
+  overflow: hidden;
+  width: 300px;
+
+  img {
+    border-radius: 0;
+    box-sizing: border-box;
+    object-fit: cover;
+    width: 149px;
+  }
+  
+  .b3-pic1 {
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+    height: 200px;
+  }
+
+  .b3-pic2 {
+    border-top-right-radius: 8px;
+    height: 99px;
+    margin-bottom: 3px;
+  }
+  
+  .b3-pic3 {
+    border-bottom-right-radius: 8px;
+    height: 98px;
+  }
 }
 
 .b-info {
   @extend %flex-row;
   justify-content: space-between;
-  width: 300px;
   padding: 8px;
+  width: 300px;
 
   .b-index-title {
     font-size: 20px;

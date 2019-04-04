@@ -54,11 +54,12 @@
 
 .p-links{
   @extend %flex-column;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
   box-sizing: border-box;
   color: $darker-gray;
   cursor: zoom-in;
   font-family: $font;
-  height: 250px;
   justify-content: space-between;
   padding: 10px;
   position: absolute;

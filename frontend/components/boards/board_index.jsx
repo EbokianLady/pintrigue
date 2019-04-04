@@ -8,12 +8,14 @@ class BoardIndex extends React.Component {
   }
 
   componentDidMount() {
+    this.props.fetchUserPins(this.props.username);
     this.props.fetchBoards(this.props.username);
   }
 
   render() {
     const boards = this.props.boards.map((board, i) => {
-      return <BoardIndexItem board={board} key={i} />
+      const pins = this.props.pins.filter(pin => pin.board_id === board.id);
+      return <BoardIndexItem pins={pins} board={board} key={i} />
     });
 
     return (

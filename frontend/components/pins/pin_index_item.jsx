@@ -22,11 +22,12 @@ class PinIndexItem extends React.Component {
   displayLinks() {
     if (this.state.visible) {
       const { pin } = this.props;
+      const imageHeight = (pin.row_height * 10);
       let link;
 
       if (pin.link_url !== '') {
         link = (
-          <a href={pin.link_url}>
+          <a href={pin.link_url} target='_blank'>
             <i className='fas fa-chevron-right'></i>
             <p>Check it out</p>
           </a>
@@ -34,7 +35,8 @@ class PinIndexItem extends React.Component {
       }
 
       return (
-        <div className='p-links visible'>
+        <div className='p-links visible'
+          style={{ 'height': imageHeight }}>
           <div className='top-links'>
             <button
               className='p-btn'>
