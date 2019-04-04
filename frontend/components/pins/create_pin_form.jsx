@@ -39,8 +39,8 @@ class CreatePinForm extends React.Component {
     fileReader.onloadend = () => {
       const img = new Image();
       img.onload = () => {
-        const span = (`${Math.round(img.height / (img.width / 23.6))}`);
-        this.setState({ span: span });
+        const rowHeight = (`${Math.round(img.height / (img.width / 23.6))}`);
+        this.setState({ row_height: rowHeight });
       };
       img.src = fileReader.result;
       this.setState({ photoFile: file, photoUrl: fileReader.result });
@@ -101,7 +101,7 @@ class CreatePinForm extends React.Component {
     formData.append('pin[description]', this.state.pin.description);
     formData.append('pin[link_url]', this.state.pin.link_url);
     formData.append('pin[picture]', this.state.photoFile);
-    formData.append('pin[span]', this.state.span);
+    formData.append('pin[row_height]', this.state.row_height);
     this.props.createPin(formData, this.state.boardId)
       .then(() => this.props.history.push(`/boards/${this.state.boardId}`));
   }
@@ -113,18 +113,18 @@ class CreatePinForm extends React.Component {
           <img src={this.state.photoUrl} />
         </div>
       )
-    } 
+    }
   }
 
   displayFooter() {
     if (this.state.photoError) {
       return (
         <p className="size-error" >{this.state.photoError}</p>
-      ) 
+      )
     } else {
       return (
         <p> Use high-quality .jpg files less than 2MB.</p>
-      ) 
+      )
     }
   }
 
