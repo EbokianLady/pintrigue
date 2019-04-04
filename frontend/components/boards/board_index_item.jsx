@@ -45,7 +45,7 @@ class BoardIndexItem extends React.Component {
           <div className='b-info'>
             <div>
               <h3 className='b-index-title'>{board.name}</h3>
-              <p className='b-index-pincount'>15 Pins</p>
+              <p className='b-index-pincount'>{board.pin_join_ids.length} Pins</p>
             </div>
           </div>
         </Link>

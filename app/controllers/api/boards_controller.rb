@@ -5,7 +5,7 @@ module Api
   class BoardsController < ApplicationController
     def index
       @user = User.find_by!(username: params[:user_id])
-      @boards = @user.boards
+      @boards = @user.boards.includes(:pin_joins)
       render 'api/boards/index'
     end
 

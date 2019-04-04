@@ -74,6 +74,11 @@
       object-fit: cover;
     }
   }
+
+  .size-error {
+    font-size: 14px;
+    color: $error;
+  }
 }
 
 .user-name {

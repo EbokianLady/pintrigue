@@ -25,7 +25,7 @@
       width: 840px;
       height: 40px;
       @extend %flex-row;
-      justify-content: flex-end;
+      justify-content: space-between;
       align-items: center;
     }
 

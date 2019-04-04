@@ -5,11 +5,16 @@ import { TextInput } from '../global/form';
 class UserEdit extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { user: this.props.user, selectPhoto: false };
+    this.state = { 
+      user: this.props.user, 
+      photoError: null,
+      selectPhoto: false, 
+    };
+
+    this.displayPhoto = this.displayPhoto.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.hidePhotoChoice = this.hidePhotoChoice.bind(this);
     this.showPhotoChoice = this.showPhotoChoice.bind(this);
-    this.displayPhoto = this.displayPhoto.bind(this);
   }
 
   componentDidMount() {
@@ -30,8 +35,13 @@ class UserEdit extends React.Component {
     fileReader.onloadend = () => {
       this.setState({ photoFile: file, photoUrl: fileReader.result });
     };
-    if (file) {
-      fileReader.readAsDataURL(file);
+    if (file && file.type === 'image/jpeg') {
+      if (file.size < 2000000) {
+        fileReader.readAsDataURL(file);
+        this.setState({ photoError: null });
+      } else {
+        this.setState({ photoError: 'Please use a .jpg less than 2MB' });
+      }
     }
     this.hidePhotoChoice();
   }
@@ -105,6 +115,14 @@ class UserEdit extends React.Component {
     }
   }
 
+  displaySizeError() {
+    if (this.state.photoError) {
+      return (
+        <div className='size-error' >{this.state.photoError}</div>
+      )
+    }
+  }
+
   hidePhotoChoice(e) {
     this.setState({ selectPhoto: false });
   }
@@ -148,6 +166,7 @@ class UserEdit extends React.Component {
                 Change
               </button>
             </div>
+            {this.displaySizeError()}
           </div>
 
           <div className='user-name'>

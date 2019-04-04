@@ -16,20 +16,15 @@ class CreatePinForm extends React.Component {
     };
     this.showBoardScroll = this.showBoardScroll.bind(this);
     this.hideBoardScroll = this.hideBoardScroll.bind(this);
-    this.displayBoardScroll = this.displayBoardScroll.bind(this);
     this.handleBoard = this.handleBoard.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
-    this.displayPhoto = this.displayPhoto.bind(this);
+    this.goBack = this.goBack.bind(this);
     // this.handleCancel = this.handleCancel.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchBoards(this.props.username);
-  }
-
-  componentWillUnmount() {
-    // this.props.clearErrors();
   }
 
   handleBoard(board) {
@@ -124,13 +119,18 @@ class CreatePinForm extends React.Component {
   displayFooter() {
     if (this.state.photoError) {
       return (
-        <p>{this.state.photoError}</p>
+        <p className="size-error" >{this.state.photoError}</p>
       ) 
     } else {
       return (
-        <p className="size-error"> Use high-quality .jpg files less than 2MB.</p>
+        <p> Use high-quality .jpg files less than 2MB.</p>
       ) 
     }
+  }
+
+  goBack(e) {
+    e.preventDefault();
+    this.props.history.goBack();
   }
 
   render() {
@@ -140,6 +140,12 @@ class CreatePinForm extends React.Component {
       <div className='pin-form-buffer'>
         <div className='pin-form-box'>
           <div className='pin-form-header'>
+            <button
+              className='oval-btn'
+              onClick={this.goBack}>
+              <i class="fas fa-chevron-left"></i>
+              <p>Back</p>
+            </button>
             <button
               className='save-btn'
               onClick={this.handleSubmit} >

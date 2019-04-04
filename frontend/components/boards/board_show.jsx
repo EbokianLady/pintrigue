@@ -5,10 +5,44 @@ import PinBoardIndexContainer from '../pins/pin_board_index_container';
 class BoardShow extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = { dropdown: false };
+    this.showDropdown = this.showDropdown.bind(this);
+    this.hideDropdown = this.hideDropdown.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchBoard(this.props.boardId);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.hideDropdown);
+  }
+
+  displayDropDown() {
+    if (this.state.dropdown) {
+      return (
+        <div ref={node => this.node = node} className="profile-visible">
+          <Link
+            to={`/${this.props.username}/pin-builder`}
+            className="dropdown-item">
+            Create pin
+          </Link>
+        </div>
+      )
+    }
+  }
+
+  hideDropdown(e) {
+    if (!this.node.contains(e.target)) {
+      this.setState({ dropdown: false });
+      document.removeEventListener('mousedown', this.hideDropdown);
+    }
+  }
+
+  showDropdown(e) {
+    this.setState({ dropdown: true });
+    document.addEventListener('mousedown', this.hideDropdown);
   }
 
   render() {
@@ -22,13 +56,14 @@ class BoardShow extends React.Component {
               <div className='profile'>
                 <nav className='profile-nav'>
                   <div className='prof-buttons prof-plus'
-                    onClick={this.toggleDropdown}>
+                    onClick={this.showDropdown} >
                     <i className='fas fa-plus p2-fas'></i>
-                    <div id='profile-dropdown' className='profile-hidden' hidden={true}>
+                    {this.displayDropDown()}
+                    {/* <div id='profile-dropdown' className='profile-hidden' hidden={true}>
                       <button className='dropdown-item'>
                         Create pin
                       </button>
-                    </div>
+                    </div> */}
                   </div>
                   <button
                     className='prof-buttons' >
