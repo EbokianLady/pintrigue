@@ -75,9 +75,8 @@ class CreatePinForm extends React.Component {
   }
 
   update(field) {
-    const that = this;
     return (e) => {
-      that.setState({ pin: { ...this.state.pin, [field]: e.target.value } });
+      this.setState({ pin: { ...this.state.pin, [field]: e.target.value } });
     };
   }
 

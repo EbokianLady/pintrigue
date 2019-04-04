@@ -3,8 +3,9 @@
 .index-buffer {
   @extend %flex-column;
   justify-content: center;
+  min-width: 550px;
 }
-
+ 
 .board-index {
   @extend %flex-row;
   // justify-content: flex-start;

@@ -8,7 +8,6 @@ class PinIndexItem extends React.Component {
     this.turnOffVisibility = this.turnOffVisibility.bind(this);
     this.turnOnVisibility = this.turnOnVisibility.bind(this);
     this.displayLinks = this.displayLinks.bind(this);
-    // this.calculateSpan = this.calculateSpan.bind(this);
   }
 
   turnOffVisibility(e) {
@@ -18,19 +17,6 @@ class PinIndexItem extends React.Component {
   turnOnVisibility(e) {
     this.setState({ visible: true });
   }
-
-  // calculateSpan() {
-  //   const img = new Image();
-  //   const { pin } = this.props;
-  //   img.onload = () => {
-  //     const span = (`${Math.ceil(img.height / (img.width / 23.6))}`);
-  //     if (this.state.span === 0) {
-  //       this.setState({ span: span });
-  //       console.log(this.state.span);
-  //     }
-  //   };
-  //   img.src = pin.pictureUrl;
-  // }
 
   // TO-DO regex the link name later
   displayLinks() {
@@ -72,11 +58,9 @@ class PinIndexItem extends React.Component {
     const { pin } = this.props;
     const frameHeight = (pin.span * 10) + 50;
     const imageHeight = (pin.span * 10);
-    // this.calculateSpan();
 
     return (
       <div className={`p-index-frame p-span-${pin.span + 5}`}
-        // style={{ 'height': ((pin.span * 10) + 50), 'gridRowEnd': rowEnd }}
         style={{ 'height': frameHeight }}
         onMouseEnter={this.turnOnVisibility}
         onMouseLeave={this.turnOffVisibility}>

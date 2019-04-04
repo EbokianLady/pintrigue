@@ -4,6 +4,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, 256px);
   grid-auto-rows: 10px;
+  min-width: 550px;
   width: 100%;
   justify-items: center;
   justify-content: center;

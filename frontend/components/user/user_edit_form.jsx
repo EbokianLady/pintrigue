@@ -18,8 +18,10 @@ class UserEdit extends React.Component {
 
   update(field) {
     return (e) => {
-      this.setState({ user: { ...this.state.user, [field]: e.currentTarget.value } });
-    };
+      this.setState({ 
+        user: { ...this.state.user, [field]: e.currentTarget.value }
+      })
+    }
   }
 
   handleFile(e) {
@@ -36,7 +38,6 @@ class UserEdit extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    debugger
     const formData = new FormData();
     formData.append('user[description]', this.state.user.description);
     formData.append('user[location]', this.state.user.location);
@@ -44,7 +45,11 @@ class UserEdit extends React.Component {
     formData.append('user[last_name]', this.state.user.last_name);
     formData.append('user[username]', this.state.user.username);
     formData.append('user[id]', this.state.user.id);
-    formData.append('user[photo]', this.state.photoFile);
+
+    if ( this.state.photoFile ) {
+      formData.append('user[photo]', this.state.photoFile);
+    }
+    
     this.props.updateUser(formData, this.state.user.id)
       .then(() => this.props.history.push(`/${this.props.username}`));
   }

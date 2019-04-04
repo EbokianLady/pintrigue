@@ -15,7 +15,6 @@ module Api
       @user.update!(user_params)
       render 'api/users/show'
     end
-    # @user.custom_method(params[:photo])
 
     def show
       @user = User.find_by!(username: params[:id])
