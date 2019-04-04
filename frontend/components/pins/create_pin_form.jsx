@@ -12,6 +12,7 @@ class CreatePinForm extends React.Component {
       choiceDialogue: 'Choose a board (required)',
       photoFile: null,
       photoUrl: null,
+      photoError: null,
     };
     this.showBoardScroll = this.showBoardScroll.bind(this);
     this.hideBoardScroll = this.hideBoardScroll.bind(this);
@@ -49,8 +50,13 @@ class CreatePinForm extends React.Component {
       img.src = fileReader.result;
       this.setState({ photoFile: file, photoUrl: fileReader.result });
     };
-    if (file) {
-      fileReader.readAsDataURL(file);
+    if (file && file.type === 'image/jpeg') {
+      if (file.size < 2000000) {
+        fileReader.readAsDataURL(file);
+        this.setState({ photoError: null });
+      } else {
+        this.setState({ photoError: 'Please use a .jpg less than 2MB' });
+      }
     }
   }
 
@@ -115,6 +121,18 @@ class CreatePinForm extends React.Component {
     } 
   }
 
+  displayFooter() {
+    if (this.state.photoError) {
+      return (
+        <p>{this.state.photoError}</p>
+      ) 
+    } else {
+      return (
+        <p className="size-error"> Use high-quality .jpg files less than 2MB.</p>
+      ) 
+    }
+  }
+
   render() {
     const { pin } = this.state;
 
@@ -133,13 +151,16 @@ class CreatePinForm extends React.Component {
             {this.displayPhoto()}
             <div className='upload-box'>
               <div className='upload-outline'>
-                <button className='upload-btn'>
-                  <i className='fas fa-arrow-circle-up'></i>
-                </button>
-                <p>Click to upload</p>
-                <input type="file"
-                  onChange={this.handleFile.bind(this)}>
-                </input>
+                  <button className='upload-btn'>
+                    <i className='fas fa-arrow-circle-up'></i>
+                  </button>
+                  <p>Click to upload</p>
+                  <input type="file"
+                    onChange={this.handleFile.bind(this)}>
+                  </input>
+                  <div className="upload-footer">
+                    {this.displayFooter()}
+                  </div>
               </div>
             </div>
             <div className='pin-form-content'>

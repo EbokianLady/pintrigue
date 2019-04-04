@@ -84,6 +84,22 @@
       i {
         font-size: 32px;
       }
+
+    }
+
+    .upload-footer {
+      position: absolute;
+      z-index: 3;
+      bottom: 20px;
+
+      p {
+        color: $med-gray;
+        font-size: 14px;
+      }
+
+      .size-error {
+        color: $error;
+      }
     }
 
     p {
