@@ -1,19 +1,21 @@
 @import "./base/constants.scss";
 
 .pin-index {
-  @extend %flex-row;
-  flex-wrap: wrap;
-}
-
-.grid-item {
-  @extend %flex-column;
-  width: 256px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 256px);
+  grid-auto-rows: 10px;
+  background-color: $med-gray;
+  width: 100%;
+  justify-items: center;
+  justify-content: center;
 }
 
 .p-index-frame{
   @extend %flex-column;
+  align-items: flex-start;
   font-family: $font;
   padding: 8px;
+  margin-bottom: 12px;
 
   &:hover {
     background-color: $lightest-gray;
@@ -24,8 +26,14 @@
     box-sizing: border-box;
     font-size: 14px;
     padding: 8px;
-    width: 100%;
+    width: 200px;
     font-weight: bold;
+
+    p {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
   }
 }
 

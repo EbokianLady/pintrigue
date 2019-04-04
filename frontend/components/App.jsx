@@ -11,12 +11,14 @@ import DiscoveryContainer from './pins/pin_discovery_container';
 import SignupContainer from './welcome/signup_container';
 import Modal from './modal/modal';
 import CreatePinFormContainer from './pins/create_pin_form_container';
+import Test from './test_page/text';
 
 const App = () => {
   return (
     <div>
       <Modal />
       <Switch>
+        <Route exact path="/test" component={Test} />
         <Route exact path="/" component={SignupContainer}/>
         <Route exact path="/login" component={LoginContainer}/>
         <Route path="/" component={NavbarContainer} />

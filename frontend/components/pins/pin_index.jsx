@@ -5,6 +5,14 @@ import PinIndexItem from './pin_index_item';
 class PinIndex extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { pinsRendered: 0 };
+    this.addPin = this.addPin.bind(this);
+  }
+
+  addPin() {
+    const value = this.state.pinsRendered + 1;
+    this.setState({ pinsRendered: value });
+    console.log(this.state.pinsRendered);
   }
 
   componentDidMount() {
@@ -19,15 +27,13 @@ class PinIndex extends React.Component {
 
   render() {
     const pins = this.props.pins.map((pin, i) => {
-      return <PinIndexItem pin={pin} key={i} />
+      return <PinIndexItem pin={pin} key={i} onAddPin={this.addPin}/>
     });
 
     return (
-      <div className="pin-index-box">
-        <ul className="pin-index">
+        <div className="pin-index">
           {pins}
-        </ul>
-      </div>
+        </div>
     )
   }
 }

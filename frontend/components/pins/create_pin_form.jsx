@@ -39,7 +39,13 @@ class CreatePinForm extends React.Component {
   handleFile(e) {
     const file = e.currentTarget.files[0];
     const fileReader = new FileReader();
+
     fileReader.onloadend = () => {
+      // const img = new Image();
+      // img.onload = () => {
+      //   console.log(`width: ${img.width}, height: ${img.height}`);
+      // };
+      // img.src = fileReader.result;
       this.setState({ photoFile: file, photoUrl: fileReader.result });
     };
     if (file) {
