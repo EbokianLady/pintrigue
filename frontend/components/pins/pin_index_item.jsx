@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 class PinIndexItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { visible: false, span: 0 };
+    this.state = { visible: false };
     this.turnOffVisibility = this.turnOffVisibility.bind(this);
     this.turnOnVisibility = this.turnOnVisibility.bind(this);
     this.displayLinks = this.displayLinks.bind(this);
-    this.calculateSpan = this.calculateSpan.bind(this);
+    // this.calculateSpan = this.calculateSpan.bind(this);
   }
 
   turnOffVisibility(e) {
@@ -19,19 +19,18 @@ class PinIndexItem extends React.Component {
     this.setState({ visible: true });
   }
 
-  calculateSpan() {
-    const img = new Image();
-    const { pin } = this.props;
-    img.onload = () => {
-      const span = (`${Math.ceil(img.height / (img.width / 23.6))}`);
-      if (this.state.span === 0) {
-        this.setState({ span: span });
-        this.props.onAddPin();
-        console.log(this.state.span);
-      }
-    };
-    img.src = pin.pictureUrl;
-  }
+  // calculateSpan() {
+  //   const img = new Image();
+  //   const { pin } = this.props;
+  //   img.onload = () => {
+  //     const span = (`${Math.ceil(img.height / (img.width / 23.6))}`);
+  //     if (this.state.span === 0) {
+  //       this.setState({ span: span });
+  //       console.log(this.state.span);
+  //     }
+  //   };
+  //   img.src = pin.pictureUrl;
+  // }
 
   // TO-DO regex the link name later
   displayLinks() {
@@ -71,22 +70,24 @@ class PinIndexItem extends React.Component {
 
   render() {
     const { pin } = this.props;
-    const { span } = this.state
-    this.calculateSpan();
+    const height = (pin.span * 10) + 50;
+    const rowEnd = 'span 17'
+    // this.calculateSpan();
 
     return (
-        <div className='p-index-frame'
-        style={{ 'height': ((span * 10) + 50), 'gridRowEnd': span }}
-              onMouseEnter={this.turnOnVisibility}
-              onMouseLeave={this.turnOffVisibility}>
-          <div className='p-image-box'>
-          <img className='p-picture' src={pin.pictureUrl} style={{ 'height': (span * 10) }}/>
-          </div>
-          <div className='p-title'>
-            <p>{pin.title}</p>
-          </div>
-          {this.displayLinks()}
+      <div className={`p-index-frame p-span-${pin.span + 5}`}
+        // style={{ 'height': ((pin.span * 10) + 50), 'gridRowEnd': rowEnd }}
+        style={{ 'height': height }}
+        onMouseEnter={this.turnOnVisibility}
+        onMouseLeave={this.turnOffVisibility}>
+        <div className='p-image-box'>
+        <img className='p-picture' src={pin.pictureUrl} style={{ 'height': (pin.span * 10) }}/>
         </div>
+        <div className='p-title'>
+          <p>{pin.title}</p>
+        </div>
+        {this.displayLinks()}
+      </div>
     )
   }
 }

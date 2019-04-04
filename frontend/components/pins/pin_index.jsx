@@ -31,9 +31,9 @@ class PinIndex extends React.Component {
     });
 
     return (
-        <div className="pin-index">
-          {pins}
-        </div>
+      <div className="pin-index">
+        {pins}
+      </div>
     )
   }
 }

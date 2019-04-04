@@ -10,9 +10,24 @@
   justify-content: center;
 }
 
+.p-span-24 {
+  grid-row-end: span 26;
+}
+
+.p-span-22 {
+  grid-row-end: span 24;
+}
+
+.p-span-31 {
+  grid-row-end: span 33;
+}
+
 .p-index-frame{
   @extend %flex-column;
+  box-sizing: border-box;
   align-items: flex-start;
+  height: 350px;
+  width: 252px;
   font-family: $font;
   padding: 8px;
   margin-bottom: 12px;
@@ -43,7 +58,7 @@
   border-radius: 8px;
   box-sizing: border-box;
   width: 236px;
-  
+
   .p-picture {
     border-radius: 8px;
   }

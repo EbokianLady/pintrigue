@@ -18,7 +18,7 @@ class UserEdit extends React.Component {
 
   update(field) {
     return (e) => {
-      this.setState({ [field]: e.currentTarget.value });
+      this.setState({ user: { ...this.state.user, [field]: e.currentTarget.value } });
     };
   }
 
@@ -36,6 +36,7 @@ class UserEdit extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    debugger
     const formData = new FormData();
     formData.append('user[description]', this.state.user.description);
     formData.append('user[location]', this.state.user.location);
@@ -120,7 +121,7 @@ class UserEdit extends React.Component {
               <p>People on Pintrigue will get to know you with the info below</p>
             </div>
             <div className='user-edit-links'>
-              <Link 
+              <Link
                 className='rectangle-btn'
                 to={`/${this.props.username}`}>
                 Cancel
@@ -147,7 +148,7 @@ class UserEdit extends React.Component {
           <div className='user-name'>
             <div>
               <h4>First name</h4>
-              <TextInput 
+              <TextInput
                 className='input edit-name'
                 name={user.first_name}
                 value={user.first_name}
