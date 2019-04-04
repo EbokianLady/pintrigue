@@ -45,7 +45,7 @@ class UserProfile extends React.Component {
 
   displayDescription() {
     const { user } = this.props;
-    if (user.location || user.description) {
+    if (user.location && user.description) {
       return [user.location, user.description].join(" • ");
     } else if (user.location) {
       return user.location;
@@ -86,6 +86,19 @@ class UserProfile extends React.Component {
       return user.last_name;
     } else {
       return user.username;
+    }
+  }
+
+  displayProfileImage() {
+    const { user } = this.props;
+    if (user.photoUrl) {
+      return (
+        <img className="profile-image" src={user.photoUrl}></img>
+      )
+    } else {
+      return (
+        <div className="profile-standin"><p>{user.username[0]}</p></div>
+      )
     }
   }
   
@@ -148,7 +161,7 @@ class UserProfile extends React.Component {
                 </nav>
               </div>
                 <div className="profile-image-container">
-                  <img className="profile-image" src={user.photoUrl}></img>
+                  {this.displayProfileImage()}
                 </div>
             </div>
           </div>

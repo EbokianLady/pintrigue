@@ -52,9 +52,15 @@ class Navbar extends React.Component {
   profilePic() {
     if (this.props.currentUser.username) {
       const user = this.props.currentUser
-      return (
-        <img className="small-profile-image" src={user.photoUrl} />
-      )
+      if (user.photoUrl) {
+        return (
+          <img className="small-profile-image" src={user.photoUrl} />
+        )
+      } else {
+        return (
+          <p>{user.username[0]}</p>
+        )
+      }
     } else {
       return (
         <i className="fas fa-user-circle p-fas"></i>

@@ -80,15 +80,35 @@
 
 
 .profile-image-container {
+  @extend %flex-row;
+  align-items: center;
   height: 106px;
   width: 106px;
-  background-color: $med-gray;
+  background-color: $lighter-gray;
   border-radius: 50%;
 
   .profile-image {
     border-radius: 50%;
     height: 106px;
     object-fit: cover;
+  }
+
+  .profile-standin {
+    @extend %flex-row;
+    justify-content: center;
+    border-radius: 50%;
+    border: 2px dashed rgb(218, 218, 218);
+    height: 85px;
+    width: 85px;
+    
+    p {
+      color: $med-gray;
+      font-family: $sofia;
+      font-weight: bold;
+      text-align: center;
+      font-size: 70px;
+      line-height: 80px;
+    }
   }
 }
 
