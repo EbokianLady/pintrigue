@@ -5,10 +5,12 @@ export const fetchUser = (id) => (
   })
 );
 
-export const fetchUsers = () => {
-  // how do you fetch only specific users? followers/followees
-  // custom routes that take in data?
-};
+export const fetchUsers = () => (
+  $.ajax({
+    method: 'GET',
+    url: 'api/users/'
+  })
+);
 
 export const updateUser = (formData, id) => (
   $.ajax({

@@ -13,10 +13,31 @@ class BoardShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchBoard(this.props.boardId);
+    this.props.fetchUsers();
   }
 
   componentWillUnmount() {
     document.removeEventListener('mousedown', this.hideDropdown);
+  }
+
+  allowBoardNav() {
+    if (this.props.currentUser === this.props.creator) {
+      return (
+        <>
+          <nav className='profile-nav'>
+            <div className='prof-buttons prof-plus'
+              onClick={this.showDropdown} >
+              <i className='fas fa-plus p2-fas'></i>
+              {this.displayDropDown()}
+            </div>
+            <button
+              className='prof-buttons' >
+              <i className='fas fa-pen p2-fas'></i>
+            </button>
+          </nav>
+        </>
+      )
+    }
   }
 
   displayDropDown() {
@@ -54,23 +75,7 @@ class BoardShow extends React.Component {
           <div className='profile-buffer'>
             <div className='profile-box'>
               <div className='profile'>
-                <nav className='profile-nav'>
-                  <div className='prof-buttons prof-plus'
-                    onClick={this.showDropdown} >
-                    <i className='fas fa-plus p2-fas'></i>
-                    {this.displayDropDown()}
-                    {/* <div id='profile-dropdown' className='profile-hidden' hidden={true}>
-                      <button className='dropdown-item'>
-                        Create pin
-                      </button>
-                    </div> */}
-                  </div>
-                  <button
-                    className='prof-buttons' >
-                    <i className='fas fa-pen p2-fas'></i>
-                  </button>
-                </nav>
-
+                {this.allowBoardNav()}
                 <section className='profile-body'>
                   <h2 className='profile-name'>
                     {board.name}
