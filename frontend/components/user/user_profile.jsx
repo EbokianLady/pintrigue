@@ -91,13 +91,15 @@ class UserProfile extends React.Component {
 
   displayProfileImage() {
     const { user } = this.props;
+    const letter = user.first_name ? user.first_name[0] : user.username[0];
+    
     if (user.photoUrl) {
       return (
         <img className="profile-image" src={user.photoUrl}></img>
       )
     } else {
       return (
-        <div className="profile-standin"><p>{user.username[0]}</p></div>
+        <div className="profile-standin"><p>{letter.toUpperCase()}</p></div>
       )
     }
   }

@@ -52,13 +52,15 @@ class Navbar extends React.Component {
   profilePic() {
     if (this.props.currentUser.username) {
       const user = this.props.currentUser
+      const letter = user.first_name ? user.first_name[0] : user.username[0];
+
       if (user.photoUrl) {
         return (
           <img className="small-profile-image" src={user.photoUrl} />
         )
       } else {
         return (
-          <p>{user.username[0]}</p>
+          <p>{letter.toUpperCase()}</p>
         )
       }
     } else {

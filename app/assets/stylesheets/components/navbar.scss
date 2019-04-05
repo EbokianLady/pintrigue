@@ -69,14 +69,14 @@
     border-radius: 50%;
     
     p {
-      font-size: 20px;
+      font-size: 15px;
       color: $white;
-      font-family: $sofia;
+      line-height: 10px;
+      font-family: $stylized;
       font-weight: bold;
     }
   }
 }
-
 
 .nav-login {
   background-color: $light-gray;
