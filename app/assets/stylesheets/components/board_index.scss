@@ -8,9 +8,10 @@
  
 .board-index {
   @extend %flex-row;
-  // justify-content: flex-start;
+  justify-content: flex-start;
   color: $darker-gray;
   flex-wrap: wrap;
+  width: 648px;
   font-family: $font;
 
   .b-index-frame {
@@ -31,7 +32,6 @@
     }
   }
 }
-
 
 .b-cover {
   border-radius: 8px;
@@ -118,3 +118,23 @@
   color: $med-gray;
 }
 
+@media screen and (min-width: 988px) {
+  .board-index {
+    column-count: 3;
+    width: 972px;
+  }
+}
+
+@media screen and (min-width: 1312px) {
+  .board-index {
+    column-count: 4;
+    width: 1296px;
+  }
+}
+
+@media screen and (min-width: 1636px) {
+  .board-index {
+    column-count: 5;
+    width: 1620px;
+  }
+}
