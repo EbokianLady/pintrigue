@@ -17,13 +17,19 @@ Pintrigue uses a fullstack consisting of Ruby on Rails for the backend framework
 
 Users can sign up, logout, and login by setting a username, email and password. Updating and editing features for their personal profile, boards and pins are private.
 
+![Login](https://github.com/EbokianLady/pintrigue/blob/master/app/assets/images/readme_images/sign_in.jpg)
+
 ### Image Uploading
 
 Users can change their profile icon to an image of their choice and upload images to their boards.
 
+![Upload](https://github.com/EbokianLady/pintrigue/blob/master/app/assets/images/readme_images/upload.jpg)
+
 ### Responsive Display
 
 Board and Pin indexes are responsive to the window width of the browser, showing two or more columns. The pins display in a masonry format, loading top-left to right and placing images successively in the next shortest column.
+
+![Masonry](https://github.com/EbokianLady/pintrigue/blob/master/app/assets/images/readme_images/discovery.jpg)
 
 ### Structure
 
@@ -37,6 +43,9 @@ Board and Pin indexes are responsive to the window width of the browser, showing
 * Lists all of the boards associated with a user
 * Features a sample of pin images as a cover
 * Shows the number of pins associated with that board
+
+![Board](https://github.com/EbokianLady/pintrigue/blob/master/app/assets/images/readme_images/user_boards.jpg)
+
 4. Pin Index
 * Lists all of the pins associated with a user or board
 * Shows pin title and links to external site when available
