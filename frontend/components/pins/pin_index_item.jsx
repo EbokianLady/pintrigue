@@ -58,12 +58,13 @@ class PinIndexItem extends React.Component {
 
   render() {
     const { pin } = this.props;
-    const frameHeight = (pin.row_height * 10) + 50;
+    const frameHeight = (pin.row_height * 10) + 45;
     const imageHeight = (pin.row_height * 10);
+    const gridSpan = `span ${pin.row_height + 6}`
 
     return (
-      <div className={`p-index-frame p-span-${pin.row_height + 5}`}
-        style={{ 'height': frameHeight }}
+      <div className={`p-index-frame`}
+        style={{ 'height': frameHeight, 'gridRowEnd': gridSpan }}
         onMouseEnter={this.turnOnVisibility}
         onMouseLeave={this.turnOffVisibility}>
         <div className='p-image-box'>
