@@ -15,7 +15,7 @@ class BoardIndex extends React.Component {
   render() {
     const boards = this.props.boards.map((board, i) => {
       const pins = this.props.pins.filter(pin => pin.board_id === board.id);
-      return <BoardIndexItem pins={pins} board={board} key={i} />
+      return <BoardIndexItem pins={pins} board={board} key={i} openModal={this.props.openModal}/>
     });
 
     return (

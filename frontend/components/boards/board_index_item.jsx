@@ -7,6 +7,11 @@ class BoardIndexItem extends React.Component {
     this.state = { visible: false };
     this.turnOffVisibility = this.turnOffVisibility.bind(this);
     this.turnOnVisibility = this.turnOnVisibility.bind(this);
+    this.showModal = this.showModal.bind(this);
+  }
+
+  showModal(e) {
+    this.props.openModal('editBoard', this.props.board.id);
   }
 
   turnOffVisibility(e) {
@@ -22,6 +27,7 @@ class BoardIndexItem extends React.Component {
     if (this.state.visible) {
       return (
         <button
+          onClick={this.showModal}
           className='b-index-link'>
           <i className='fas fa-pen b-fas'></i>
         </button>

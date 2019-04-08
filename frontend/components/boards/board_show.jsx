@@ -81,6 +81,9 @@ class BoardShow extends React.Component {
                     {board.name}
                   </h2>
                   <div className='profile-follows'></div>
+                  <div className="profile-description">
+                    {board.description}
+                  </div>
                 </section>
               </div>
             </div>

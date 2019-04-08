@@ -34,4 +34,3 @@ export const deleteBoard = (id) => {
     url: `api/boards/${id}`
   });
 };
-

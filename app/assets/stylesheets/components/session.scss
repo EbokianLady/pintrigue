@@ -48,14 +48,6 @@
   }
 }
 
-.errors {
-  border: 1px solid $error-focus;
-
-  &:focus {
-    box-shadow: 0 0 0 4px $error;
-  }
-}
-
 .list-errors {
   color: $error;
   width: 290px;

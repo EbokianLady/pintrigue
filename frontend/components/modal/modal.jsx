@@ -1,9 +1,10 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import CreateBoardForContainer from '../boards/create_board_form_container';
+import CreateBoardFormContainer from '../boards/create_board_form_container';
+import EditBoardFormContainer from '../boards/edit_board_form_container';
 
-function Modal({ modal, closeModal }) {
+function Modal({ modal, closeModal}) {
   if (!modal) {
     return null;
   }
@@ -11,7 +12,10 @@ function Modal({ modal, closeModal }) {
   let component;
   switch(modal) {
     case 'createBoard':
-      component = <CreateBoardForContainer />;
+      component = <CreateBoardFormContainer/>;
+      break;
+    case 'editBoard':
+      component = <EditBoardFormContainer/>;
       break;
     default:
       return null;

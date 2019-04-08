@@ -31,7 +31,7 @@ export const receiveBoardErrors = (errors) => ({
   errors
 });
 
-// thunk 
+// thunk
 
 export const fetchBoards = (username) => dispatch => (
   BoardApiUtil.fetchBoards(username).then(boards => (
@@ -58,7 +58,7 @@ export const createBoard = (board) => dispatch => (
 );
 
 export const updateBoard = board => dispatch => (
-  BoardApiUtil.createBoard(board).then(board => (
+  BoardApiUtil.updateBoard(board).then(board => (
     dispatch(receiveBoard(board))
   ), err => (
     dispatch(receiveBoardErrors(err.responseJSON))

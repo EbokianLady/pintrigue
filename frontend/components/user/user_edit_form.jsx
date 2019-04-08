@@ -5,10 +5,10 @@ import { TextInput } from '../global/form';
 class UserEdit extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
-      user: this.props.user, 
+    this.state = {
+      user: this.props.user,
       photoError: null,
-      selectPhoto: false, 
+      selectPhoto: false,
     };
 
     this.displayPhoto = this.displayPhoto.bind(this);
@@ -23,9 +23,9 @@ class UserEdit extends React.Component {
 
   update(field) {
     return (e) => {
-      this.setState({ 
+      this.setState({
         user: { ...this.state.user, [field]: e.currentTarget.value }
-      })
+      });
     }
   }
 
@@ -59,7 +59,7 @@ class UserEdit extends React.Component {
     if ( this.state.photoFile ) {
       formData.append('user[photo]', this.state.photoFile);
     }
-    
+
     this.props.updateUser(formData, this.state.user.id)
       .then(() => this.props.history.push(`/${this.props.username}`));
   }

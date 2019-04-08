@@ -35,6 +35,14 @@
   }
 }
 
+.errors {
+  border: 1px solid $error-focus;
+
+  &:focus {
+    box-shadow: 0 0 0 4px $error;
+  }
+}
+
 .rectangle-btn {
   @extend %flex-row;
   align-items: center;
@@ -42,11 +50,11 @@
   border-radius: 8px;
   box-sizing: border-box;
   color: $darker-gray;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: bold;
   margin-left: 8px;
   padding: 10px 14px;
-  
+
   &:hover {
     background-color: $light-gray;
   }
@@ -62,16 +70,16 @@
   font-weight: bold;
   height: 40px;
   padding: 6px 12px;
-  
+
   &:hover {
     background-color: $lighter-gray;
   }
-  
+
   i {
     font-size: 24px;
     padding: 4px;
   }
-  
+
   p {
     font-size: 16px;
     padding: 4px;
@@ -88,6 +96,7 @@
   font-family: $font;
   height: 40px;
   padding: 10px 14px;
+  font-size: 15px;
 
   &:hover {
     background-color: $pop-hover;
@@ -118,6 +127,6 @@
       font-family: $font;
       height: inherit;
       justify-content: center;
-    } 
+    }
   }
 }
