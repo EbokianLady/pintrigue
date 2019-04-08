@@ -9,10 +9,12 @@ import React from 'react';
 import { Route, Redirect, Switch, Link, HashRouter, withRouter } from 'react-router-dom';
 
 const formatErrors = (error) => {
+  const emailError = error.email ? [error.email[0]] : null;
+
   return ({
     usernameError: error.username || [],
     passwordError: error.password || [],
-    emailError: error.email || [],
+    emailError: emailError || [],
   });
 };
 

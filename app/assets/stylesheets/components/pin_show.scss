@@ -4,10 +4,7 @@
   @extend %flex-row;
   background-color: $lighter-gray;
   height:100%;
-  left: 0;
-  position:fixed;
-  top: 64px;
-  width:100%;
+  padding-bottom: 400px;
 }
 
 .pin-panel {

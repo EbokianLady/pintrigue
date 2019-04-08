@@ -20,6 +20,7 @@ class User < ApplicationRecord
   validates :session_token, :email, :username, presence: true, uniqueness: true
   validates :password_digest, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
+  validates :email, format: /\w+@\w+\.{1}[a-zA-Z]{2,}/
 
   after_initialize :ensure_session_token
 

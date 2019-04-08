@@ -37,8 +37,8 @@ en:
           attributes:
             email:
               blank: "You missed a spot! Don't forget to add your email."
+              invalid: "Hmm...that doesn't look like an email address."
               taken: "Hmm...looks like you already have an account."
-              invalid: "Hmm...that doesn't look like an email address or phone number."
             username:
               blank: "You missed a spot! Don't forget to add your username."
               taken: "Hmm...looks like that username is already taken."

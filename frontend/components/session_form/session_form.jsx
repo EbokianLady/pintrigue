@@ -68,6 +68,7 @@ class SessionForm extends React.Component {
             }
             <TextInput
               className='input'
+              type='email'
               name='Email'
               value={this.state.email}
               onChange={this.update('email')}
