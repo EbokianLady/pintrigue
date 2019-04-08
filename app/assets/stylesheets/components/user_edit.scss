@@ -67,7 +67,7 @@
     height: 75px;
     border-radius: 50%;
     background-color: $med-gray;
-    
+
     img {
       border-radius: 50%;
       height: 75px;
@@ -124,10 +124,8 @@
 }
 
 .user-location {
-  div {
-    input {
-      // width: 100%;
-    }
+  input {
+    width: 100%;
   }
 }
 
@@ -158,7 +156,7 @@
       cursor: pointer;
     }
   }
-  
+
   .mini-body {
     box-sizing: border-box;
     @extend %flex-row;
@@ -185,4 +183,3 @@
     }
   }
 }
-

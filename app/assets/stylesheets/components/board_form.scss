@@ -75,15 +75,6 @@
 
     .buttons-right {
       @extend %flex-row;
-
-      .disabled {
-        color: $med-gray;
-        cursor: default;
-
-        &:hover {
-          background-color: $lightest-gray;
-        }
-      }
     }
   }
 

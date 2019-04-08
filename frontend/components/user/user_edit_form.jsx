@@ -5,8 +5,16 @@ import { TextInput } from '../global/form';
 class UserEdit extends React.Component {
   constructor(props) {
     super(props);
+    const { user } = this.props;
     this.state = {
-      user: this.props.user,
+      user: {
+        description: user.description || '',
+        location: user.location || '',
+        first_name: user.first_name || '',
+        last_name: user.last_name || '',
+        id: user.id,
+      },
+      changed: false,
       photoError: null,
       selectPhoto: false,
     };
@@ -24,7 +32,8 @@ class UserEdit extends React.Component {
   update(field) {
     return (e) => {
       this.setState({
-        user: { ...this.state.user, [field]: e.currentTarget.value }
+        user: { ...this.state.user, [field]: e.currentTarget.value },
+        changed: true,
       });
     }
   }
@@ -53,7 +62,7 @@ class UserEdit extends React.Component {
     formData.append('user[location]', this.state.user.location);
     formData.append('user[first_name]', this.state.user.first_name);
     formData.append('user[last_name]', this.state.user.last_name);
-    formData.append('user[username]', this.state.user.username);
+    // formData.append('user[username]', this.state.user.username);
     formData.append('user[id]', this.state.user.id);
 
     if ( this.state.photoFile ) {
@@ -62,6 +71,25 @@ class UserEdit extends React.Component {
 
     this.props.updateUser(formData, this.state.user.id)
       .then(() => this.props.history.push(`/${this.props.username}`));
+  }
+
+  displayDoneButton() {
+    if (this.state.changed) {
+      return (
+        <button
+          className={'rectangle-btn save-btn'}
+          onClick={this.handleSubmit} >
+          Done
+        </button>
+      )
+    } else {
+      return (
+        <button
+          className={'rectangle-btn disabled'} >
+          Done
+        </button>
+      )
+    }
   }
 
   displayPhoto() {
@@ -149,11 +177,7 @@ class UserEdit extends React.Component {
                 to={`/${this.props.username}`}>
                 Cancel
               </Link>
-              <button
-                className='rectangle-btn'
-                onClick={this.handleSubmit}>
-                Done
-              </button>
+              {this.displayDoneButton()}
             </div>
           </div>
 
@@ -190,7 +214,7 @@ class UserEdit extends React.Component {
             </div>
           </div>
 
-          <div className='user-username'>
+          {/* <div className='user-username'>
             <h4>Username</h4>
             <div>
               <p>www.pintrigue.herokuapp.com/</p>
@@ -201,7 +225,7 @@ class UserEdit extends React.Component {
                 onChange={this.update('username')}
               />
             </div>
-          </div>
+          </div> */}
 
           <div className='user-about'>
             <h4>About your profile</h4>

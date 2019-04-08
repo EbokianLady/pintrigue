@@ -58,6 +58,7 @@
   &:hover {
     background-color: $light-gray;
   }
+
 }
 
 .oval-btn {
@@ -104,6 +105,15 @@
 
   i {
     margin-right: 8px;
+  }
+}
+
+.disabled {
+  color: $med-gray;
+  cursor: default;
+
+  &:hover {
+    background-color: $lightest-gray;
   }
 }
 
