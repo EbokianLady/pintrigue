@@ -1,0 +1,43 @@
+@import "./base/constants.scss";
+
+.pin-buffer {
+  @extend %flex-row;
+  background-color: $lighter-gray;
+  height:100%;
+  left: 0;
+  position:fixed;
+  top: 64px;
+  width:100%;
+}
+
+.pin-panel {
+  @extend %flex-column;
+  align-items: flex-start;
+  background-color: $white;
+  border-radius: 8px;
+  box-sizing: border-box;
+  height: fit-content;
+  margin-top: 40px;
+  padding: 16px 24px;
+  width: 630px;
+
+  .pin-header {
+    @extend %flex-row;
+    justify-content: space-between;
+    width: 100%;
+
+    i {
+      font-size: 18px;
+    }
+  }
+
+  h3 {
+    color: $darker-gray;
+    font-family: $font;
+    margin: 12px 0px;
+  }
+
+  img {
+    border-radius: 8px;
+  }
+}

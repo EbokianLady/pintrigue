@@ -21,7 +21,7 @@ module Api
     end
 
     def show
-      @pinjoin = PinJoin.find(params[:id]).includes(:pin)
+      @pinjoin = PinJoin.includes(:pin).find(params[:id])
       render 'api/pins/show'
     end
 

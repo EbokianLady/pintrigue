@@ -1,78 +1,20 @@
 import React from 'react';
 import { Route, Redirect, Switch, Link, HashRouter, withRouter } from 'react-router-dom';
 import { TextInput } from '../global/form';
-import SelectBoard from './select_board';
 
-class CreatePinForm extends React.Component {
+class EditPinForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pin: { pin_id: '', description: '', link_url: '', title: ''},
-      boardscroll: false,
-      choiceDialogue: 'Choose a board (required)',
-      photoFile: null,
-      photoUrl: null,
-      photoError: null,
+
     };
-    this.showBoardScroll = this.showBoardScroll.bind(this);
-    this.hideBoardScroll = this.hideBoardScroll.bind(this);
-    this.handleBoard = this.handleBoard.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
-    this.goBack = this.goBack.bind(this);
     // this.handleCancel = this.handleCancel.bind(this);
   }
 
   componentDidMount() {
-    this.props.fetchBoards(this.props.username);
-  }
 
-  handleBoard(board) {
-    this.setState({ boardId: board.id, choiceDialogue: board.name });
-    this.hideBoardScroll();
-  }
-
-  handleFile(e) {
-    const file = e.currentTarget.files[0];
-    const fileReader = new FileReader();
-
-    fileReader.onloadend = () => {
-      const img = new Image();
-      img.onload = () => {
-        const rowHeight = (`${Math.round(img.height / (img.width / 23.6))}`);
-        this.setState({ row_height: rowHeight });
-      };
-      img.src = fileReader.result;
-      this.setState({ photoFile: file, photoUrl: fileReader.result });
-    };
-    if (file && file.type === 'image/jpeg') {
-      if (file.size < 2000000) {
-        fileReader.readAsDataURL(file);
-        this.setState({ photoError: null });
-      } else {
-        this.setState({ photoError: 'Please use a .jpg less than 2MB' });
-      }
-    }
-  }
-
-  displayBoardScroll() {
-    if (this.state.boardscroll) {
-      const boards = this.props.boards.map((board, i) => {
-        return (
-          <SelectBoard
-            onSelectBoard={this.handleBoard}
-            board={board}
-            key={i}
-          />
-        )
-      });
-
-      return (
-        <div className='board-scroll-container'>
-          {boards}
-        </div>
-      )
-    }
   }
 
   update(field) {
@@ -80,19 +22,6 @@ class CreatePinForm extends React.Component {
       this.setState({ pin: { ...this.state.pin, [field]: e.target.value } });
     };
   }
-
-  hideBoardScroll(e) {
-    this.setState({ boardscroll: false });
-  }
-
-  showBoardScroll(e) {
-    this.setState({ boardscroll: true });
-  }
-
-  // handleCancel(e) {
-  //   e.preventDefault();
-  //   this.props.closeModal();
-  // }
 
   handleSubmit(e) {
     e.preventDefault();
@@ -116,18 +45,6 @@ class CreatePinForm extends React.Component {
     }
   }
 
-  displayFooter() {
-    if (this.state.photoError) {
-      return (
-        <p className="size-error" >{this.state.photoError}</p>
-      )
-    } else {
-      return (
-        <p> Use high-quality .jpg files less than 2MB.</p>
-      )
-    }
-  }
-
   goBack(e) {
     e.preventDefault();
     this.props.history.goBack();
@@ -138,12 +55,12 @@ class CreatePinForm extends React.Component {
 
     return (
       <div className='pin-form-buffer'>
-        <div className='pin-form-box'>
+        {/* <div className='pin-form-box'>
           <div className='pin-form-header'>
             <button
               className='oval-btn'
               onClick={this.goBack}>
-              <i className="fas fa-chevron-left"></i>
+              <i class="fas fa-chevron-left"></i>
               <p>Back</p>
             </button>
             <button
@@ -157,16 +74,16 @@ class CreatePinForm extends React.Component {
             {this.displayPhoto()}
             <div className='upload-box'>
               <div className='upload-outline'>
-                  <button className='upload-btn'>
-                    <i className='fas fa-arrow-circle-up'></i>
-                  </button>
-                  <p>Click to upload</p>
-                  <input type="file"
-                    onChange={this.handleFile.bind(this)}>
-                  </input>
-                  <div className="upload-footer">
-                    {this.displayFooter()}
-                  </div>
+                <button className='upload-btn'>
+                  <i className='fas fa-arrow-circle-up'></i>
+                </button>
+                <p>Click to upload</p>
+                <input type="file"
+                  onChange={this.handleFile.bind(this)}>
+                </input>
+                <div className="upload-footer">
+                  {this.displayFooter()}
+                </div>
               </div>
             </div>
             <div className='pin-form-content'>
@@ -201,10 +118,10 @@ class CreatePinForm extends React.Component {
             </div>
           </div>
           {this.displayBoardScroll()}
-        </div>
+        </div> */}
       </div>
     )
   }
 }
 
-export default CreatePinForm;
+export default EditPinForm;

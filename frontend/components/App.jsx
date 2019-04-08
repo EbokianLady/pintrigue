@@ -12,6 +12,7 @@ import SignupContainer from './welcome/signup_container';
 import Modal from './modal/modal';
 import CreatePinFormContainer from './pins/create_pin_form_container';
 import Test from './test_page/text';
+import PinShowContainer from './pins/pin_show_container';
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
       </Switch>
 
       <Route path="/discovery" component={DiscoveryContainer} />
+      <Route path='/pins/:pinId' component={PinShowContainer} />
       <Route exact path="/boards/:boardId" component={BoardShowContainer} />
       <Route exact path="/boards/:boardId/edit" component={BoardShowContainer} />
     </div>

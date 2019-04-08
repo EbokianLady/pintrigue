@@ -40,24 +40,25 @@ class PinIndexItem extends React.Component {
       }
 
       return (
-        <div className='p-links visible'
+        <Link className='p-links visible'
+          to={`/pins/${pin.id}`}
           style={{ 'height': imageHeight }}>
-          <div className='top-links'>
-            <button
-              className='p-btn'
-              onClick={this.shoModal} >
-              <i className='fas fa-pen'></i>
-            </button>
-            <button
-              className='save-btn'>
-              <i className='fas fa-map-pin'></i>
-              <p>Save</p>
-            </button>
-          </div>
-          <div className='bottom-links'>
-            {link}
-          </div>
-        </div>
+            <div className='top-links'>
+              <button
+                className='p-btn'
+                onClick={this.showModal} >
+                <i className='fas fa-pen'></i>
+              </button>
+              <button
+                className='save-btn'>
+                <i className='fas fa-map-pin'></i>
+                <p>Save</p>
+              </button>
+            </div>
+            <div className='bottom-links'>
+              {link}
+            </div>
+        </Link>
       )
     }
   }
