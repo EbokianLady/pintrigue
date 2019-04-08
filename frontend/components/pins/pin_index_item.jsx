@@ -8,6 +8,11 @@ class PinIndexItem extends React.Component {
     this.turnOffVisibility = this.turnOffVisibility.bind(this);
     this.turnOnVisibility = this.turnOnVisibility.bind(this);
     this.displayLinks = this.displayLinks.bind(this);
+    this.showModal = this.showModal.bind(this);
+  }
+
+  showModal(e) {
+    this.props.openModal('editPin', this.props.pin.id);
   }
 
   turnOffVisibility(e) {
@@ -39,7 +44,8 @@ class PinIndexItem extends React.Component {
           style={{ 'height': imageHeight }}>
           <div className='top-links'>
             <button
-              className='p-btn'>
+              className='p-btn'
+              onClick={this.shoModal} >
               <i className='fas fa-pen'></i>
             </button>
             <button

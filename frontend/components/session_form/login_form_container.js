@@ -3,7 +3,7 @@ import SessionForm from './session_form';
 import {
   login, clearSessionErrors,clearSessionPasswordErrors, clearSessionEmailErrors
 } from '../../actions/session_actions';
-import { openModal, closeModal } from '../../actions/modal_actions';
+import { closeModal } from '../../actions/modal_actions';
 import React from 'react';
 import { Route, Redirect, Switch, Link, HashRouter, withRouter } from 'react-router-dom';
 

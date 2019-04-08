@@ -15,15 +15,15 @@ class UserProfile extends React.Component {
     this.showModal = this.showModal.bind(this);
     this.allowProfileNav = this.allowProfileNav.bind(this);
   }
-  
+
   componentDidMount() {
     this.props.fetchUser(this.props.username);
   }
-  
+
   componentWillUnmount() {
     document.removeEventListener('mousedown', this.hideDropdown);
   }
-  
+
   allowProfileNav() {
     if (this.props.currentUser === this.props.user) {
       return (
@@ -39,7 +39,7 @@ class UserProfile extends React.Component {
             <i className="fas fa-pen p2-fas"></i>
           </Link>
         </>
-      ) 
+      )
     }
   }
 
@@ -60,13 +60,13 @@ class UserProfile extends React.Component {
     if (this.state.dropdown) {
       return (
         <div ref={node => this.node = node} className="profile-visible">
-          <button 
+          <button
             className="dropdown-item"
             onClick={this.showModal}
             >
             Create board
           </button>
-          <Link 
+          <Link
             to={`/${this.props.username}/pin-builder`}
             className="dropdown-item">
             Create pin
@@ -75,7 +75,7 @@ class UserProfile extends React.Component {
       )
     }
   }
-  
+
   displayName() {
     const { user } = this.props;
     if (user.first_name || user.last_name ) {
@@ -92,7 +92,7 @@ class UserProfile extends React.Component {
   displayProfileImage() {
     const { user } = this.props;
     const letter = user.first_name ? user.first_name[0] : user.username[0];
-    
+
     if (user.photoUrl) {
       return (
         <img className="profile-image" src={user.photoUrl}></img>
@@ -103,19 +103,19 @@ class UserProfile extends React.Component {
       )
     }
   }
-  
+
   hideDropdown(e) {
     if (!this.node.contains(e.target)) {
       this.setState({ dropdown: false });
       document.removeEventListener('mousedown', this.hideDropdown);
     }
   }
-  
+
   showDropdown(e) {
     this.setState({ dropdown: true });
     document.addEventListener('mousedown', this.hideDropdown);
   }
-  
+
   showModal(e) {
     this.props.openModal('createBoard');
   }
@@ -150,12 +150,12 @@ class UserProfile extends React.Component {
                   </div>
                 </section>
                 <nav className="profile-buttons">
-                  <Link 
+                  <Link
                     to={`/${this.props.username}/boards`}
                     className={'oval-link' + boardClassName}>
                     Boards
                   </Link>
-                  <Link 
+                  <Link
                     to={`/${this.props.username}/pins`}
                     className={'oval-link' + pinClassName}>
                     Pins

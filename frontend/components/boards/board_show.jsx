@@ -8,6 +8,7 @@ class BoardShow extends React.Component {
 
     this.state = { dropdown: false };
     this.showDropdown = this.showDropdown.bind(this);
+    this.showBoardModal = this.showBoardModal.bind(this);
     this.hideDropdown = this.hideDropdown.bind(this);
   }
 
@@ -31,7 +32,8 @@ class BoardShow extends React.Component {
               {this.displayDropDown()}
             </div>
             <button
-              className='prof-buttons' >
+              className='prof-buttons'
+              onClick={this.showBoardModal}>
               <i className='fas fa-pen p2-fas'></i>
             </button>
           </nav>
@@ -64,6 +66,10 @@ class BoardShow extends React.Component {
   showDropdown(e) {
     this.setState({ dropdown: true });
     document.addEventListener('mousedown', this.hideDropdown);
+  }
+
+  showBoardModal(e) {
+    this.props.openModal('editBoard', this.props.boardId);
   }
 
   render() {

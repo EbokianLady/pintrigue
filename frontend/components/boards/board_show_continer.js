@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { fetchBoard } from '../../actions/board_actions';
 import { fetchUsers } from '../../actions/user_actions';
+import { openModal } from '../../actions/modal_actions';
 import BoardShow from './board_show';
 
 const msp = (state, ownProps) => {
@@ -22,6 +23,7 @@ const msp = (state, ownProps) => {
 const mdp = dispatch => ({
   fetchBoard: (boardId) => dispatch(fetchBoard(boardId)),
   fetchUsers: () => dispatch(fetchUsers()),
+  openModal: (modal, objectId) => dispatch(openModal(modal, objectId)),
 });
 
 export default connect(msp, mdp)(BoardShow);
