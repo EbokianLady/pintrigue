@@ -31,6 +31,7 @@ class PinIndex extends React.Component {
         pin={pin}
         key={i}
         onAddPin={this.addPin}
+        openModal={this.props.openModal}
         currentUser={this.props.currentUser} />
     });
 

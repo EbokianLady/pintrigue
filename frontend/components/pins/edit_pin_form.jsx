@@ -5,12 +5,17 @@ import { TextInput } from '../global/form';
 class EditPinForm extends React.Component {
   constructor(props) {
     super(props);
+    const { pin } = this.props;
     this.state = {
-
+      pin: {
+        id: pin.id,
+        board_id: pin.board_id,
+        description: pin.description,
+        title: pin.title,
+      }
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
-    // this.handleCancel = this.handleCancel.bind(this);
   }
 
   componentDidMount() {
@@ -23,16 +28,12 @@ class EditPinForm extends React.Component {
     };
   }
 
+  handleDelete(e) {
+
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append('pin[title]', this.state.pin.title);
-    formData.append('pin[description]', this.state.pin.description);
-    formData.append('pin[link_url]', this.state.pin.link_url);
-    formData.append('pin[picture]', this.state.photoFile);
-    formData.append('pin[row_height]', this.state.row_height);
-    this.props.createPin(formData, this.state.boardId)
-      .then(() => this.props.history.push(`/boards/${this.state.boardId}`));
   }
 
   displayPhoto() {
@@ -45,82 +46,67 @@ class EditPinForm extends React.Component {
     }
   }
 
-  goBack(e) {
-    e.preventDefault();
-    this.props.history.goBack();
-  }
-
   render() {
     const { pin } = this.state;
-
-    return (
-      <div className='pin-form-buffer'>
-        {/* <div className='pin-form-box'>
-          <div className='pin-form-header'>
-            <button
-              className='oval-btn'
-              onClick={this.goBack}>
-              <i class="fas fa-chevron-left"></i>
-              <p>Back</p>
-            </button>
-            <button
-              className='save-btn'
-              onClick={this.handleSubmit} >
-              <i className='fas fa-map-pin'></i>
-              <p>Save</p>
-            </button>
-          </div>
-          <div className='pin-form'>
-            {this.displayPhoto()}
-            <div className='upload-box'>
-              <div className='upload-outline'>
-                <button className='upload-btn'>
-                  <i className='fas fa-arrow-circle-up'></i>
+    if (pin) {
+      return (
+        <div className='pin-edit-buffer'>
+          <div className='pin-form-box'>
+            <div className='pin-header'>
+              <h3>Edit this Pin</h3>
+            </div>
+            <div className='pin-form-body'>
+              <div className='pin-aside'>
+                <div className='pin-title'>
+                  <p>Title</p>
+                  <TextInput
+                    className='input'
+                    name="Pin Title"
+                    value={this.state.pin.title}
+                    onChange={this.update('title')}
+                  />
+                </div>
+                <div className='pin-description'>
+                  <p>Description</p>
+                  <textarea
+                    className='input'
+                    placeholder="What's your pin about?"
+                    value={this.state.pin.description}
+                    onChange={this.update('description')}
+                  />
+                </div>
+              </div>
+              <div className='pin-image'>
+                <img src={this.props.pin.pictureUrl}/>
+              </div>
+            </div>
+            <div className='button-footer'>
+              <div className='buttons-left'>
+                <button
+                  className='rectangle-btn'
+                  onClick={this.handleDelete} >
+                  Delete
                 </button>
-                <p>Click to upload</p>
-                <input type="file"
-                  onChange={this.handleFile.bind(this)}>
-                </input>
-                <div className="upload-footer">
-                  {this.displayFooter()}
-                </div>
               </div>
-            </div>
-            <div className='pin-form-content'>
-              <div className='pin-title'>
-                <textarea
-                  placeholder='Add your title'
-                  onChange={this.update('title')}>
-                </textarea>
-              </div>
-
-              <div className='pin-description'>
-                <textarea
-                  placeholder='Tell everyone what your Pin is about'
-                  onChange={this.update('description')}>
-                </textarea>
-              </div>
-
-              <div className='pin-url'>
-                <textarea
-                  placeholder='Add a destination link'
-                  onChange={this.update('link_url')}>
-                </textarea>
-              </div>
-              <div
-                className='board-choices'
-                onClick={this.showBoardScroll} >
-                <p>{this.state.choiceDialogue}</p>
-                <div className='arrow-down'>
-                  <i className='fas fa-chevron-down'></i>
-                </div>
+              <div className='buttons-right'>
+                <button
+                  className='rectangle-btn'
+                  onClick={() => this.props.closeModal()} >
+                  Cancel
+                </button>
+                <button
+                  className={'rectangle-btn save-btn'}
+                  onClick={this.handleSubmit} >
+                  Save
+                </button>
               </div>
             </div>
           </div>
-          {this.displayBoardScroll()}
-        </div> */}
-      </div>
-    )
+        </div>
+      )
+    } else {
+      return <div></div>
+    }
   }
 }
 

@@ -3,6 +3,7 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import CreateBoardFormContainer from '../boards/create_board_form_container';
 import EditBoardFormContainer from '../boards/edit_board_form_container';
+import EditPinFormContainer from '../pins/edit_pin_form_container';
 
 function Modal({ modal, closeModal}) {
   if (!modal) {
@@ -16,6 +17,9 @@ function Modal({ modal, closeModal}) {
       break;
     case 'editBoard':
       component = <EditBoardFormContainer/>;
+      break;
+    case 'editPin':
+      component = <EditPinFormContainer />;
       break;
     default:
       return null;

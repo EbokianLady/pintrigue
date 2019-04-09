@@ -3,20 +3,30 @@ import { Route, Redirect, Switch, Link, HashRouter, withRouter } from 'react-rou
 import { connect } from 'react-redux';
 import { updatePin, deletePin } from '../../actions/pin_actions';
 import { fetchBoards } from '../../actions/board_actions';
-// import CreatePinForm from './create_pin_form';
+import EditPinForm from './edit_pin_form';
+import { closeModal } from '../../actions/modal_actions';
 
 const msp = (state, ownProps) => {
-  const username = ownProps.match.params.username;
-  const boards = Object.values(state.entities.boards);
+  const pinId = state.ui.currentObject;
+  const pin = state.entities.pins[pinId];
+  const currentUser = state.entities.users[state.session.id];
+  const users = Object.values(state.entities.users);
+  let creator;
+
+  if (users.length > 0 && pin) {
+    const user = users.filter(user => user.id === pin.creator.id)[0];
+    creator = user.username;
+  }
+
   return ({
-    // username, boards
+    pin, currentUser, creator
   });
 };
 
 const mdp = dispatch => ({
   updatePin: (pin) => dispatch(updatePin(pin)),
   deletePin: (pinId) => dispatch(deletePin(pinId)),
-  // fetchBoards: (username) => dispatch(fetchBoards(username))
+  closeModal: (username) => dispatch(closeModal(username)),
 });
 
 export default withRouter(connect(msp, mdp)(EditPinForm));

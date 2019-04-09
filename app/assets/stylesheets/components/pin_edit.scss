@@ -1,0 +1,98 @@
+@import "./base/constants.scss";
+
+.pin-edit-buffer {
+  @extend %flex-row;
+  align-items: center;
+  height: 100%;
+}
+
+.pin-form-box {
+  @extend %flex-column;
+  background-color: $white;
+  border-radius: 8px;
+  box-sizing: border-box;
+  width: 730px;
+
+  .pin-header {
+    box-sizing: border-box;
+    border-bottom: 1px solid $lighter-gray;
+    font-family: $font;
+    padding: 20px 50px;
+    width: 100%;
+
+    h3 {
+      font-size: 22px;
+      margin: 0px;
+      text-align: center;
+    }
+  }
+
+  .button-footer {
+    @extend %flex-row;
+    justify-content: space-between;
+    align-items: center;
+    font-family: $font;
+    width: 100%;
+    padding: 16px;
+    box-sizing: border-box;
+    border-top: 1px solid $lighter-gray;
+
+    .buttons-right {
+      @extend %flex-row;
+      align-items: center;
+    }
+  }
+
+}
+
+.pin-form-body {
+  @extend %flex-row;
+  justify-content: space-between;
+  width: 100%;
+
+  .pin-aside {
+    box-sizing: border-box;
+    padding: 12px 16px;
+    font-family: $font;
+    font-size: 14px;
+    width: 100%;
+
+    div {
+      @extend %flex-row;
+      box-sizing: border-box;
+      justify-content: space-between;
+      margin-bottom: 12px;
+
+      p {
+        font-size: 12px;
+        padding-top: 10px;
+      }
+    }
+
+    .pin-title {
+      .input {
+        margin-bottom: 0px;
+        width: 292px;
+      }
+    }
+
+    .pin-description {
+      .input {
+        margin-bottom: 0px;
+        height: 92px;
+        width: 292px;
+      }
+    }
+  }
+
+  .pin-image {
+    box-sizing: border-box;
+    padding: 12px 16px;
+    width: 268px;
+
+    img {
+      width: 236px;
+      border-radius: 8px;
+    }
+  }
+}
