@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { updatePin, deletePin } from '../../actions/pin_actions';
 import { fetchBoards } from '../../actions/board_actions';
 import EditPinForm from './edit_pin_form';
-import { closeModal } from '../../actions/modal_actions';
+import { closeModal, openModal } from '../../actions/modal_actions';
 
 const msp = (state, ownProps) => {
   const pinId = state.ui.currentObject;
@@ -26,7 +26,8 @@ const msp = (state, ownProps) => {
 const mdp = dispatch => ({
   updatePin: (pin) => dispatch(updatePin(pin)),
   deletePin: (pinId) => dispatch(deletePin(pinId)),
-  closeModal: (username) => dispatch(closeModal(username)),
+  closeModal: (modal) => dispatch(closeModal(modal)),
+  openModal: (modal, objectId) => dispatch(openModal(modal, objectId)),
 });
 
 export default withRouter(connect(msp, mdp)(EditPinForm));

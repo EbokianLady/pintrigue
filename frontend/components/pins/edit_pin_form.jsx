@@ -10,16 +10,13 @@ class EditPinForm extends React.Component {
       pin: {
         id: pin.id,
         board_id: pin.board_id,
-        description: pin.description,
-        title: pin.title,
+        description: pin.description || '',
+        title: pin.title || '',
       }
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDeleteRequest = this.handleDeleteRequest.bind(this);
     this.update = this.update.bind(this);
-  }
-
-  componentDidMount() {
-
   }
 
   update(field) {
@@ -28,12 +25,13 @@ class EditPinForm extends React.Component {
     };
   }
 
-  handleDelete(e) {
-
+  handleDeleteRequest(e) {
+    this.props.openModal('deletePin', this.props.pin.id);
   }
 
   handleSubmit(e) {
     e.preventDefault();
+    this.props.updatePin(this.state.pin).then(this.props.closeModal());
   }
 
   displayPhoto() {
@@ -84,7 +82,7 @@ class EditPinForm extends React.Component {
               <div className='buttons-left'>
                 <button
                   className='rectangle-btn'
-                  onClick={this.handleDelete} >
+                  onClick={this.handleDeleteRequest} >
                   Delete
                 </button>
               </div>

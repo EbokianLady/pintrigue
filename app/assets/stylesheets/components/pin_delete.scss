@@ -1,0 +1,42 @@
+@import "./base/constants.scss";
+
+.form-buffer {
+  @extend %flex-row;
+  align-items: center;
+  height: 100%;
+
+  .delete-form {
+    height: 190px;
+    width: 414px;
+    background-color: $white;
+    border-radius: 8px;
+    font-family: $font;
+
+    .delete-header {
+      box-sizing: border-box;
+      padding: 20px 50px;
+      width: 100%;
+
+      p {
+        font-size: 22px;
+        font-weight: bold;
+        text-align: center;
+      }
+    }
+
+    .delete-body {
+      box-sizing: border-box;
+      padding: 16px;
+      font-size: 14px;
+      border-bottom: 1px solid $lightest-gray;
+      border-top: 1px solid $lightest-gray;
+    }
+
+    .delete-footer {
+      @extend %flex-row;
+      justify-content: flex-end;
+      padding: 16px;
+      align-items: center;
+    }
+  }
+}

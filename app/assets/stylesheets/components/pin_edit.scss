@@ -11,7 +11,7 @@
   background-color: $white;
   border-radius: 8px;
   box-sizing: border-box;
-  width: 730px;
+  width: 450px;
 
   .pin-header {
     box-sizing: border-box;
@@ -29,13 +29,13 @@
 
   .button-footer {
     @extend %flex-row;
-    justify-content: space-between;
     align-items: center;
-    font-family: $font;
-    width: 100%;
-    padding: 16px;
-    box-sizing: border-box;
     border-top: 1px solid $lighter-gray;
+    box-sizing: border-box;
+    font-family: $font;
+    justify-content: space-between;
+    padding: 16px;
+    width: 100%;
 
     .buttons-right {
       @extend %flex-row;
@@ -46,41 +46,46 @@
 }
 
 .pin-form-body {
-  @extend %flex-row;
+  @extend %flex-column;
   justify-content: space-between;
   width: 100%;
 
   .pin-aside {
     box-sizing: border-box;
-    padding: 12px 16px;
     font-family: $font;
     font-size: 14px;
+    height: 100%;
+    padding: 12px 16px 0px 16px;
     width: 100%;
 
     div {
-      @extend %flex-row;
+      @extend %flex-column;
+      align-items: flex-start;
       box-sizing: border-box;
       justify-content: space-between;
       margin-bottom: 12px;
 
+      .input {
+        width: 418px;
+      }
+
       p {
         font-size: 12px;
         padding-top: 10px;
+        margin-bottom: 10px;
       }
     }
 
     .pin-title {
       .input {
         margin-bottom: 0px;
-        width: 292px;
       }
     }
 
     .pin-description {
       .input {
-        margin-bottom: 0px;
         height: 92px;
-        width: 292px;
+        margin-bottom: 0px;
       }
     }
   }
@@ -91,8 +96,33 @@
     width: 268px;
 
     img {
-      width: 236px;
       border-radius: 8px;
+      width: 236px;
+    }
+  }
+}
+
+@media screen and (min-width: 770px) {
+  .pin-form-box {
+    width: 730px;
+  }
+
+  .pin-form-body {
+    align-items: flex-start;
+    flex-direction: row;
+
+    .pin-aside {
+      div {
+        flex-direction: row;
+
+        .input {
+          width: 292px;
+        }
+      }
+
+      p {
+        margin-bottom: 0px;
+      }
     }
   }
 }

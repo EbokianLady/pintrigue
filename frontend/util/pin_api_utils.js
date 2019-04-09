@@ -22,7 +22,7 @@ export const fetchBoardPins = (id) => {
 export const fetchPin = (id) => {
   return $.ajax({
     method: 'GET',
-    url: `api/pins/${id}`
+    url: `api/pin_joins/${id}`
   });
 };
 
@@ -36,10 +36,18 @@ export const createPin = (formData, id) => {
   });
 };
 
+export const createPinJoin = (pin, id) => {
+  return $.ajax({
+    method: 'POST',
+    url: `api/boards/${id}/pin_joins`,
+    data: { pin },
+  });
+};
+
 export const updatePin = (pin) => {
   return $.ajax({
     method: 'PATCH',
-    url: `api/pins/${pin.id}`,
+    url: `api/pin_joins/${pin.id}`,
     data: { pin }
   });
 };
@@ -47,6 +55,6 @@ export const updatePin = (pin) => {
 export const deletePin = (id) => {
   return $.ajax({
     method: 'DELETE',
-    url: `api/pins/${id}`
+    url: `api/pin_joins/${id}`
   });
 };

@@ -5,11 +5,24 @@ import PinBoardIndexContainer from '../pins/pin_board_index_container';
 class PinShow extends React.Component {
   constructor(props) {
     super(props);
+    this.showModal = this.showModal.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchPin(this.props.pinId)
       .then(this.props.fetchBoard(this.props.boardId));
+  }
+
+  displayEdit() {
+      if (this.props.pin.creator.id === this.props.currentUser.id) {
+        return (
+          <button
+          className='prof-buttons'
+          onClick={this.showModal}>
+            <i className='fas fa-pen p2-fas'></i>
+          </button>
+        )
+      }
   }
 
   displayLink() {
@@ -37,6 +50,10 @@ class PinShow extends React.Component {
     }
   }
 
+  showModal(e) {
+    this.props.openModal('editPin', this.props.pin.id);
+  }
+
   render() {
     const { pin } = this.props;
 
@@ -45,10 +62,9 @@ class PinShow extends React.Component {
         <div className='pin-buffer'>
           <div className='pin-panel'>
             <div className='pin-header'>
-              <button
-                className='prof-buttons'>
-                <i className='fas fa-pen p2-fas'></i>
-              </button>
+              <>
+                {this.displayEdit()}
+              </>
               <button
                 className='save-btn'>
                 <i className='fas fa-map-pin'></i>
@@ -58,7 +74,9 @@ class PinShow extends React.Component {
             <h3>{pin.title}</h3>
             <img className='pin-image' src={pin.pictureUrl} />
             {this.displayLink()}
+            <h5>{pin.description}</h5>
             <div className='pin-footer'>
+              {pin.creator.pictureUrl}
               <Link
                 to={`/${pin.creator.username}`}>
                 {this.displayUsername()}

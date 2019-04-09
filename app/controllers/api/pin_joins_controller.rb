@@ -3,31 +3,37 @@
 module Api
   # PinJoins Controller
   class PinJoinsController < ApplicationController
+    def index
+      @pinjoins = PinJoin.includes(:pin).all
+      render 'api/pins/index'
+    end
+
+    def update
+      @pinjoin = current_user.pin_joins.find(params[:id])
+      @pinjoin.update!(pinjoin_params)
+      render 'api/pins/show'
+    end
+
+    def show
+      @pinjoin = PinJoin.includes(:pin).find(params[:id])
+      render 'api/pins/show'
+    end
+
     def create
-      board = Board.find(params[:board_id])
-      # pin = Pin.find!(params[:pin][:])
-
-      # @pinjoin = PinJoin.create!(
-      #   pin_id: pin.id,
-      #   board_id: board.id,
-      #   description: params[:pin][:description],
-      #   title: params[:pin][:title]
-      # )
-
+      @pinjoin = PinJoin.create!(pinjoin_params)
       render 'api/pins/show'
     end
 
     def destroy
-      pinjoin = current_user.pin_joins.find(params[:id])
-      pinjoin.destroy
-      @board = pinjoin.board
-      render 'api/boards/show'
+      @pinjoin = current_user.pin_joins.find(params[:id])
+      @pinjoin.destroy
+      render 'api/pins/show'
     end
 
     private
 
     def pinjoin_params
-      params.require(:pin).permit(:description, :title)
+      params.require(:pin).permit(:description, :title, :pin_id, :board_id)
     end
   end
 end

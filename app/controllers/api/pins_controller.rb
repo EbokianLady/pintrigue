@@ -20,17 +20,6 @@ module Api
       render 'api/pins/index'
     end
 
-    def show
-      @pinjoin = PinJoin.includes(:pin).find(params[:id])
-      render 'api/pins/show'
-    end
-
-    def update
-      @pinjoin = current_user.pin_joins.find(params[:id])
-      @pinjoin.update!(pinjoin_params)
-      render 'api/pins/show'
-    end
-
     # TO-DO this should rollback if any part fails. How?
     def create
       board = Board.find(params[:board_id])
@@ -42,13 +31,6 @@ module Api
         title: params[:pin][:title]
       )
       render 'api/pins/show'
-    end
-
-    def destroy
-      pinjoin = current_user.pin_joins.find(params[:id])
-      pinjoin.destroy
-      @board = pinjoin.board
-      render 'api/boards/show'
     end
 
     private
