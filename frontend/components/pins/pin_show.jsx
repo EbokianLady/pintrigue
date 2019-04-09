@@ -8,7 +8,33 @@ class PinShow extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchPin(this.props.pinId);
+    this.props.fetchPin(this.props.pinId)
+      .then(this.props.fetchBoard(this.props.boardId));
+  }
+
+  displayLink() {
+    const { pin } = this.props;
+
+    if (pin.link_url !== '') {
+      return (
+        <div className='pin-link-box'>
+          <a href={pin.link_url} target='_blank' className='pin-link'>
+            <i className="fas fa-external-link-alt"></i>
+            <p>Check it out</p>
+          </a>
+        </div>
+      )
+    }
+  }
+
+  displayUsername() {
+    const { pin } = this.props;
+
+    if (this.props.currentUser.username === pin.creator.username) {
+      return 'You'
+    } else {
+      return pin.creator.username
+    }
   }
 
   render() {
@@ -31,8 +57,14 @@ class PinShow extends React.Component {
             </div>
             <h3>{pin.title}</h3>
             <img className='pin-image' src={pin.pictureUrl} />
+            {this.displayLink()}
             <div className='pin-footer'>
-
+              <Link
+                to={`/${pin.creator.username}`}>
+                {this.displayUsername()}
+              </Link>
+              <p>saved to ...</p>
+              <p></p>
             </div>
           </div>
         </div>

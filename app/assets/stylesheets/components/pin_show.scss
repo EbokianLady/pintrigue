@@ -37,4 +37,50 @@
   img {
     border-radius: 8px;
   }
+
+  .pin-link-box {
+    border-bottom: 1px solid $lighter-gray;
+  }
+
+  .pin-link {
+    @extend %flex-row;
+    align-items: center;
+    background-color: $lighter-gray;
+    border-radius: 12px;
+    box-sizing: border-box;
+    color: $darker-gray;
+    font-family: $font;
+    font-size: 14px;
+    height: 32px;
+    justify-content: center;
+    margin: 12px 0px;
+    padding: 4px;
+    width: 582px;
+
+    &:hover {
+      background-color: $light-gray;
+    }
+
+    i {
+      margin-right: 8px;
+    }
+  }
+
+  .pin-footer {
+    @extend %flex-row;
+    font-family: $font;
+    justify-content: flex-start;
+    padding: 12px 0px;
+    width: 582px;
+
+    a {
+      cursor: pointer;
+      font-weight: bold;
+      margin-right: 5px;
+    }
+
+    p {
+      margin-right: 5px;
+    }
+  }
 }

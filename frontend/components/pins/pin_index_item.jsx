@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class PinIndexItem extends React.Component {
   constructor(props) {
@@ -9,6 +9,13 @@ class PinIndexItem extends React.Component {
     this.turnOnVisibility = this.turnOnVisibility.bind(this);
     this.displayLinks = this.displayLinks.bind(this);
     this.showModal = this.showModal.bind(this);
+    this.toPinShow = this.toPinShow.bind(this);
+  }
+
+  toPinShow(e) {
+    if (e.target.className.includes('p-link')) {
+      this.props.history.push(`/pins/${this.props.pin.id}`);
+    }
   }
 
   showModal(e) {
@@ -34,7 +41,7 @@ class PinIndexItem extends React.Component {
       if (pin.link_url !== '') {
         link = (
           <a href={pin.link_url} target='_blank'>
-            <i className='fas fa-chevron-right'></i>
+            <i className="fas fa-external-link-alt"></i>
             <p>Check it out</p>
           </a>
         )
@@ -53,8 +60,8 @@ class PinIndexItem extends React.Component {
       }
 
       return (
-        <Link className='p-links visible'
-          to={`/pins/${pin.id}`}
+        <div className='p-links visible'
+          onClick={this.toPinShow}
           style={{ 'height': imageHeight }}>
             <div className='top-links'>
               {edit}
@@ -67,7 +74,7 @@ class PinIndexItem extends React.Component {
             <div className='bottom-links'>
               {link}
             </div>
-        </Link>
+        </div>
       )
     }
   }
@@ -95,4 +102,4 @@ class PinIndexItem extends React.Component {
   }
 }
 
-export default PinIndexItem;
+export default withRouter(PinIndexItem);
