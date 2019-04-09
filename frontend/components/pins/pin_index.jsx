@@ -27,7 +27,11 @@ class PinIndex extends React.Component {
 
   render() {
     const pins = this.props.pins.map((pin, i) => {
-      return <PinIndexItem pin={pin} key={i} onAddPin={this.addPin}/>
+      return <PinIndexItem
+        pin={pin}
+        key={i}
+        onAddPin={this.addPin}
+        currentUser={this.props.currentUser} />
     });
 
     return (

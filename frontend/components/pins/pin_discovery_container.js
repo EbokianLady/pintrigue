@@ -4,11 +4,13 @@ import PinIndex from './pin_index';
 import { fetchAllPins } from '../../actions/pin_actions';
 
 const msp = (state, ownProps) => {
+  const currentUser = state.entities.users[state.session.id];
   const pins = Object.values(state.entities.pins);
 
   return ({
+    currentUser,
+    pins,
     type: 'All',
-    pins
   });
 };
 

@@ -6,13 +6,14 @@ import BoardIndex from './board_index';
 import { openModal } from '../../actions/modal_actions';
 
 const msp = (state, ownProps) => {
+  const currentUser = state.entities.users[state.session.id];
   const username = ownProps.match.params.username;
   const user = state.entities.users[username];
   const boards = Object.values(state.entities.boards);
   const pins = Object.values(state.entities.pins);
 
   return ({
-    username, user, boards, pins
+    currentUser, username, user, boards, pins
   });
 };
 

@@ -8,13 +8,22 @@ import BoardForm from './board_form';
 const msp = (state, ownProps) => {
   const boardId = state.ui.currentObject;
   const board = state.entities.boards[boardId];
+  const currentUser = state.entities.users[state.session.id];
+  const users = Object.values(state.entities.users);
+  let creator;
+
+  if (users.length > 0 && board) {
+    const user = users.filter(user => user.id === board.creator_id)[0];
+    creator = user.username;
+  }
 
   return ({
-    username: ownProps.match.params.username,
+    board,
+    buttonText: 'Save',
+    creator,
+    currentUser,
     formType: 'edit',
     header: 'Edit your board',
-    buttonText: 'Save',
-    board
   });
 };
 

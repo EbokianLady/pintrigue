@@ -24,7 +24,7 @@ class BoardIndexItem extends React.Component {
 
   // TO-DO current user permissions
   displayEdit() {
-    if (this.state.visible) {
+    if (this.state.visible && this.props.authorized) {
       return (
         <button
           onClick={this.showModal}
@@ -35,7 +35,7 @@ class BoardIndexItem extends React.Component {
     }
   }
 
-  displayImage() {
+  displayCover() {
     const { pins } = this.props;
     if (pins.length > 2) {
       return (
@@ -54,7 +54,7 @@ class BoardIndexItem extends React.Component {
 
   render() {
     const { board } = this.props;
-    this.displayImage();
+    this.displayCover();
 
     return (
       <div
@@ -64,7 +64,7 @@ class BoardIndexItem extends React.Component {
         <Link
           to={`/boards/${board.id}`} >
           <div className='b-cover'>
-            {this.displayImage()}
+            {this.displayCover()}
           </div>
           <div className='b-info'>
             <div>

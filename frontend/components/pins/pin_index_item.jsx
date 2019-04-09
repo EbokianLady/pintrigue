@@ -29,6 +29,7 @@ class PinIndexItem extends React.Component {
       const { pin } = this.props;
       const imageHeight = (pin.row_height * 10);
       let link;
+      let edit;
 
       if (pin.link_url !== '') {
         link = (
@@ -39,16 +40,24 @@ class PinIndexItem extends React.Component {
         )
       }
 
+      if (this.props.currentUser.username === pin.creator.username) {
+        edit = (
+          <button
+            className='p-btn'
+            onClick={this.showModal} >
+            <i className='fas fa-pen'></i>
+          </button>
+        )
+      } else {
+        edit = <div></div>
+      }
+
       return (
         <Link className='p-links visible'
           to={`/pins/${pin.id}`}
           style={{ 'height': imageHeight }}>
             <div className='top-links'>
-              <button
-                className='p-btn'
-                onClick={this.showModal} >
-                <i className='fas fa-pen'></i>
-              </button>
+              {edit}
               <button
                 className='save-btn'>
                 <i className='fas fa-map-pin'></i>
