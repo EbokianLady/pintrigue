@@ -11,7 +11,6 @@ const msp = (state, ownProps) => {
   const user = state.entities.users[username];
   const boards = Object.values(state.entities.boards);
   const pins = Object.values(state.entities.pins);
-
   return ({
     currentUser, username, user, boards, pins
   });

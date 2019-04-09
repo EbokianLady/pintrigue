@@ -7,11 +7,6 @@ class BoardIndex extends React.Component {
     super(props);
   }
 
-  // DO NOT DO THIS! How do you get the state to re-render after deleting an item?
-  // componentDidUpdate() {
-  //   this.props.fetchBoards(this.props.username);
-  // }
-
   componentDidMount() {
     this.props.fetchUserPins(this.props.username);
     this.props.fetchBoards(this.props.username);

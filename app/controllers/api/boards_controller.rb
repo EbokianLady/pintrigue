@@ -29,9 +29,8 @@ module Api
 
     def destroy
       @board = current_user.boards.find(params[:id])
-      @user = current_user
       @board.destroy
-      render 'api/users/show'
+      render 'api/boards/show'
     end
 
     private
