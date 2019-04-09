@@ -5,6 +5,7 @@ import CreateBoardFormContainer from '../boards/create_board_form_container';
 import EditBoardFormContainer from '../boards/edit_board_form_container';
 import EditPinFormContainer from '../pins/edit_pin_form_container';
 import DeletePinFormContainer from '../pins/delete_pin_form';
+import CreatePinJoinFormContainer from '../pins/create_pinjoin_form_container';
 
 function Modal({ modal, closeModal}) {
   if (!modal) {
@@ -24,6 +25,9 @@ function Modal({ modal, closeModal}) {
       break;
     case 'deletePin':
       component = <DeletePinFormContainer />;
+      break;
+    case 'createPinJoin':
+      component = <CreatePinJoinFormContainer />;
       break;
     default:
       return null;

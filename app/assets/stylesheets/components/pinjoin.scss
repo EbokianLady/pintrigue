@@ -1,0 +1,96 @@
+@import "./base/constants.scss";
+
+.pinjoin-form {
+  width: 730px;
+  background-color: $white;
+  border-radius: 8px;
+  font-family: $font;
+
+  .pinjoin-header {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px 50px;
+
+    h3 {
+      font-size: 22px;
+      margin: 0px;
+      text-align: center;
+    }
+  }
+
+  .pinjoin-footer {
+    @extend %flex-row;
+    padding: 20px;
+    justify-content: flex-end;
+    border-top: 1px solid $lighter-gray;
+  }
+}
+
+.pinjoin-body {
+  @extend %flex-row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.pinjoin-left {
+  @extend %flex-column;
+  justify-content: center;
+  padding: 12px;
+  width: 300px;
+
+  .pinjoin-pic {
+    width: 216px;
+    margin-bottom: 12px;
+  }
+
+  .pin-title {
+    .input {
+      width: 216px;
+    }
+  }
+}
+
+.pinjoin-right {
+  width: 430px;
+
+  .board-scroll-container-2 {
+  @extend %flex-column;
+  box-sizing: border-box;
+  font-family: $font;
+  overflow: scroll;
+  width: 420px;
+
+  .board-option {
+    box-sizing: border-box;
+    padding: 8px 24px;
+    @extend %flex-row;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    width: 420px;
+    height: 52px;
+
+    &:hover {
+      background-color: $lighter-gray;
+    }
+
+    p {
+      font-family: $font;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .select-btn {
+      @extend %flex-row;
+      align-items: center;
+      height: 36px;
+      background-color: $pop;
+      color: $white;
+      font-weight: 500px;
+      font-size: 14px;
+      padding: 8px 12px;
+      border-radius: 4px;
+    }
+  }
+}
+}

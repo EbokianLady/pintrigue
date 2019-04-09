@@ -27,7 +27,7 @@ class SelectBoard extends React.Component {
   displayLinks() {
     if (this.state.visible) {
       return (
-        <button 
+        <button
           className='select-btn'
           onClick={this.handleBoard}>
           Select

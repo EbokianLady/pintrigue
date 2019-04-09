@@ -8,7 +8,8 @@ class PinIndexItem extends React.Component {
     this.turnOffVisibility = this.turnOffVisibility.bind(this);
     this.turnOnVisibility = this.turnOnVisibility.bind(this);
     this.displayLinks = this.displayLinks.bind(this);
-    this.showModal = this.showModal.bind(this);
+    this.showEditModal = this.showEditModal.bind(this);
+    this.showCreateModal = this.showCreateModal.bind(this);
     this.toPinShow = this.toPinShow.bind(this);
   }
 
@@ -18,8 +19,12 @@ class PinIndexItem extends React.Component {
     }
   }
 
-  showModal(e) {
+  showEditModal(e) {
     this.props.openModal('editPin', this.props.pin.id);
+  }
+
+  showCreateModal(e) {
+    this.props.openModal('createPinJoin', this.props.pin.id);
   }
 
   turnOffVisibility(e) {
@@ -51,7 +56,7 @@ class PinIndexItem extends React.Component {
         edit = (
           <button
             className='p-btn'
-            onClick={this.showModal} >
+            onClick={this.showEditModal} >
             <i className='fas fa-pen'></i>
           </button>
         )
@@ -66,7 +71,8 @@ class PinIndexItem extends React.Component {
             <div className='top-links'>
               {edit}
               <button
-                className='save-btn'>
+                className='save-btn'
+                onClick={this.showCreateModal}>
                 <i className='fas fa-map-pin'></i>
                 <p>Save</p>
               </button>

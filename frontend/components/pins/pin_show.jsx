@@ -76,7 +76,6 @@ class PinShow extends React.Component {
             {this.displayLink()}
             <h5>{pin.description}</h5>
             <div className='pin-footer'>
-              {pin.creator.pictureUrl}
               <Link
                 to={`/${pin.creator.username}`}>
                 {this.displayUsername()}

@@ -20,7 +20,9 @@ module Api
     end
 
     def create
-      @pinjoin = PinJoin.create!(pinjoin_params)
+      @pinjoin = PinJoin.new(pinjoin_params)
+      @pinjoin.board_id = params[:board_id]
+      @pinjoin.save!
       render 'api/pins/show'
     end
 

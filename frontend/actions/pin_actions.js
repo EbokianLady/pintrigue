@@ -73,6 +73,14 @@ export const createPin = (formData, boardId) => dispatch => (
   ))
 );
 
+export const createPinJoin = (pin, boardId) => dispatch => (
+  PinApiUtil.createPinJoin(pin, boardId).then(pin => (
+    dispatch(receivePin(pin))
+  ), err => (
+    dispatch(receivePinErrors(err.responseJSON))
+  ))
+);
+
 export const updatePin = pin => dispatch => (
   PinApiUtil.updatePin(pin).then(pin => (
     dispatch(receivePin(pin))
