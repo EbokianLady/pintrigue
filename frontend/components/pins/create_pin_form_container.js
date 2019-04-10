@@ -7,7 +7,10 @@ import CreatePinForm from './create_pin_form';
 
 const msp = (state, ownProps) => {
   const username = ownProps.match.params.username;
-  const boards = Object.values(state.entities.boards);
+  const currentUserId = state.session.id;
+  const boards = Object.values(state.entities.boards)
+    .filter(board => board.creator_id === currentUserId);
+
   return ({
     username, boards
   });
@@ -15,7 +18,7 @@ const msp = (state, ownProps) => {
 
 const mdp = dispatch => ({
   createPin: (pin, boardId) => dispatch(createPin(pin, boardId)),
-  fetchBoards: (username) => dispatch(fetchBoards(username))
+  fetchBoards: () => dispatch(fetchBoards())
 });
 
 export default withRouter(connect(msp, mdp)(CreatePinForm));

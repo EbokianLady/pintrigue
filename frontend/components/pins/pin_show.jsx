@@ -5,7 +5,8 @@ import PinBoardIndexContainer from '../pins/pin_board_index_container';
 class PinShow extends React.Component {
   constructor(props) {
     super(props);
-    this.showModal = this.showModal.bind(this);
+    this.showEditModal = this.showEditModal.bind(this);
+    this.showCreateModal = this.showCreateModal.bind(this);
   }
 
   componentDidMount() {
@@ -18,7 +19,7 @@ class PinShow extends React.Component {
         return (
           <button
           className='prof-buttons'
-          onClick={this.showModal}>
+          onClick={this.showEditModal}>
             <i className='fas fa-pen p2-fas'></i>
           </button>
         )
@@ -50,8 +51,12 @@ class PinShow extends React.Component {
     }
   }
 
-  showModal(e) {
+  showEditModal(e) {
     this.props.openModal('editPin', this.props.pin.id);
+  }
+
+  showCreateModal(e) {
+    this.props.openModal('createPinJoin', this.props.pin.id);
   }
 
   render() {
@@ -66,7 +71,8 @@ class PinShow extends React.Component {
                 {this.displayEdit()}
               </>
               <button
-                className='save-btn'>
+                className='save-btn'
+                onClick={this.showCreateModal}>
                 <i className='fas fa-map-pin'></i>
                 <p>Save</p>
               </button>

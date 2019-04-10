@@ -16,13 +16,7 @@ class PinIndex extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.type === 'Board') {
-      this.props.fetchPins(this.props.boardId);
-    } else if (this.props.type === 'User') {
-      this.props.fetchPins(this.props.username);
-    } else {
-      this.props.fetchPins();
-    }
+    this.props.fetchPins();
   }
 
   render() {

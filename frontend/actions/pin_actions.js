@@ -33,24 +33,8 @@ export const receivePinErrors = (errors) => ({
 
 // thunk
 
-export const fetchAllPins = () => dispatch => (
-  PinApiUtil.fetchAllPins().then(pins => (
-    dispatch(receivePins(pins))
-  ), err => (
-    dispatch(receivePinErrors(err.responseJSON))
-  ))
-);
-
-export const fetchUserPins = (id) => dispatch => (
-  PinApiUtil.fetchUserPins(id).then(pins => (
-    dispatch(receivePins(pins))
-  ), err => (
-    dispatch(receivePinErrors(err.responseJSON))
-  ))
-);
-
-export const fetchBoardPins = (id) => dispatch => (
-  PinApiUtil.fetchBoardPins(id).then(pins => (
+export const fetchPins = () => dispatch => (
+  PinApiUtil.fetchPins().then(pins => (
     dispatch(receivePins(pins))
   ), err => (
     dispatch(receivePinErrors(err.responseJSON))

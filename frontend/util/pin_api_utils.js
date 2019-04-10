@@ -1,21 +1,7 @@
-export const fetchAllPins = () => {
+export const fetchPins = () => {
   return $.ajax({
     method: 'GET',
-    url: `api/pins`
-  });
-};
-
-export const fetchUserPins = (id) => {
-  return $.ajax({
-    method: 'GET',
-    url: `api/users/${id}/pins`
-  });
-};
-
-export const fetchBoardPins = (id) => {
-  return $.ajax({
-    method: 'GET',
-    url: `api/boards/${id}/pins`
+    url: `api/pin_joins`
   });
 };
 

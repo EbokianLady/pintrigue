@@ -33,8 +33,8 @@ export const receiveBoardErrors = (errors) => ({
 
 // thunk
 
-export const fetchBoards = (username) => dispatch => (
-  BoardApiUtil.fetchBoards(username).then(boards => (
+export const fetchBoards = () => dispatch => (
+  BoardApiUtil.fetchBoards().then(boards => (
     dispatch(receiveBoards(boards))
   ), err => (
     dispatch(receiveBoardErrors(err.responseJSON))

@@ -3,23 +3,6 @@
 module Api
   # Pins Controller
   class PinsController < ApplicationController
-    def index
-      @pinjoins = PinJoin.includes(:pin).all
-      render 'api/pins/index'
-    end
-
-    def board_index
-      @pinjoins = PinJoin.includes(:pin).where(board_id: params[:board_id])
-      render 'api/pins/index'
-    end
-
-    # TO-DO something is wrong here / check my queries later.
-    def user_index
-      user = User.find_by!(username: params[:user_id])
-      @pinjoins = user.pin_joins.includes(:pin)
-      render 'api/pins/index'
-    end
-
     # TO-DO this should rollback if any part fails. How?
     def create
       board = Board.find(params[:board_id])

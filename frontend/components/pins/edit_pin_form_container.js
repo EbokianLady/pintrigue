@@ -2,7 +2,6 @@ import React from 'react';
 import { Route, Redirect, Switch, Link, HashRouter, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { updatePin, deletePin } from '../../actions/pin_actions';
-import { fetchBoards } from '../../actions/board_actions';
 import EditPinForm from './edit_pin_form';
 import { closeModal, openModal } from '../../actions/modal_actions';
 

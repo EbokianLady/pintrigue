@@ -4,9 +4,6 @@ import configureStore from './store/store';
 import Root from './components/root';
 
 // testing
-import { removeBoard, fetchBoards, fetchBoard } from './actions/board_actions';
-import { fetchAllPins, fetchUserPins, fetchBoardPins, createPin } from './actions/pin_actions';
-import { fetchUsers } from './actions/user_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   let preloadedState = { };

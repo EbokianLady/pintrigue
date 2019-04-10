@@ -16,7 +16,7 @@ class CreatePinJoinForm extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchBoards(this.props.username);
+    this.props.fetchBoards();
   }
 
   handleBoard(board) {

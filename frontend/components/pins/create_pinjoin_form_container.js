@@ -21,7 +21,7 @@ const msp = (state, ownProps) => {
 
 const mdp = dispatch => ({
   createPinJoin: (pin, boardId) => dispatch(createPinJoin(pin, boardId)),
-  fetchBoards: (username) => dispatch(fetchBoards(username)),
+  fetchBoards: () => dispatch(fetchBoards()),
   closeModal: (modal) => dispatch(closeModal(modal)),
 });
 
