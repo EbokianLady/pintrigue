@@ -67,9 +67,9 @@ class PinShow extends React.Component {
         <div className='pin-buffer'>
           <div className='pin-panel'>
             <div className='pin-header'>
-              <>
+              <div>
                 {this.displayEdit()}
-              </>
+              </div>
               <button
                 className='save-btn'
                 onClick={this.showCreateModal}>
