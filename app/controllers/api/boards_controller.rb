@@ -4,12 +4,12 @@ module Api
   # Boards Controller
   class BoardsController < ApplicationController
     def index
-      @boards = Board.all
+      @boards = Board.all.includes(:creator, :pin_joins, :pins)
       render 'api/boards/index'
     end
 
     def show
-      @board = Board.find(params[:id])
+      @board = Board.includes(:creator, :pin_joins, :pins).find(params[:id])
       render 'api/boards/show'
     end
 

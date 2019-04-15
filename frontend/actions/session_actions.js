@@ -8,10 +8,12 @@ export const CLEAR_SESSION_USERNAME_ERRORS = "CLEAR_SESSION_USERNAME_ERRORS";
 export const CLEAR_SESSION_EMAIL_ERRORS = "CLEAR_SESSION_EMAIL_ERRORS";
 export const CLEAR_SESSION_PASSWORD_ERRORS = "CLEAR_SESSION_PASSWORD_ERRORS";
 
-export const receiveCurrentUser = (currentUser) => {
+export const receiveCurrentUser = (payload) => {
   return {
     type: RECEIVE_CURRENT_USER,
-    currentUser,
+    currentUser: payload.user,
+    boards: payload.boards,
+    pins: payload.pins,
   };
 };
 

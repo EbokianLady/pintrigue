@@ -4,7 +4,7 @@ module Api
   # PinJoins Controller
   class PinJoinsController < ApplicationController
     def index
-      @pinjoins = PinJoin.includes(:pin).all
+      @pinjoins = PinJoin.includes(:pin, :board, :creator).all
       render 'api/pins/index'
     end
 
@@ -15,7 +15,7 @@ module Api
     end
 
     def show
-      @pinjoin = PinJoin.includes(:pin).find(params[:id])
+      @pinjoin = PinJoin.includes(:pin, :board, :creator).find(params[:id])
       render 'api/pins/show'
     end
 

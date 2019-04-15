@@ -18,11 +18,13 @@ module Api
 
     def index
       @users = User.all
+      @boards = Board.all
+      @pinjoins = PinJoin.all.includes(:pin)
       render 'api/users/index'
     end
 
     def show
-      @user = User.find_by!(username: params[:id])
+      @user = User.includes(:boards, :pin_joins, :pins).find_by!(username: params[:id])
       render 'api/users/show'
     end
 

@@ -5,17 +5,21 @@ export const RECEIVE_BOARD = 'RECEIVE_BOARD';
 export const REMOVE_BOARD = 'REMOVE_BOARD';
 export const RECEIVE_BOARD_ERRORS = 'RECEIVE_BOARD_ERRORS';
 
-export const receiveBoards = (boards) => {
+export const receiveBoards = (payload) => {
   return {
     type: RECEIVE_BOARDS,
-    boards,
+    users: payload.users,
+    boards: payload.boards,
+    pins: payload.pins,
   };
 };
 
-export const receiveBoard = (board) => {
+export const receiveBoard = (payload) => {
   return {
     type: RECEIVE_BOARD,
-    board,
+    user: payload.user,
+    board: payload.board,
+    pins: payload.pins,
   };
 };
 

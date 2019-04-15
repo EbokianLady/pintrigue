@@ -5,17 +5,21 @@ export const RECEIVE_PIN = "RECEIVE_PIN";
 export const REMOVE_PIN = "REMOVE_PIN";
 export const RECEIVE_PIN_ERRORS = "RECEIVE_PIN_ERRORS";
 
-export const receivePins = (pins) => {
+export const receivePins = (payload) => {
   return {
     type: RECEIVE_PINS,
-    pins,
+    users: payload.users,
+    boards: payload.boards,
+    pins: payload.pins,
   };
 };
 
-export const receivePin = (pin) => {
+export const receivePin = (payload) => {
   return {
     type: RECEIVE_PIN,
-    pin,
+    user: payload.user,
+    board: payload.board,
+    pin: payload.pin,
   };
 };
 
