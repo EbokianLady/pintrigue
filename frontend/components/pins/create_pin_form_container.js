@@ -6,13 +6,13 @@ import { fetchBoards } from '../../actions/board_actions';
 import CreatePinForm from './create_pin_form';
 
 const msp = (state, ownProps) => {
+  const currentUser = state.entities.users[state.session.id];
   const username = ownProps.match.params.username;
-  const currentUserId = state.session.id;
   const boards = Object.values(state.entities.boards)
-    .filter(board => board.creator_id === currentUserId);
+    .filter(board => board.creator_id === currentUser.id);
 
   return ({
-    username, boards
+    currentUser, username, boards
   });
 };
 

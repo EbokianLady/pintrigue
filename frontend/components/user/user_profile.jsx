@@ -58,6 +58,7 @@ class UserProfile extends React.Component {
 
   displayDropDown() {
     if (this.state.dropdown) {
+      debugger
       return (
         <div ref={node => this.node = node} className="profile-visible">
           <button
