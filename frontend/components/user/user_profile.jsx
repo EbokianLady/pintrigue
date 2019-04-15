@@ -7,7 +7,7 @@ class UserProfile extends React.Component {
   constructor(props) {
     super(props);
     // TO-DO add edited: false/true to change button colors
-    this.state = { dropdown: false };
+    this.state = { dropdown: false, showing: 'boards' };
     this.displayName = this.displayName.bind(this);
     this.displayDescription = this.displayDescription.bind(this);
     this.showDropdown = this.showDropdown.bind(this);
@@ -121,26 +121,33 @@ class UserProfile extends React.Component {
     this.props.openModal('createBoard');
   }
 
+  showPins(e) {
+    this.setState({ showing: 'pins' })
+  }
+
+  showBoards(e) {
+    this.setState({ showing: 'boards' })
+  }
+
   render() {
     const { user } = this.props;
-    const path = this.props.history.location.pathname;
+
+    let boardClassName = ' link-selected';
     let pinClassName = '';
-    let boardClassName = '';
     let component = <BoardIndexContainer
       user={this.props.user}
       boards={this.props.boards}
       pins={this.props.pins}
     />
 
-    if (path.match(/pins/)) {
+    if (this.state.showing === 'pins') {
+      boardClassName = '';
       pinClassName += ' link-selected';
       component = <PinUserIndexContainer
         user={this.props.user}
         boards={this.props.boards}
         pins={this.props.pins}
       />
-    } else {
-      boardClassName += ' link-selected';
     }
 
     if (user) {
@@ -162,16 +169,16 @@ class UserProfile extends React.Component {
                   </div>
                 </section>
                 <nav className="profile-buttons">
-                  <Link
-                    to={`/${this.props.username}/boards`}
+                  <button
+                    onClick={this.showBoards.bind(this)}
                     className={'oval-link' + boardClassName}>
                     Boards
-                  </Link>
-                  <Link
-                    to={`/${this.props.username}/pins`}
+                  </button>
+                  <button
+                    onClick={this.showPins.bind(this)}
                     className={'oval-link' + pinClassName}>
                     Pins
-                  </Link>
+                  </button>
                 </nav>
               </div>
                 <div className="profile-image-container">

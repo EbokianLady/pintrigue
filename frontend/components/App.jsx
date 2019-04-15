@@ -6,7 +6,7 @@ import NavbarContainer from './navbar/navbar_container';
 import UserProfileContainer from './user/user_profile_container';
 import LoginContainer from './welcome/login_container';
 import UserEditContainer from './user/user_edit_container';
-import BoardShowContainer from './boards/board_show_continer';
+import BoardShowContainer from './boards/board_show_container';
 import DiscoveryContainer from './pins/pin_discovery_container';
 import SignupContainer from './welcome/signup_container';
 import Modal from './modal/modal';
