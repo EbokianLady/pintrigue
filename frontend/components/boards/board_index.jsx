@@ -7,20 +7,15 @@ class BoardIndex extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
-    this.props.fetchPins();
-    this.props.fetchBoards();
-  }
-
   render() {
     const bool = this.props.user === this.props.currentUser;
     const boards = this.props.boards.map((board, i) => {
       const pins = this.props.pins.filter(pin => pin.board_id === board.id);
       return (
         <BoardIndexItem
-          pins={pins}
-          board={board}
           username={this.props.username}
+          board={board}
+          pins={pins}
           key={i}
           openModal={this.props.openModal}
           authorized={bool}

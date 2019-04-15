@@ -125,8 +125,19 @@ class UserProfile extends React.Component {
     const path = this.props.history.location.pathname;
     let pinClassName = '';
     let boardClassName = '';
+    let component = <BoardIndexContainer
+      user={this.props.user}
+      boards={this.props.boards}
+      pins={this.props.pins}
+    />
+
     if (path.match(/pins/)) {
       pinClassName += ' link-selected';
+      component = <PinUserIndexContainer
+        user={this.props.user}
+        boards={this.props.boards}
+        pins={this.props.pins}
+      />
     } else {
       boardClassName += ' link-selected';
     }
@@ -168,11 +179,7 @@ class UserProfile extends React.Component {
             </div>
           </div>
           <div className="index-buffer">
-            <Switch>
-              <Route path="/:username/boards" component={BoardIndexContainer} />
-              <Route path="/:username/pins" component={PinUserIndexContainer} />
-              <Route path="/:username" component={BoardIndexContainer} />
-            </Switch>
+            {component}
           </div>
         </div>
       )

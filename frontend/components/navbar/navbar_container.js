@@ -1,9 +1,10 @@
-import { connect } from 'react-redux';
 import React from 'react';
-
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { logout } from "../../actions/session_actions";
-import { Link, withRouter } from 'react-router-dom';
 import Navbar from './navbar';
+import { fetchUsers } from '../../actions/user_actions';
+
 
 const msp = (state) => {
   const { session, entities, ui } = state;
@@ -15,6 +16,7 @@ const msp = (state) => {
 const mdp = (dispatch) => {
   return ({
     logout: () => dispatch(logout()),
+    fetchUsers: () => dispatch(fetchUsers()),
   });
 };
 

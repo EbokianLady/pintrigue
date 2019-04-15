@@ -10,8 +10,7 @@ class PinShow extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchPin(this.props.pinId)
-      .then(this.props.fetchBoard(this.props.boardId));
+    this.props.fetchPin(this.props.pinId);
   }
 
   displayEdit() {

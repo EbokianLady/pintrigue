@@ -14,7 +14,6 @@ class BoardShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchBoard(this.props.boardId);
-    this.props.fetchUsers();
   }
 
   componentWillUnmount() {
@@ -95,7 +94,11 @@ class BoardShow extends React.Component {
             </div>
           </div>
           <div className='index-buffer'>
-            <PinBoardIndexContainer />
+            <PinBoardIndexContainer
+              creator={this.props.creator}
+              board={this.props.board}
+              pins={this.props.pins}
+            />
           </div>
         </div>
       )

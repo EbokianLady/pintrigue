@@ -7,22 +7,22 @@ import { openModal } from '../../actions/modal_actions';
 
 const msp = (state, ownProps) => {
   const currentUser = state.entities.users[state.session.id];
-  const username = ownProps.match.params.username;
-  const user = state.entities.users[username];
-  const pins = Object.values(state.entities.pins)
-    .filter(pin => pin.creator.id === user.id);
+  const user = ownProps.user;
+  const username = user.username;
+  const boards = ownProps.boards;
+  const pins = ownProps.pins;
 
   return ({
-    currentUser,
     type: 'User',
-    pins,
-    username,
+    currentUser,
     user,
+    username,
+    boards,
+    pins,
   });
 };
 
 const mdp = dispatch => ({
-  fetchPins: () => dispatch(fetchPins()),
   openModal: (modal, objectId) => dispatch(openModal(modal, objectId)),
 });
 

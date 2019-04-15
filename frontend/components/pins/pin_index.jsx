@@ -12,11 +12,12 @@ class PinIndex extends React.Component {
   addPin() {
     const value = this.state.pinsRendered + 1;
     this.setState({ pinsRendered: value });
-    console.log(this.state.pinsRendered);
   }
 
   componentDidMount() {
-    this.props.fetchPins();
+    if (this.props.type === 'All') {
+      this.props.fetchPins();
+    }
   }
 
   render() {

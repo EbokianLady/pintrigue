@@ -28,6 +28,10 @@ class Navbar extends React.Component {
     }
   }
 
+  componentDidMount() {
+    this.props.fetchUsers();
+  }
+
   componentWillUnmount() {
     document.removeEventListener('mousedown', this.hideDropdown);
   }

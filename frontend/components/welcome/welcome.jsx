@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import LoginFormContainer from '../session_form/login_form_container';
 import SignupFormContainer from '../session_form/signup_form_container';
-import SplashContainer from '../splash/splash_container';
 
 class Welcome extends React.Component {
   constructor(props) {
@@ -22,7 +21,7 @@ class Welcome extends React.Component {
         <div className="modal-transparency">
           <div className="modal-child">
             <div className="session-link-box">
-              <Link 
+              <Link
                 to={route}
                 className="session-link">
                 {this.props.linkText}
@@ -31,7 +30,6 @@ class Welcome extends React.Component {
             {component}
           </div>
         </div>
-        <SplashContainer />
       </div>
     )
   }

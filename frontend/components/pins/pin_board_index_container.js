@@ -6,17 +6,16 @@ import { openModal } from '../../actions/modal_actions';
 
 const msp = (state, ownProps) => {
   const currentUser = state.entities.users[state.session.id];
-  const boardId = ownProps.match.params.boardId;
-  const board = state.entities.boards[boardId];
-  const pins = Object.values(state.entities.pins)
-    .filter(pin => pin.board_id === board.id);
+  const creator = ownProps.creator;
+  const board = ownProps.board;
+  const pins = ownProps.pins;
 
   return ({
-    board,
-    boardId,
-    currentUser,
-    pins,
     type: 'Board',
+    currentUser,
+    creator,
+    board,
+    pins,
   });
 };
 
