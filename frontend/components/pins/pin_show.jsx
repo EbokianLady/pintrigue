@@ -50,6 +50,18 @@ class PinShow extends React.Component {
     }
   }
 
+  displayUserPhoto() {
+    const { creator } = this.props;
+
+    if (creator.photoUrl) {
+      return (
+        <img className='user-thumbnail' src={creator.photoUrl} />
+      )
+    } else {
+      return null;
+    }
+  }
+
   showEditModal(e) {
     this.props.openModal('editPin', this.props.pin.id);
   }
@@ -60,6 +72,7 @@ class PinShow extends React.Component {
 
   render() {
     const { pin } = this.props;
+    const { board } = this.props;
 
     if (pin) {
       return (
@@ -81,12 +94,16 @@ class PinShow extends React.Component {
             {this.displayLink()}
             <h5>{pin.description}</h5>
             <div className='pin-footer'>
+              {this.displayUserPhoto()}
               <Link
                 to={`/${pin.creator.username}`}>
                 {this.displayUsername()}
               </Link>
-              <p>saved to ...</p>
-              <p></p>
+              <p>saved to</p>
+              <Link
+                to={`/boards/${board.id}`}>
+                {board.name}
+              </Link>
             </div>
           </div>
         </div>

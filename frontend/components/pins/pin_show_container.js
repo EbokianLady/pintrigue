@@ -7,17 +7,17 @@ const msp = (state, ownProps) => {
   const currentUser = state.entities.users[state.session.id];
   const pinId = ownProps.match.params.pinId;
   const pin = state.entities.pins[pinId];
-  let boardId;
   let board;
+  let creator;
 
   // this isn't quite working ...
   if (pin) {
-    boardId = pin.board_id;
-    board = state.entities.boards[boardId];
+    board = state.entities.boards[pin.board_id];
+    creator = state.entities.users[pin.creator.username];
   }
 
   return ({
-    pin, pinId, currentUser, boardId, board
+    currentUser, creator, board, pin, pinId
   });
 };
 

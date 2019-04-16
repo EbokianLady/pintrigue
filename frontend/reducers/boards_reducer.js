@@ -26,7 +26,7 @@ const boardsReducer = (state = {}, action) => {
     case RECEIVE_PINS:
       return merge({}, newState, action.boards);
     case RECEIVE_PIN:
-      return merge({}, newState, action.board);
+      return merge({}, newState, { [action.board.id]: action.board });
     default:
       return state;
   }

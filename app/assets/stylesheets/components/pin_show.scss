@@ -77,9 +77,17 @@
   .pin-footer {
     @extend %flex-row;
     font-family: $font;
+    align-items: center;
     justify-content: flex-start;
     padding: 12px 0px;
     width: 582px;
+
+    .user-thumbnail {
+      margin-right: 8px;
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+    }
 
     a {
       cursor: pointer;
