@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     end
     resources :pins, only: [:destroy, :index, :show, :update]
     resources :pin_joins, only: [:destroy, :index, :show, :update]
+    resources :follows, only: [:create, :destroy]
   end
 
 end

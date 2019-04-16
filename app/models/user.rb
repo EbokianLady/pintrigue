@@ -32,6 +32,20 @@ class User < ApplicationRecord
   has_many :pin_joins, through: :boards, source: :pin_joins
   has_many :pins, through: :pin_joins, source: :pin
 
+  has_many :follows, as: :followed
+  has_many :followers, through: :follows
+
+  has_many :followings, foreign_key: :follower_id, class_name: :Follow
+  has_many :followed_users,
+    through: :followings,
+    source: :followed,
+    source_type: :User
+  has_many :followed_boards,
+    through: :followings,
+    source: :followed,
+    source_type: :Board
+
+
   def self.find_by_credentials(params)
     user = User.find_by(email: params[:email])
     user&.matching_password?(params[:password]) ? user : nil

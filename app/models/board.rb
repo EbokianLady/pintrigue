@@ -19,5 +19,6 @@ class Board < ApplicationRecord
   has_many :pin_joins
   has_many :pins, through: :pin_joins, source: :pin
 
-  # has many pictures through pins?
+  has_many :follows, as: :followed
+  has_many :followers, through: :follows
 end
