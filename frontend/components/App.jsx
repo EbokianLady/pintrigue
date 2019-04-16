@@ -17,7 +17,7 @@ import SplashContainer from './splash/splash_container';
 
 const App = () => {
   return (
-    <div>
+    <>
       <Modal />
       <Switch>
         <Route exact path="/" component={SignupContainer}/>
@@ -35,7 +35,7 @@ const App = () => {
         <Route exact path="/:username/pin-builder" component={CreatePinFormContainer} />
         <Route exact path="/:username" component={UserProfileContainer} />
       </Switch>
-    </div>
+    </>
   )
 };
 

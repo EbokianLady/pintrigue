@@ -2,9 +2,8 @@
 
 .pin-buffer {
   @extend %flex-row;
-  background-color: $lighter-gray;
-  height:100%;
-  padding-bottom: 500px;
+  background: linear-gradient(0deg, $white 0%, $lighter-gray 100%);
+  height: 100%;
 }
 
 .pin-panel {
@@ -12,9 +11,10 @@
   align-items: flex-start;
   background-color: $white;
   border-radius: 8px;
+  box-shadow: $lighter-gray 0px 4px 4px;
   box-sizing: border-box;
   height: fit-content;
-  margin-top: 40px;
+  margin: 40px 0px;
   padding: 16px 24px;
   width: 630px;
 
@@ -83,10 +83,10 @@
     width: 582px;
 
     .user-thumbnail {
-      margin-right: 8px;
-      height: 40px;
-      width: 40px;
       border-radius: 50%;
+      height: 40px;
+      margin-right: 8px;
+      width: 40px;
     }
 
     a {
