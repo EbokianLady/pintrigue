@@ -35,6 +35,25 @@ const App = () => {
         <Route exact path="/:username/pin-builder" component={CreatePinFormContainer} />
         <Route exact path="/:username" component={UserProfileContainer} />
       </Switch>
+      <footer className='footer'>
+        <nav className='footer-nav'>
+          <a className='footer-links'
+            target='_blank'
+            href='https://ebokianlady.github.io/'>
+            <i className="far fa-circle"></i>
+          </a>
+          <a className='footer-links'
+            target='_blank'
+            href='https://github.com/EbokianLady'>
+            <i className="fab fa-github"></i>
+          </a>
+          <a className='footer-links'
+            target='_blank'
+            href='https://www.linkedin.com/in/stephanie-keller-8157aa171/'>
+            <i className="fab fa-linkedin-in"></i>
+          </a>
+        </nav>
+      </footer>
     </>
   )
 };

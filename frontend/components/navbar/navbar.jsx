@@ -79,7 +79,7 @@ class Navbar extends React.Component {
   render() {
     if (this.props.currentUser.username) {
       return (
-          <div>
+          <>
             <nav className="navbar signedin">
               <div className="nav-left">
                 <div className="profile-links">
@@ -104,7 +104,7 @@ class Navbar extends React.Component {
               </div>
             </nav>
             {this.displayDropdown()}
-          </div>
+          </>
         )
     } else {
       return (
