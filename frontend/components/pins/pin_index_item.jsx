@@ -44,10 +44,11 @@ class PinIndexItem extends React.Component {
       let edit;
 
       if (pin.link_url !== '') {
+        const urlShort = pin.link_url.match(/(?<=:\/\/).+(?=\/ || ^)/);
         link = (
           <a href={pin.link_url} target='_blank'>
             <i className="fas fa-external-link-alt"></i>
-            <p>Check it out</p>
+            <p>{urlShort}</p>
           </a>
         )
       }

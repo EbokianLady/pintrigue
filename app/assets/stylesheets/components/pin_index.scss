@@ -90,23 +90,33 @@
 
   .bottom-links {
     @extend %flex-row;
+    cursor: pointer;
     justify-content: flex-start;
     width: 216px;
 
     a {
       @extend %flex-row;
       align-items: center;
+      background-color: rgba(40, 40, 40, 0.7);
+      border-radius: 50px;
       box-sizing: border-box;
+      color: $white;
+      cursor: pointer;
       height: 32px;
-      padding: 8px;
-      background-color: $lightest-gray;
-      border-radius: 4px;
-      font-weight: bold;
-      font-size: 14px;
+      padding: 6px 12px;
+
+      &:hover {
+        background-color: rgba(40, 40, 40, 1);
+      }
 
       i {
         margin-right: 8px;
         font-size: 14px;
+      }
+
+      p {
+        font-size: 14px;
+        font-weight: 400;
       }
     }
   }

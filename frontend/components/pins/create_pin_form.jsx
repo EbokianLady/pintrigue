@@ -20,7 +20,6 @@ class CreatePinForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
     this.goBack = this.goBack.bind(this);
-    // this.handleCancel = this.handleCancel.bind(this);
   }
 
   componentDidMount() {
@@ -89,13 +88,11 @@ class CreatePinForm extends React.Component {
     this.setState({ boardscroll: true });
   }
 
-  // handleCancel(e) {
-  //   e.preventDefault();
-  //   this.props.closeModal();
-  // }
-
   handleSubmit(e) {
     e.preventDefault();
+
+    this.handleLinkUrl()
+
     const formData = new FormData();
     formData.append('pin[title]', this.state.pin.title);
     formData.append('pin[description]', this.state.pin.description);
