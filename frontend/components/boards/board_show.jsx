@@ -73,6 +73,8 @@ class BoardShow extends React.Component {
 
   render() {
     const { board } = this.props;
+    const count = (this.props.pins) ? this.props.pins.length : '0';
+    const pinTense = (count === 1) ? 'Pin' : 'Pins';
 
     if (board) {
       return (
@@ -85,7 +87,9 @@ class BoardShow extends React.Component {
                   <h2 className='profile-name'>
                     {board.name}
                   </h2>
-                  <div className='profile-follows'></div>
+                  <div className='profile-follows'>
+                    {count} {pinTense}
+                  </div>
                   <div className="profile-description">
                     {board.description}
                   </div>

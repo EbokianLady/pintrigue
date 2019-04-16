@@ -66,7 +66,10 @@
 }
 
 .profile-follows {
-
+  text-align: left;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -.4px;
 }
 
 .profile-description {
@@ -100,7 +103,7 @@
     border: 2px dashed rgb(218, 218, 218);
     height: 85px;
     width: 85px;
-    
+
     p {
       color: $med-gray;
       font-family: $stylized;

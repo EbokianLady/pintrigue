@@ -54,6 +54,8 @@ class BoardIndexItem extends React.Component {
 
   render() {
     const { board } = this.props;
+    const count = board.pin_join_ids.length
+    const pinTense = (count === 1) ? 'Pin' : 'Pins';
     this.displayCover();
 
     return (
@@ -69,7 +71,7 @@ class BoardIndexItem extends React.Component {
           <div className='b-info'>
             <div>
               <h3 className='b-index-title'>{board.name}</h3>
-              <p className='b-index-pincount'>{board.pin_join_ids.length} Pins</p>
+              <p className='b-index-pincount'>{count} {pinTense}</p>
             </div>
           </div>
         </Link>
