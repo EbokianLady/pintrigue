@@ -58,7 +58,6 @@ class UserProfile extends React.Component {
 
   displayDropDown() {
     if (this.state.dropdown) {
-      debugger
       return (
         <div ref={node => this.node = node} className="profile-visible">
           <button
@@ -106,6 +105,7 @@ class UserProfile extends React.Component {
   }
 
   hideDropdown(e) {
+    debugger
     if (!this.node.contains(e.target)) {
       this.setState({ dropdown: false });
       document.removeEventListener('mousedown', this.hideDropdown);
@@ -131,6 +131,9 @@ class UserProfile extends React.Component {
 
   render() {
     const { user } = this.props;
+    const numFollowers = user.follower_ids.length;
+    const numFollowing = user.followed_board_ids.length + user.followed_user_ids.length;
+    const followerTense = (numFollowers === 1) ? 'follower' : 'followers';
 
     let boardClassName = ' link-selected';
     let pinClassName = '';
@@ -163,7 +166,15 @@ class UserProfile extends React.Component {
                   <h2 className="profile-name">
                     {this.displayName()}
                   </h2>
-                  <div className="profile-follows"></div>
+                  <div className="profile-follows">
+                    <Link to={`/${user.username}/followers`}>
+                      {numFollowers} {followerTense}
+                    </Link>
+                    <div className='bullet'>•</div>
+                    <Link to={`/${user.username}/following`}>
+                      {numFollowing} following
+                    </Link>
+                  </div>
                   <div className="profile-description">
                     {this.displayDescription()}
                   </div>

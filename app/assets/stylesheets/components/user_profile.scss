@@ -66,10 +66,17 @@
 }
 
 .profile-follows {
+  @extend %flex-row;
+  justify-content: flex-start;
+  align-items: center;
   text-align: left;
   font-size: 14px;
   font-weight: 400;
   letter-spacing: -.4px;
+
+  .bullet {
+    margin: 0px 4px;
+  }
 }
 
 .profile-description {
@@ -80,7 +87,6 @@
   font-weight: 400;
   letter-spacing: -.4px;
 }
-
 
 .profile-image-container {
   @extend %flex-row;
@@ -135,7 +141,7 @@
   font-size: 16px;
   font-weight: 700px;
   justify-content: center;
-  min-height: 40px;
+  height: 40px;
   padding: 8px 16px;
 }
 

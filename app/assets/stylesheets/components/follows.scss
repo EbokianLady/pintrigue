@@ -1,0 +1,57 @@
+@import "./base/constants.scss";
+
+.follow-profile-buffer {
+  @extend %flex-row;
+  align-items: center;
+  height: 170px;
+  justify-content: center;
+
+  .follow-profile {
+    @extend %flex-row;
+    height: 130px;
+    margin-top: 40px;
+    width: 100%;
+    max-width: 800px;
+    justify-content: space-between;
+    align-items: center;
+
+    .follow-count {
+      @extend %flex-column;
+      align-items: flex-start;
+      color: $darker-gray;
+      font-family: $font;
+      font-weight: bold;
+
+      .big-number {
+        max-width: 600px;
+        font-size: 36px;
+        letter-spacing: -.4px;
+      }
+
+      p {
+        max-width: 600px;
+        font-size: 14px;
+        letter-spacing: -.4px;
+      }
+    }
+  }
+}
+
+.follow-toggle-nav {
+  @extend %flex-row;
+  align-items: center;
+  height: 52px;
+  justify-content: center;
+
+  .follow-buttons {
+    @extend %flex-row;
+    height: 40px;
+    margin-top: 12px;
+    width: 100%;
+    max-width: 800px;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: $font;
+    font-weight: bold;
+  }
+}
