@@ -6,7 +6,6 @@ module Api
     def create
       User.create!(email: '') if params[:user][:email] == ''
       @user = User.includes(:boards, :pin_joins, :pins).find_by_credentials!(user_params)
-      binding.pry
       login!(@user)
       render 'api/users/show'
     end

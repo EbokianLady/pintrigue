@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import FollowUserIndexItem from './follow_user_index_item';
+import FollowBoardIndexItem from './follow_board_index_item';
 
 class Following extends React.Component {
   constructor(props) {
     super(props);
     this.state = { showing: 'boards' };
-
   }
 
   componentDidMount() {
@@ -27,6 +28,38 @@ class Following extends React.Component {
     }
   }
 
+  displayBoards() {
+    const boardsFollowing = this.props.boardsFollowing.map((board, i) => {
+      const pins = this.props.pins.filter(pin => pin.board_id === board.id)
+      return <FollowBoardIndexItem
+        currentUser={this.props.currentUser}
+        board={board}
+        pins={pins}
+        key={i}
+      />
+    })
+    return (
+      < div className='follow-board-index' >
+        {boardsFollowing}
+      </div >
+    )
+  }
+
+  displayPeople() {
+    const usersFollowing = this.props.usersFollowing.map((follower, i) => {
+      return <FollowUserIndexItem
+        currentUser={this.props.currentUser}
+        user={follower}
+        key={i}
+      />
+    })
+    return (
+      < div className='follow-user-index' >
+        {usersFollowing}
+      </div >
+    )
+  }
+
   showPeople(e) {
     this.setState({ showing: 'people' })
   }
@@ -37,60 +70,57 @@ class Following extends React.Component {
 
   render() {
     const { user } = this.props;
-    const numFollowing = user.followed_board_ids.length + user.followed_user_ids.length;
 
-    let peopleClassName = ' link-selected';
-    let boardClassName = '';
-    // let component = <FollowPeopleIndexContainer
-    //   user={this.props.user}
-    //   boards={this.props.boards}
-    //   pins={this.props.pins}
-    // />
+    if (user) {
+      const numFollowing = user.followed_board_ids.length + user.followed_user_ids.length;
 
-    if (this.state.showing === 'boards') {
-      peopleClassName = '';
-      boardClassName += ' link-selected';
-      // component = <PinUserIndexContainer
-      //   user={this.props.user}
-      //   boards={this.props.boards}
-      //   pins={this.props.pins}
-      // />
-    }
+      let peopleClassName = ' link-selected';
+      let boardClassName = '';
+      let component = this.displayPeople();
 
-    return (
-      <>
-        <div className="follow-profile-buffer">
-          <div className="follow-profile">
-            <div className='follow-count'>
-              <div className='big-number'>
-                {numFollowing}
+      if (this.state.showing === 'boards') {
+        peopleClassName = '';
+        boardClassName += ' link-selected';
+        component = this.displayBoards();
+      }
+
+      return (
+        <>
+          <div className="follow-profile-buffer">
+            <div className="follow-profile">
+              <div className='follow-count'>
+                <div className='big-number'>
+                  {numFollowing}
+                </div>
+                <p>following</p>
               </div>
-              <p>following</p>
-            </div>
-            <div className="profile-image-container">
-              {this.displayProfileImage()}
+              <div className="profile-image-container">
+                {this.displayProfileImage()}
+              </div>
             </div>
           </div>
-        </div>
-        <div className='follow-toggle-nav'>
-          <nav className="follow-buttons">
-            <button
-              onClick={this.showPeople.bind(this)}
-              className={'oval-link' + peopleClassName}>
-              People
-            </button>
-            <button
-              onClick={this.showBoards.bind(this)}
-              className={'oval-link' + boardClassName}>
-              Boards
-            </button>
-          </nav>
-        </div>
-        <div className="index-buffer">
-
-        </div>
-      </>
-    )
+          <div className='follow-toggle-nav'>
+            <nav className="follow-buttons">
+              <button
+                onClick={this.showPeople.bind(this)}
+                className={'oval-link' + peopleClassName}>
+                People
+              </button>
+              <button
+                onClick={this.showBoards.bind(this)}
+                className={'oval-link' + boardClassName}>
+                Boards
+              </button>
+            </nav>
+          </div>
+          <div className="index-buffer">
+            {component}
+          </div>
+        </>
+      )
+    } else {
+      return <div></div>
+    }
   }
 }
 

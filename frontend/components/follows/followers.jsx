@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import FollowUserIndexItem from './follow_user_index_item';
 
 class Followers extends React.Component {
   constructor(props) {
@@ -28,29 +29,44 @@ class Followers extends React.Component {
 
   render() {
     const { user } = this.props;
-    const numFollowers = user.follower_ids.length;
-    const followerTense = (numFollowers === 1) ? 'follower' : 'followers';
 
-    return (
-      <>
-        <div className="follow-profile-buffer">
-          <div className="follow-profile">
-            <div className='follow-count'>
-              <div className='big-number'>
-                {numFollowers}
+    if (user) {
+      const numFollowers = user.follower_ids.length;
+      const followerTense = (numFollowers === 1) ? 'follower' : 'followers';
+
+      const followers = this.props.followers.map((follower, i) => {
+        return <FollowUserIndexItem
+          currentUser={this.props.currentUser}
+          user={follower}
+          key={i}
+        />
+      });
+
+      return (
+        <>
+          <div className="follow-profile-buffer">
+            <div className="follow-profile">
+              <div className='follow-count'>
+                <div className='big-number'>
+                  {numFollowers}
+                </div>
+                <p>{followerTense}</p>
               </div>
-              <p>{followerTense}</p>
-            </div>
-            <div className="profile-image-container">
-              {this.displayProfileImage()}
+              <div className="profile-image-container">
+                {this.displayProfileImage()}
+              </div>
             </div>
           </div>
-        </div>
-        <div className="index-buffer">
-
-        </div>
-      </>
-    )
+          <div className="index-buffer">
+            <div className='follow-user-index'>
+              {followers}
+            </div>
+          </div>
+        </>
+      )
+    } else {
+      return <div></div>
+    }
   }
 }
 

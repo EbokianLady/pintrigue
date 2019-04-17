@@ -55,3 +55,205 @@
     font-weight: bold;
   }
 }
+
+.follow-user-index {
+  @extend %flex-row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 28px;
+}
+
+.follow-user-frame {
+  @extend %flex-column;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  height: 404px;
+  width: 260px;
+
+  .f-user-profile {
+    @extend %flex-column;
+    align-items: center;
+    border-radius: 8px;
+    box-sizing: border-box;
+    padding: 12px 0px;
+    width: 260px;
+
+    &:hover {
+      background-color: $lighter-gray;
+    }
+
+    img {
+      border-radius: 50%;
+      height: 236px;
+      width: 236px;
+    }
+
+    .f-profile-standin {
+    @extend %flex-row;
+    justify-content: center;
+    background-color: $white;
+    border-radius: 50%;
+    border: 2px dashed rgb(218, 218, 218);
+    height: 236px;
+    width: 236px;
+
+    p {
+      color: $med-gray;
+      font-family: $stylized;
+      font-weight: bold;
+      text-align: center;
+      font-size: 140px;
+      line-height: 250px;
+    }
+  }
+
+    .f-user-stats {
+      @extend %flex-column;
+      color: $darker-gray;
+      font-family: $font;
+      justify-content: space-between;
+      padding: 8px 0px;
+      width: 236px;
+      height: 66px;
+
+      h5 {
+        font-size: 21px;
+        font-weight: bold;
+        letter-spacing: -.4px;
+        margin: 0px;
+        max-width: 236px;
+        overflow: hidden;
+        text-align: center;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      p {
+        font-size: 16px;
+        letter-spacing: -.4px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.follow-board-index {
+  @extend %flex-row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 28px;
+}
+
+.follow-board-frame {
+  @extend %flex-column;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  padding: 8px 4px;
+
+  .f-board-profile {
+    @extend %flex-column;
+    box-sizing: border-box;
+    padding: 12px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    height: 280px;
+    width: 324px;
+
+    &:hover {
+      background-color: $lighter-gray;
+    }
+
+    .f-board-cover {
+      border-radius: 8px;
+      width: 300px;
+      height: 200px;
+    }
+
+    .f-board-footer {
+      @extend %flex-row;
+      justify-content: space-between;
+      align-items: center;
+      font-family: $font;
+      color: $darker-gray;
+      width: 100%;
+      height: 56px;
+
+      .f-board-stats {
+        @extend %flex-column;
+        justify-content: space-between;
+        align-items: flex-start;
+        height: 42px;
+
+        h5 {
+          margin: 0px;
+          font-size: 21px;
+          font-weight: bold;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          height: 30px;
+        }
+
+        p {
+          font-size: 14px;
+          font-weight: 400px;
+        }
+      }
+
+      .follow-btn-container {
+        margin: 0px;
+        width: 100px;
+      }
+    }
+  }
+
+
+
+}
+
+.follow-btn-container {
+  box-sizing: border-box;
+  margin-top: 6px;
+  height: 40px;
+  width: 244px;
+
+  .follow-btn {
+    @extend %flex-row;
+    background-color: $lightest-gray;
+    box-sizing: border-box;
+    border-radius: 12px;
+    cursor: pointer;
+    color: $darker-gray;
+    font-family: $font;
+    font-size: 16px;
+    font-weight: bold;
+    height: 40px;
+    justify-content: center;
+    padding: 10px 14px;
+    width: 100%;
+  }
+
+  .follow {
+    background-color: $pop;
+    color: $white;
+
+    &:hover {
+      background-color: $pop-hover;
+    }
+  }
+
+  .unfollow {
+    &:hover {
+      background-color: $med-gray;
+    }
+  }
+
+  .follow-you {
+    cursor: default;
+    color: $med-gray;
+  }
+}
