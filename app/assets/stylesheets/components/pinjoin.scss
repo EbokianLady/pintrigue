@@ -10,19 +10,18 @@
     width: 100%;
     box-sizing: border-box;
     padding: 20px 50px;
+    position: relative;
+
+    button {
+      position: absolute;
+      left: 385px;
+    }
 
     h3 {
       font-size: 22px;
       margin: 0px;
       text-align: center;
     }
-  }
-
-  .pinjoin-footer {
-    @extend %flex-row;
-    padding: 20px;
-    justify-content: flex-end;
-    border-top: 1px solid $lighter-gray;
   }
 }
 

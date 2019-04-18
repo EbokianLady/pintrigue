@@ -30,6 +30,7 @@ class CreatePinJoinForm extends React.Component {
           onSelectBoard={this.handleBoard}
           board={board}
           key={i}
+          text='Save'
         />
       )
     });
@@ -53,6 +54,11 @@ class CreatePinJoinForm extends React.Component {
         <div className='pinjoin-form'>
           <div className='pinjoin-header'>
             <h3>Choose board</h3>
+            <button
+              className='board-cancel-btn'
+              onClick={() => this.props.closeModal()} >
+              <i class="fas fa-times"></i>
+            </button>
           </div>
           <div className='pinjoin-body'>
             <div className='pinjoin-left'>
@@ -69,18 +75,6 @@ class CreatePinJoinForm extends React.Component {
             <div className='pinjoin-right'>
               {this.displayBoardScroll()}
             </div>
-          </div>
-          <div className='pinjoin-footer'>
-            <button
-              className='rectangle-btn'
-              onClick={() => this.props.closeModal()} >
-              Cancel
-            </button>
-            <button
-              className={'rectangle-btn save-btn'}
-              onClick={this.handleSubmit} >
-              Save
-            </button>
           </div>
         </div>
       </div>

@@ -1,5 +1,4 @@
 @pinjoins.each do |pinjoin|
-  debugger
   json.pins do
     json.set! pinjoin.id do
       json.partial! 'api/pins/pin', pinjoin: pinjoin

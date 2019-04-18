@@ -62,6 +62,7 @@ class CreatePinForm extends React.Component {
             onSelectBoard={this.handleBoard}
             board={board}
             key={i}
+            text='Select'
           />
         )
       });
