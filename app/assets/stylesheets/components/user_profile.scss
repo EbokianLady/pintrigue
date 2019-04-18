@@ -1,84 +1,88 @@
 @import "./base/constants.scss";
 
 .profile-buffer {
-  min-height: 170px;
   display: flex;
   justify-content: center;
+  min-height: 170px;
 }
 
 .profile-box {
+  align-items: center;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  box-sizing: border-box;
   max-width: 800px;
-  width: 100%;
   padding: 12px;
+  width: 100%;
 
   .profile-nav {
     @extend %flex-row;
-    max-width: 800px;
-    width: 100%;
-    height: 64px;
-    justify-content: flex-start;
     align-items: center;
     box-sizing: border-box;
-    padding-bottom: 8px;
-    padding-top: 8px;
+    height: 64px;
+    justify-content: flex-start;
     margin-bottom: 4px;
     margin-top: 4px;
+    max-width: 800px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    width: 100%;
   }
 
   .profile-nav-guest {
     @extend %flex-row;
-    max-width: 800px;
-    width: 100%;
-    height: 64px;
-    justify-content: flex-end;
     align-items: center;
     box-sizing: border-box;
-    padding-bottom: 8px;
-    padding-top: 8px;
+    height: 64px;
+    justify-content: flex-end;
     margin-bottom: 4px;
     margin-top: 4px;
+    max-width: 800px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    width: 100%;
 
     .profile-image {
-
+      border-radius: 50%;
+      cursor: pointer;
+      height: 40px;
+      margin-right: 8px;
+      width: 40px;
     }
 
     .profile-standin {
       @extend %flex-row;
-      justify-content: center;
       background-color: $white;
-      border-radius: 50%;
       border: 2px dashed rgb(218, 218, 218);
+      border-radius: 50%;
       cursor: pointer;
       height: 40px;
+      justify-content: center;
       margin-right: 8px;
       width: 40px;
 
       p {
         color: $med-gray;
         font-family: $stylized;
-        font-weight: bold;
-        text-align: center;
         font-size: 24px;
+        font-weight: bold;
         line-height: 38px;
+        text-align: center;
       }
     }
 
     .follow-btn {
-      box-sizing: border-box;
-      height: 40px;
-      cursor: pointer;
-      color: $darker-gray;
       background-color: $lightest-gray;
       border-radius: 8px;
+      box-sizing: border-box;
+      color: $darker-gray;
+      cursor: pointer;
       font-family: $font;
-      padding: 10px 14px;
       font-size: 16px;
       font-weight: bold;
+      height: 40px;
+      padding: 10px 14px;
 
       &:hover {
         background-color: $light-gray;
@@ -99,8 +103,8 @@
     @extend %flex-row;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
     max-width: 800px;
+    width: 100%;
   }
 }
 
@@ -134,20 +138,20 @@
 }
 
 .profile-name {
+  color: $darker-gray;
   font-size: 36px;
   font-weight: bold;
-  color: $darker-gray;
   letter-spacing: -.4px;
 }
 
 .profile-follows {
   @extend %flex-row;
-  justify-content: flex-start;
   align-items: center;
-  text-align: left;
   font-size: 14px;
   font-weight: 400;
+  justify-content: flex-start;
   letter-spacing: -.4px;
+  text-align: left;
 
   .bullet {
     margin: 0px 4px;
@@ -155,21 +159,21 @@
 }
 
 .profile-description {
-  text-align: left;
   font-size: 14px;
-  hyphens: auto;
-  word-wrap: break-word;
   font-weight: 400;
+  hyphens: auto;
   letter-spacing: -.4px;
+  text-align: left;
+  word-wrap: break-word;
 }
 
 .profile-image-container {
   @extend %flex-row;
   align-items: center;
-  height: 106px;
-  width: 106px;
   background-color: $lighter-gray;
   border-radius: 50%;
+  height: 106px;
+  width: 106px;
 
   .profile-image {
     border-radius: 50%;
@@ -179,44 +183,44 @@
 
   .profile-standin {
     @extend %flex-row;
-    justify-content: center;
     border-radius: 50%;
     border: 2px dashed rgb(218, 218, 218);
     height: 85px;
+    justify-content: center;
     width: 85px;
 
     p {
       color: $med-gray;
       font-family: $stylized;
-      font-weight: bold;
-      text-align: center;
       font-size: 53px;
+      font-weight: bold;
       line-height: 85px;
+      text-align: center;
     }
   }
 }
 
 .profile-buttons {
-  max-width: 800px;
-  height: 64px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
+  height: 64px;
   justify-content: flex-start;
-  box-sizing: border-box;
-  padding-bottom: 8px;
-  padding-top: 8px;
   margin-bottom: 4px;
   margin-top: 4px;
+  max-width: 800px;
+  padding-bottom: 8px;
+  padding-top: 8px;
 }
 
 .oval-link {
   @extend %flex-column;
-  cursor: pointer;
   border-radius: 999px;
+  cursor: pointer;
   font-size: 16px;
   font-weight: 700px;
-  justify-content: center;
   height: 40px;
+  justify-content: center;
   padding: 8px 16px;
 }
 
@@ -234,15 +238,15 @@
 
 .profile-visible {
   @extend %flex-column;
-  position: absolute;
-  width: 232px;
-  box-sizing: border-box;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, .18);
-  border-radius: 8px;
-  font-family: $font;
   background-color: $white;
   border: 1px solid $lightest-gray;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .18);
+  box-sizing: border-box;
   color: $darker-gray;
+  font-family: $font;
   left: -20px;
+  position: absolute;
   top: 56px;
+  width: 232px;
 }
