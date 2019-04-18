@@ -27,14 +27,14 @@ class PinShow extends React.Component {
 
   displayLink() {
     const { pin } = this.props;
-    const urlShort = pin.link_url.match(/(?<=:\/\/).+(?=\/ || ^)/);
 
     if (pin.link_url !== '') {
+      const hostname = new URL(pin.link_url).hostname;
       return (
         <div className='pin-link-box'>
           <a href={pin.link_url} target='_blank' className='pin-link'>
             <i className="fas fa-external-link-alt"></i>
-            <p>{urlShort}</p>
+            <p>{hostname}</p>
           </a>
         </div>
       )

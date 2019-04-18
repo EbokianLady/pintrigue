@@ -90,9 +90,6 @@ class CreatePinForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
-    this.handleLinkUrl()
-
     const formData = new FormData();
     formData.append('pin[title]', this.state.pin.title);
     formData.append('pin[description]', this.state.pin.description);
