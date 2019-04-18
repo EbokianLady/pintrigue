@@ -23,10 +23,10 @@ export const receiveBoard = (payload) => {
   };
 };
 
-export const removeBoard = (boardId) => {
+export const removeBoard = (payload) => {
   return {
     type: REMOVE_BOARD,
-    boardId,
+    boardId: payload.board.id,
   };
 };
 
@@ -38,40 +38,40 @@ export const receiveBoardErrors = (errors) => ({
 // thunk
 
 export const fetchBoards = () => dispatch => (
-  BoardApiUtil.fetchBoards().then(boards => (
-    dispatch(receiveBoards(boards))
+  BoardApiUtil.fetchBoards().then(payload => (
+    dispatch(receiveBoards(payload))
   ), err => (
     dispatch(receiveBoardErrors(err.responseJSON))
   ))
 );
 
 export const fetchBoard = id => dispatch => (
-  BoardApiUtil.fetchBoard(id).then(board => (
-    dispatch(receiveBoard(board))
+  BoardApiUtil.fetchBoard(id).then(payload => (
+    dispatch(receiveBoard(payload))
   ), err => (
     dispatch(receiveBoardErrors(err.responseJSON))
   ))
 );
 
 export const createBoard = (board) => dispatch => (
-  BoardApiUtil.createBoard(board).then(board => (
-    dispatch(receiveBoard(board))
+  BoardApiUtil.createBoard(board).then(payload => (
+    dispatch(receiveBoard(payload))
   ), err => (
     dispatch(receiveBoardErrors(err.responseJSON))
   ))
 );
 
 export const updateBoard = board => dispatch => (
-  BoardApiUtil.updateBoard(board).then(board => (
-    dispatch(receiveBoard(board))
+  BoardApiUtil.updateBoard(board).then(payload => (
+    dispatch(receiveBoard(payload))
   ), err => (
     dispatch(receiveBoardErrors(err.responseJSON))
   ))
 );
 
 export const deleteBoard = id => dispatch => (
-  BoardApiUtil.deleteBoard(id).then(board => (
-    dispatch(removeBoard(board.id))
+  BoardApiUtil.deleteBoard(id).then(payload => (
+    dispatch(removeBoard(payload))
   ), err => (
     dispatch(receiveBoardErrors(err.responseJSON))
   ))

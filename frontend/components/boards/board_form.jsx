@@ -25,7 +25,9 @@ class BoardForm extends React.Component {
   }
 
   handleDelete(e) {
-    this.props.deleteBoard(this.props.board.id).then(this.props.closeModal());
+    this.props.deleteBoard(this.props.board.id)
+      .then(this.props.closeModal())
+      .then(this.props.history.push(`/${this.props.creator.username}`));
   }
 
   handleSubmit(e) {

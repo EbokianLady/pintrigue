@@ -23,10 +23,10 @@ export const receivePin = (payload) => {
   };
 };
 
-export const removePin = (pinId) => {
+export const removePin = (payload) => {
   return {
     type: REMOVE_PIN,
-    pinId,
+    pinId: payload.pin.id,
   };
 };
 
@@ -38,48 +38,48 @@ export const receivePinErrors = (errors) => ({
 // thunk
 
 export const fetchPins = () => dispatch => (
-  PinApiUtil.fetchPins().then(pins => (
-    dispatch(receivePins(pins))
+  PinApiUtil.fetchPins().then(payload => (
+    dispatch(receivePins(payload))
   ), err => (
     dispatch(receivePinErrors(err.responseJSON))
   ))
 );
 
 export const fetchPin = id => dispatch => (
-  PinApiUtil.fetchPin(id).then(pin => (
-    dispatch(receivePin(pin))
+  PinApiUtil.fetchPin(id).then(payload => (
+    dispatch(receivePin(payload))
   ), err => (
     dispatch(receivePinErrors(err.responseJSON))
   ))
 );
 
 export const createPin = (formData, boardId) => dispatch => (
-  PinApiUtil.createPin(formData, boardId).then(pin => (
-    dispatch(receivePin(pin))
+  PinApiUtil.createPin(formData, boardId).then(payload => (
+    dispatch(receivePin(payload))
   ), err => (
     dispatch(receivePinErrors(err.responseJSON))
   ))
 );
 
 export const createPinJoin = (pin, boardId) => dispatch => (
-  PinApiUtil.createPinJoin(pin, boardId).then(pin => (
-    dispatch(receivePin(pin))
+  PinApiUtil.createPinJoin(pin, boardId).then(payload => (
+    dispatch(receivePin(payload))
   ), err => (
     dispatch(receivePinErrors(err.responseJSON))
   ))
 );
 
 export const updatePin = pin => dispatch => (
-  PinApiUtil.updatePin(pin).then(pin => (
-    dispatch(receivePin(pin))
+  PinApiUtil.updatePin(pin).then(payload => (
+    dispatch(receivePin(payload))
   ), err => (
     dispatch(receivePinErrors(err.responseJSON))
   ))
 );
 
 export const deletePin = id => dispatch => (
-  PinApiUtil.deletePin(id).then(pin => (
-    dispatch(removePin(pin.id))
+  PinApiUtil.deletePin(id).then(payload => (
+    dispatch(removePin(payload))
   ), err => (
     dispatch(receivePinErrors(err.responseJSON))
   ))

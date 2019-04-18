@@ -14,7 +14,7 @@ const msp = (state, ownProps) => {
 
   if (users.length > 0 && board) {
     const user = users.filter(user => user.id === board.creator_id)[0];
-    creator = user.username;
+    creator = user;
   }
 
   return ({

@@ -20,7 +20,7 @@ class Pin < ApplicationRecord
 
   def ensure_picture
     unless self.picture.attached?
-      errors[:picture] << "Must be attached"
+      errors[:picture] << 'Must be attached'
     end
   end
 end

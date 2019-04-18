@@ -54,11 +54,11 @@ class BoardShow extends React.Component {
 
     if (user.photoUrl) {
       return (
-        <img className="profile-image" src={user.photoUrl}></img>
+        <img className='profile-image' src={user.photoUrl}></img>
       )
     } else {
       return (
-        <div className="profile-standin"><p>{letter.toUpperCase()}</p></div>
+        <div className='profile-standin'><p>{letter.toUpperCase()}</p></div>
       )
     }
   }
@@ -104,10 +104,10 @@ class BoardShow extends React.Component {
   displayDropDown() {
     if (this.state.dropdown) {
       return (
-        <div ref={node => this.node = node} className="profile-visible">
+        <div ref={node => this.node = node} className='profile-visible'>
           <Link
             to={`/${this.props.username}/pin-builder`}
-            className="dropdown-item">
+            className='dropdown-item'>
             Create pin
           </Link>
         </div>
@@ -150,7 +150,7 @@ class BoardShow extends React.Component {
                   <div className='profile-follows'>
                     {count} {pinTense}
                   </div>
-                  <div className="profile-description">
+                  <div className='profile-description'>
                     {board.description}
                   </div>
                 </section>
