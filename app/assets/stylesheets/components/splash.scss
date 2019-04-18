@@ -20,6 +20,8 @@
   column-gap: 12px;
   column-count: 2;
   width: 484px;
+  overflow: hidden;
+  position: fixed;
 }
 
 @media screen and (min-width: 786px) {
