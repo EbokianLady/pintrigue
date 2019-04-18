@@ -8,13 +8,100 @@
 
 .profile-box {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
   max-width: 800px;
   width: 100%;
   padding: 12px;
+
+  .profile-nav {
+    @extend %flex-row;
+    max-width: 800px;
+    width: 100%;
+    height: 64px;
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    margin-bottom: 4px;
+    margin-top: 4px;
+  }
+
+  .profile-nav-guest {
+    @extend %flex-row;
+    max-width: 800px;
+    width: 100%;
+    height: 64px;
+    justify-content: flex-end;
+    align-items: center;
+    box-sizing: border-box;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    margin-bottom: 4px;
+    margin-top: 4px;
+
+    .profile-image {
+
+    }
+
+    .profile-standin {
+      @extend %flex-row;
+      justify-content: center;
+      background-color: $white;
+      border-radius: 50%;
+      border: 2px dashed rgb(218, 218, 218);
+      cursor: pointer;
+      height: 40px;
+      margin-right: 8px;
+      width: 40px;
+
+      p {
+        color: $med-gray;
+        font-family: $stylized;
+        font-weight: bold;
+        text-align: center;
+        font-size: 24px;
+        line-height: 38px;
+      }
+    }
+
+    .follow-btn {
+      box-sizing: border-box;
+      height: 40px;
+      cursor: pointer;
+      color: $darker-gray;
+      background-color: $lightest-gray;
+      border-radius: 8px;
+      font-family: $font;
+      padding: 10px 14px;
+      font-size: 16px;
+      font-weight: bold;
+
+      &:hover {
+        background-color: $light-gray;
+      }
+    }
+
+    .follow {
+      background-color: $pop;
+      color: $white;
+
+      &:hover {
+        background-color: $pop-hover;
+      }
+    }
+  }
+
+  .profile-content {
+    @extend %flex-row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 800px;
+  }
 }
 
 .profile {
@@ -22,18 +109,6 @@
   width: 75%;
 }
 
-.profile-nav {
-  @extend %flex-row;
-  max-width: 800px;
-  height: 64px;
-  justify-content: flex-start;
-  align-items: center;
-  box-sizing: border-box;
-  padding-bottom: 8px;
-  padding-top: 8px;
-  margin-bottom: 4px;
-  margin-top: 4px;
-}
 
 .prof-buttons {
   @extend %flex-row;

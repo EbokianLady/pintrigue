@@ -6,7 +6,7 @@ import FollowBoardIndexItem from './follow_board_index_item';
 class Following extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { showing: 'boards' };
+    this.state = { showing: 'people' };
   }
 
   componentDidMount() {
@@ -36,12 +36,16 @@ class Following extends React.Component {
         board={board}
         pins={pins}
         key={i}
+        createFollow={this.props.createFollow}
+        deleteFollow={this.props.deleteFollow}
       />
     })
     return (
-      < div className='follow-board-index' >
-        {boardsFollowing}
-      </div >
+      <div className="index-buffer">
+        < div className='board-index' >
+          {boardsFollowing}
+        </div >
+      </div>
     )
   }
 
@@ -51,12 +55,16 @@ class Following extends React.Component {
         currentUser={this.props.currentUser}
         user={follower}
         key={i}
+        createFollow={this.props.createFollow}
+        deleteFollow={this.props.deleteFollow}
       />
     })
     return (
-      < div className='follow-user-index' >
-        {usersFollowing}
-      </div >
+      <div className="user-index-buffer">
+        < div className='follow-user-index' >
+          {usersFollowing}
+        </div >
+      </div>
     )
   }
 
@@ -113,9 +121,7 @@ class Following extends React.Component {
               </button>
             </nav>
           </div>
-          <div className="index-buffer">
-            {component}
-          </div>
+          {component}
         </>
       )
     } else {

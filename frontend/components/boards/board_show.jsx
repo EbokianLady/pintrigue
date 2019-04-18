@@ -23,22 +23,82 @@ class BoardShow extends React.Component {
   allowBoardNav() {
     if (this.props.currentUser === this.props.creator) {
       return (
-        <>
-          <nav className='profile-nav'>
-            <div className='prof-buttons prof-plus'
-              onClick={this.showDropdown} >
-              <i className='fas fa-plus p2-fas'></i>
-              {this.displayDropDown()}
-            </div>
-            <button
-              className='prof-buttons'
-              onClick={this.showBoardModal}>
-              <i className='fas fa-pen p2-fas'></i>
-            </button>
-          </nav>
-        </>
+        <nav className='profile-nav'>
+          <div className='prof-buttons prof-plus'
+            onClick={this.showDropdown} >
+            <i className='fas fa-plus p2-fas'></i>
+            {this.displayDropDown()}
+          </div>
+          <button
+            className='prof-buttons'
+            onClick={this.showBoardModal}>
+            <i className='fas fa-pen p2-fas'></i>
+          </button>
+        </nav>
+      )
+    } else {
+      return (
+        <nav className='profile-nav-guest'>
+          <Link to={`/${this.props.creator.username}`}>
+            {this.displayProfileImage()}
+          </Link>
+          {this.followBtn()}
+        </nav>
       )
     }
+  }
+
+  displayProfileImage() {
+    const user = this.props.creator;
+    const letter = user.first_name ? user.first_name[0] : user.username[0];
+
+    if (user.photoUrl) {
+      return (
+        <img className="profile-image" src={user.photoUrl}></img>
+      )
+    } else {
+      return (
+        <div className="profile-standin"><p>{letter.toUpperCase()}</p></div>
+      )
+    }
+  }
+
+  followBtn() {
+    const { board, currentUser } = this.props;
+
+    if (currentUser.followed_board_ids.includes(board.id)) {
+      return (
+        <button
+          className='follow-btn unfollow'
+          onClick={this.handleUnfollow.bind(this)} >
+          Unfollow
+        </button>
+      )
+    } else {
+      return (
+        <button
+          className='follow-btn follow'
+          onClick={this.handleFollow.bind(this)} >
+          Follow
+        </button>
+      )
+    }
+  }
+
+  handleFollow() {
+    const follow = {
+      followed_id: this.props.board.id,
+      followed_type: 'Board',
+    }
+    this.props.createFollow(follow)
+  }
+
+  handleUnfollow() {
+    const follow = {
+      followed_id: this.props.board.id,
+      followed_type: 'Board',
+    }
+    this.props.deleteFollow(this.props.board.id, follow)
   }
 
   displayDropDown() {

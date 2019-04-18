@@ -5,7 +5,7 @@
   justify-content: center;
   min-width: 550px;
 }
- 
+
 .board-index {
   @extend %flex-row;
   justify-content: flex-start;
@@ -59,7 +59,7 @@
     object-fit: cover;
     width: 149px;
   }
-  
+
   .b3-pic1 {
     border-bottom-left-radius: 8px;
     border-top-left-radius: 8px;
@@ -71,14 +71,14 @@
     height: 99px;
     margin-bottom: 3px;
   }
-  
+
   .b3-pic3 {
     border-bottom-right-radius: 8px;
     height: 98px;
   }
 }
 
-.b-info {
+.b-footer-auth {
   @extend %flex-row;
   justify-content: space-between;
   padding: 8px;
@@ -88,10 +88,47 @@
     font-size: 20px;
     margin: 0px;
   }
-  
+
   .b-index-pincount {
     font-family: $font;
     font-size: 14px;
+  }
+}
+
+.b-footer-guest {
+  @extend %flex-row;
+  justify-content: space-between;
+  align-items: center;
+  font-family: $font;
+  color: $darker-gray;
+  width: 100%;
+  height: 56px;
+
+  .f-board-stats {
+    @extend %flex-column;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 42px;
+
+    h5 {
+      margin: 0px;
+      font-size: 20px;
+      font-weight: bold;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      height: 30px;
+    }
+
+    p {
+      font-size: 14px;
+      font-weight: 400px;
+    }
+  }
+
+  .follow-btn-container {
+    margin: 0px;
+    width: 100px;
   }
 }
 

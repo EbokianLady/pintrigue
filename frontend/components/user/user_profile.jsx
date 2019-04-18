@@ -27,7 +27,7 @@ class UserProfile extends React.Component {
   allowProfileNav() {
     if (this.props.currentUser === this.props.user) {
       return (
-        <>
+        <nav className="profile-nav">
           <div className="prof-buttons prof-plus"
             onClick={this.showDropdown}>
             <i className="fas fa-plus p2-fas"></i>
@@ -38,9 +38,53 @@ class UserProfile extends React.Component {
             className="prof-buttons" >
             <i className="fas fa-pen p2-fas"></i>
           </Link>
-        </>
+        </nav>
+      )
+    } else {
+      return (
+        <nav className='profile-nav-guest'>
+          {this.followBtn()}
+        </nav>
       )
     }
+  }
+
+  followBtn() {
+    const { user, currentUser } = this.props;
+
+    if (currentUser.followed_user_ids.includes(user.id)) {
+      return (
+        <button
+          className='follow-btn unfollow'
+          onClick={this.handleUnfollow.bind(this)} >
+          Unfollow
+        </button>
+      )
+    } else {
+      return (
+        <button
+          className='follow-btn follow'
+          onClick={this.handleFollow.bind(this)} >
+          Follow
+        </button>
+      )
+    }
+  }
+
+  handleFollow() {
+    const follow = {
+      followed_id: this.props.user.id,
+      followed_type: 'User',
+    }
+    this.props.createFollow(follow)
+  }
+
+  handleUnfollow() {
+    const follow = {
+      followed_id: this.props.user.id,
+      followed_type: 'User',
+    }
+    this.props.deleteFollow(this.props.user.id, follow)
   }
 
   displayDescription() {
@@ -105,7 +149,6 @@ class UserProfile extends React.Component {
   }
 
   hideDropdown(e) {
-    debugger
     if (!this.node.contains(e.target)) {
       this.setState({ dropdown: false });
       document.removeEventListener('mousedown', this.hideDropdown);
@@ -131,70 +174,71 @@ class UserProfile extends React.Component {
 
   render() {
     const { user } = this.props;
-    const numFollowers = user.follower_ids.length;
-    const numFollowing = user.followed_board_ids.length + user.followed_user_ids.length;
-    const followerTense = (numFollowers === 1) ? 'follower' : 'followers';
 
-    let boardClassName = ' link-selected';
-    let pinClassName = '';
-    let component = <BoardIndexContainer
-      user={this.props.user}
-      boards={this.props.boards}
-      pins={this.props.pins}
-    />
+    if (user) {
+      const numFollowers = user.follower_ids.length;
+      const numFollowing = user.followed_board_ids.length + user.followed_user_ids.length;
+      const followerTense = (numFollowers === 1) ? 'follower' : 'followers';
 
-    if (this.state.showing === 'pins') {
-      boardClassName = '';
-      pinClassName += ' link-selected';
-      component = <PinUserIndexContainer
+      let boardClassName = ' link-selected';
+      let pinClassName = '';
+      let component = <BoardIndexContainer
         user={this.props.user}
         boards={this.props.boards}
         pins={this.props.pins}
       />
-    }
 
-    if (user) {
+      if (this.state.showing === 'pins') {
+        boardClassName = '';
+        pinClassName += ' link-selected';
+        component = <PinUserIndexContainer
+          user={this.props.user}
+          boards={this.props.boards}
+          pins={this.props.pins}
+        />
+      }
+
       return (
         <div>
           <div className="profile-buffer">
             <div className="profile-box">
-              <div className="profile">
-                <nav className="profile-nav">
-                  {this.allowProfileNav()}
-                </nav>
-                <section className="profile-body">
-                  <h2 className="profile-name">
-                    {this.displayName()}
-                  </h2>
-                  <div className="profile-follows">
-                    <Link to={`/${user.username}/followers`}>
-                      {numFollowers} {followerTense}
-                    </Link>
-                    <div className='bullet'>•</div>
-                    <Link to={`/${user.username}/following`}>
-                      {numFollowing} following
-                    </Link>
-                  </div>
-                  <div className="profile-description">
-                    {this.displayDescription()}
-                  </div>
-                </section>
-                <nav className="profile-buttons">
-                  <button
-                    onClick={this.showBoards.bind(this)}
-                    className={'oval-link' + boardClassName}>
-                    Boards
-                  </button>
-                  <button
-                    onClick={this.showPins.bind(this)}
-                    className={'oval-link' + pinClassName}>
-                    Pins
-                  </button>
-                </nav>
-              </div>
+              {this.allowProfileNav()}
+              <div className='profile-content'>
+                <div className="profile">
+                  <section className="profile-body">
+                    <h2 className="profile-name">
+                      {this.displayName()}
+                    </h2>
+                    <div className="profile-follows">
+                      <Link to={`/${user.username}/followers`}>
+                        {numFollowers} {followerTense}
+                      </Link>
+                      <div className='bullet'>•</div>
+                      <Link to={`/${user.username}/following`}>
+                        {numFollowing} following
+                      </Link>
+                    </div>
+                    <div className="profile-description">
+                      {this.displayDescription()}
+                    </div>
+                  </section>
+                  <nav className="profile-buttons">
+                    <button
+                      onClick={this.showBoards.bind(this)}
+                      className={'oval-link' + boardClassName}>
+                      Boards
+                    </button>
+                    <button
+                      onClick={this.showPins.bind(this)}
+                      className={'oval-link' + pinClassName}>
+                      Pins
+                    </button>
+                  </nav>
+                </div>
                 <div className="profile-image-container">
                   {this.displayProfileImage()}
                 </div>
+              </div>
             </div>
           </div>
           <div className="index-buffer">

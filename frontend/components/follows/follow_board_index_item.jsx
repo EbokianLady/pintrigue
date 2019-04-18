@@ -19,9 +19,25 @@ class FollowBoardIndexItem extends React.Component {
     }
   }
 
-  toUserShow(e) {
-    if (e.target.className.includes('p-link')) {
-      this.props.history.push(`/pins/${this.props.pin.id}`);
+  handleFollow() {
+    const follow = {
+      followed_id: this.props.board.id,
+      followed_type: 'Board',
+    }
+    this.props.createFollow(follow)
+  }
+
+  handleUnfollow() {
+    const follow = {
+      followed_id: this.props.board.id,
+      followed_type: 'Board',
+    }
+    this.props.deleteFollow(this.props.board.id, follow)
+  }
+
+  toBoardShow(e) {
+    if (!e.target.className.includes('follow-btn')) {
+      this.props.history.push(`/boards/${this.props.board.id}`);
     }
   }
 
@@ -29,25 +45,37 @@ class FollowBoardIndexItem extends React.Component {
     const { board, currentUser } = this.props;
 
     if (currentUser.followed_board_ids.includes(board.id)) {
-      return <button className='follow-btn unfollow'>Unfollow</button>
+      return (
+        <button
+          className='follow-btn unfollow'
+          onClick={this.handleUnfollow.bind(this)}>
+          Unfollow
+        </button>
+      )
     } else {
-      return <button className='follow-btn follow'>Follow</button>
+      return (
+        <button
+          className='follow-btn follow'
+          onClick={this.handleFollow.bind(this)}>
+          Follow
+        </button>
+      )
     }
   }
 
   render() {
     const { board } = this.props;
     const pinCount = board.pin_join_ids.length;
-    const pinTense = (pinCount === 1) ? 'pin' : 'pins';
+    const pinTense = (pinCount === 1) ? 'Pin' : 'Pins';
 
     return (
-      <div className='follow-board-frame' >
-        <Link className='f-board-profile'
-          to={`/boards/${board.id}`}>
-          <div className='f-board-cover'>
+      <div className='b-index-frame' >
+        <div
+          onClick={this.toBoardShow.bind(this)} >
+          <div className='b-cover'>
             {this.displayCover()}
           </div>
-          <div className='f-board-footer'>
+          <div className='b-footer-guest'>
             <div className='f-board-stats'>
               <h5>{board.name}</h5>
               <p>{pinCount} {pinTense}</p>
@@ -56,7 +84,7 @@ class FollowBoardIndexItem extends React.Component {
               {this.followBtn()}
             </div>
           </div>
-        </Link>
+        </div>
       </div>
     )
   }

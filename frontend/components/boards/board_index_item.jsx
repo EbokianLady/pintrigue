@@ -68,7 +68,7 @@ class BoardIndexItem extends React.Component {
           <div className='b-cover'>
             {this.displayCover()}
           </div>
-          <div className='b-info'>
+          <div className='b-footer-auth'>
             <div>
               <h3 className='b-index-title'>{board.name}</h3>
               <p className='b-index-pincount'>{count} {pinTense}</p>

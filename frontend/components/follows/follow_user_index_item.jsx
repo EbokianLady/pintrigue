@@ -17,6 +17,22 @@ class FollowUserIndexItem extends React.Component {
     }
   }
 
+  handleFollow() {
+    const follow = {
+      followed_id: this.props.user.id,
+      followed_type: 'User',
+    }
+    this.props.createFollow(follow)
+  }
+
+  handleUnfollow() {
+    const follow = {
+      followed_id: this.props.user.id,
+      followed_type: 'User',
+    }
+    this.props.deleteFollow(this.props.user.id, follow)
+  }
+
   toUserShow(e) {
     if (e.target.className.includes('p-link')) {
       this.props.history.push(`/pins/${this.props.pin.id}`);
@@ -29,9 +45,21 @@ class FollowUserIndexItem extends React.Component {
     if (user.id === currentUser.id) {
       return <button className='follow-btn follow-you'>This is you</button>
     } else if (currentUser.followed_user_ids.includes(user.id)) {
-      return <button className='follow-btn unfollow'>Unfollow</button>
+      return (
+        <button
+          className='follow-btn unfollow'
+          onClick={this.handleUnfollow.bind(this)} >
+          Unfollow
+        </button>
+      )
     } else {
-      return <button className='follow-btn follow'>Follow</button>
+      return (
+        <button
+          className='follow-btn follow'
+          onClick={this.handleFollow.bind(this)} >
+          Follow
+        </button>
+      )
     }
   }
 

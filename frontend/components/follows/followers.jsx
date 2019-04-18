@@ -39,6 +39,8 @@ class Followers extends React.Component {
           currentUser={this.props.currentUser}
           user={follower}
           key={i}
+          createFollow={this.props.createFollow}
+          deleteFollow={this.props.deleteFollow}
         />
       });
 

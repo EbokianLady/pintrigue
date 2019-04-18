@@ -8,14 +8,14 @@ module Api
       follow = Follow.new(follow_params)
       follow.follower_id = @user.id
       follow.save!
-      render 'api/boards/show'
+      render 'api/users/show'
     end
 
     def destroy
       @user = current_user
-      follow = current_user.followings.find(params[:id])
+      follow = current_user.followings.find_by!(follow_params)
       follow.destroy
-      render 'api/boards/show'
+      render 'api/users/show'
     end
 
     private

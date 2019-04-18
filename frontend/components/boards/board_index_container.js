@@ -4,6 +4,7 @@ import { fetchBoards } from '../../actions/board_actions';
 import { fetchPins } from '../../actions/pin_actions';
 import BoardIndex from './board_index';
 import { openModal } from '../../actions/modal_actions';
+import { createFollow, deleteFollow } from '../../actions/follow_actions';
 
 const msp = (state, ownProps) => {
   const currentUser = state.entities.users[state.session.id];
@@ -18,6 +19,8 @@ const msp = (state, ownProps) => {
 
 const mdp = dispatch => ({
   openModal: (modal, objectId) => dispatch(openModal(modal, objectId)),
+  createFollow: (follow) => dispatch(createFollow(follow)),
+  deleteFollow: (id, follow) => dispatch(deleteFollow(id, follow)),
 });
 
 export default withRouter(connect(msp, mdp)(BoardIndex));

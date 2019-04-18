@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { fetchUsers } from '../../actions/user_actions';
 import Followers from './followers';
+import { createFollow, deleteFollow } from '../../actions/follow_actions';
 
 const msp = (state, ownProps) => {
   const currentUser = state.entities.users[state.session.id];
@@ -30,6 +31,8 @@ const msp = (state, ownProps) => {
 const mdp = (dispatch) => {
   return ({
     fetchUsers: () => dispatch(fetchUsers()),
+    createFollow: (follow) => dispatch(createFollow(follow)),
+    deleteFollow: (id, follow) => dispatch(deleteFollow(id, follow)),
   });
 };
 
