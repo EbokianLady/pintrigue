@@ -1,61 +1,88 @@
-# README
+# PINTRIGUE
 
-# Pintrigue
+[![Login](https://github.com/EbokianLady/pintrigue/blob/master/app/assets/images/readme_images/sign_in.jpg)](https://pintrigue.herokuapp.com/#/)
 
-Welcome to [Pintrigue](https://pintrigue.herokuapp.com/#/), a single-page clone of [Pinterest](https://www.pinterest.com/).
+## Table of Contents
 
-Pintrigue is a web application for the curious and inspired. A place where you can pin cool ideas, pictures, and projects on a virtual bulletin board. Looking for more Browse your fellow pinners and see what their interests are through the discovery
-page.
+* [Introduction](#introduction)
+* [Technologies](#technologies)
+* [Features](#features)
 
-## Technologies
+## Introduction <a id="introduction"></a>
 
-Pintrigue uses a fullstack consisting of Ruby on Rails for the backend framework, a Postgreql database, and ES6, React and Redux for a responsive frontend UI.
+[Pintrigue](https://pintrigue.herokuapp.com/#/) is a single-page web application inspired by [Pinterest](https://www.pinterest.com/). Upload and add photos or projects that inspire you, manage a collection of virtual bulletin boards, and browse your fellow pinners for more ideas.
 
-## Features
+## Technologies <a id="technologies"></a>
 
-### User Auth
+* Ruby on Rails
+* Javascript
+* React/Redux
+* HTML5/CSS3
+* PostgreSQL database
+* Image hosting through AWS
 
-Users can sign up, logout, and login by setting a username, email and password. Updating and editing features for their personal profile, boards and pins are private.
+![Board](https://github.com/EbokianLady/pintrigue/blob/master/app/assets/images/readme_images/user_boards.jpg)
 
-![Login](https://github.com/EbokianLady/pintrigue/blob/master/app/assets/images/readme_images/sign_in.jpg)
-
-### Image Uploading
-
-Users can change their profile icon to an image of their choice and upload images to their boards.
+## Features <a id="features"></a>
+* Browse pin discovery feed
+* Manage your own boards and pin collections
+* Upload your own pins or re-pin your favorites
+* Follow people and boards for easy access
+* Responsive display
 
 ![Upload](https://github.com/EbokianLady/pintrigue/blob/master/app/assets/images/readme_images/upload.jpg)
 
 ### Responsive Display
 
-Board and Pin indexes are responsive to the window width of the browser, showing two or more columns. The pins display in a masonry format, loading top-left to right and placing images successively in the next shortest column.
+Utilized CSS grid and media queries for a dynamic display of page content and a smooth UI experience in imitation of Pinterest's aesthetic. Image heights are stored on the database level to guarantee consistant formatting and spacing between pins of varied heights during image load. 
 
 ![Masonry](https://github.com/EbokianLady/pintrigue/blob/master/app/assets/images/readme_images/discovery.jpg)
 
-### Structure
+### Custom Error Handler
 
-1. Upper Navbar
-* Links to Discovery feed.
-* When logged in: user profile link and logout button
-* When logged out: signup and login links
-2. Profile/Board banner
-* Shows all the details of the user or board at that URL location. Adding and editing features available for authorized users
-3. Board/Pin Index
-* Lists all of the boards associated with a user
-* Features a sample of pin images as a cover
-* Shows the number of pins associated with that board
+Wrote a backend error handler to catch expected Pintrigue errors, such incorrect form inputs. Returns error message as determined by en.yml for simpler conversion of the error defaults into flavorful text. Removes unnecessary error logic in the frontend.
 
-![Board](https://github.com/EbokianLady/pintrigue/blob/master/app/assets/images/readme_images/user_boards.jpg)
+app/errors/pintrigue_error/base.rb
 
-4. Pin Index
-* Lists all of the pins associated with a user or board
-* Shows pin title and links to external site when available
-5. Discovery Feed
-* Shows all the pins for all users
+`module PintrigueError
+  class Base < StandardError
+    attr_reader :message, :status
+
+    def initialize(status: 500, message: nil)
+      @message = message || 'Something Went Wrong.'
+      @status = status
+    end
+
+    def as_json(*)
+      {
+        error_type: self.class.to_s,
+        error_message: message
+      }
+    end
+  end
+end
+`
+
+en.yml
+`errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "You missed a spot! Don't forget to add your email."
+              invalid: "Hmm...that doesn't look like an email address."
+              taken: "Hmm...looks like you already have an account."
+            username:
+              blank: "You missed a spot! Don't forget to add your username."
+              taken: "Hmm...looks like that username is already taken."
+            password:
+              invalid: "The password you entered is incorrect."
+              too_short: "Your password is too short! You need 6+ characters."
+              blank: "Your password is too short! You need 6+ characters."`
 
 ## Future Features
-* Board and pin full CRUD
-* Pin images from external sites in addition to upload
-* Follow users or boards
-* Save another user's pins to your board
-* Discovery Feed shows relevant pins first, infinity scroll
+* Infinity scroll and pre-loading
+* add images from websites in addition to upload
+* Search bar
+* Like pins
 
