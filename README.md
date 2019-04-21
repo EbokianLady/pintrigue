@@ -13,6 +13,8 @@
 
 [Pintrigue](https://pintrigue.herokuapp.com/#/) is a single-page web application inspired by [Pinterest](https://www.pinterest.com/). Upload and add photos or projects that inspire you, manage a collection of virtual bulletin boards, and browse your fellow pinners for more ideas.
 
+![Board](https://github.com/EbokianLady/pintrigue/blob/master/app/assets/images/readme_images/user_boards.jpg)
+
 <a id="technologies"></a>
 ## Technologies
 
@@ -22,9 +24,6 @@
 * HTML5/CSS3
 * PostgreSQL database
 * Image hosting through AWS
-
-![Board](https://github.com/EbokianLady/pintrigue/blob/master/app/assets/images/readme_images/user_boards.jpg)
-![Upload](https://github.com/EbokianLady/pintrigue/blob/master/app/assets/images/readme_images/upload.jpg)
 
 <a id="features"></a>
 ## Features
