@@ -9,15 +9,12 @@ const msp = (state, ownProps) => {
   const user = state.entities.users[username];
   const boards = Object.values(state.entities.boards)
     .filter(board => board.creator_id === user.id);
-  const pins = Object.values(state.entities.pins)
-    .filter(pin => pin.creator.id === user.id);
 
   return ({
     currentUser: state.entities.users[state.session.id] || {},
     username,
     user,
     boards,
-    pins,
   });
 };
 

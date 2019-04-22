@@ -3,18 +3,18 @@ import { Link, withRouter } from 'react-router-dom';
 
 class FollowBoardIndexItem extends React.Component {
   displayCover() {
-    const { pins } = this.props;
-    if (pins.length > 2) {
+    const { cover_urls } = this.props.board;
+    if (cover_urls.length === 3) {
       return (
         <div className="board-display" >
-          <img className="b3-pic1" src={pins[0].pictureUrl} />
-          <img className="b3-pic2" src={pins[1].pictureUrl} />
-          <img className="b3-pic3" src={pins[2].pictureUrl} />
+          <img className="b3-pic1" src={cover_urls[0]} />
+          <img className="b3-pic2" src={cover_urls[1]} />
+          <img className="b3-pic3" src={cover_urls[2]} />
         </div>
       )
-    } else if (pins.length > 0) {
+    } else if (cover_urls.length === 1) {
       return (
-        <img src={pins[0].pictureUrl} />
+        <img src={cover_urls[0]} />
       )
     }
   }

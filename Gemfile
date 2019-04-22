@@ -26,7 +26,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-gem "aws-sdk-s3"
+gem 'aws-sdk-s3'
+gem 'kaminari'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -43,19 +44,19 @@ group :development, :test do
 end
 
 group :development do
-  # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
+  gem 'annotate'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'guard', '>= 2.2.2', require: false
+  gem 'guard-livereload', require: false
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'rack-livereload'
+  gem 'rb-fsevent', require: false
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'annotate'
-  gem "guard", ">= 2.2.2", :require => false
-  gem "guard-livereload",  :require => false
-  gem "rack-livereload"
-  gem "rb-fsevent",        :require => false
+  # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
+  gem 'web-console', '>= 3.3.0'
 end
 
 group :test do

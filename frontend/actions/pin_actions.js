@@ -4,6 +4,11 @@ export const RECEIVE_PINS = "RECEIVE_PINS";
 export const RECEIVE_PIN = "RECEIVE_PIN";
 export const REMOVE_PIN = "REMOVE_PIN";
 export const RECEIVE_PIN_ERRORS = "RECEIVE_PIN_ERRORS";
+export const CLEAR_PIN_INDEX = "CLEAR_PIN_INDEX";
+
+export const clearPinIndex = () => ({
+  type: CLEAR_PIN_INDEX,
+});
 
 export const receivePins = (payload) => {
   return {
@@ -36,6 +41,30 @@ export const receivePinErrors = (errors) => ({
 });
 
 // thunk
+
+export const fetchAllPins = (page) => dispatch => (
+  PinApiUtil.fetchAllPins(page).then(payload => (
+    dispatch(receivePins(payload))
+  ), err => (
+    dispatch(receivePinErrors(err.responseJSON))
+  ))
+);
+
+export const fetchBoardPins = (id, page) => dispatch => (
+  PinApiUtil.fetchBoardPins(id, page).then(payload => (
+    dispatch(receivePins(payload))
+  ), err => (
+    dispatch(receivePinErrors(err.responseJSON))
+  ))
+);
+
+export const fetchUserPins = (username, page) => dispatch => (
+  PinApiUtil.fetchUserPins(username, page).then(payload => (
+    dispatch(receivePins(payload))
+  ), err => (
+    dispatch(receivePinErrors(err.responseJSON))
+  ))
+);
 
 export const fetchPins = () => dispatch => (
   PinApiUtil.fetchPins().then(payload => (

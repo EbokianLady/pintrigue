@@ -1,3 +1,27 @@
+export const fetchAllPins = (page) => {
+  return $.ajax({
+    method: 'GET',
+    url: `api/all_pins`,
+    data: { page }
+  });
+};
+
+export const fetchBoardPins = (id, page) => {
+  return $.ajax({
+    method: 'GET',
+    url: `api/board_pins/${id}`,
+    data: { page }
+  });
+};
+
+export const fetchUserPins = (username, page) => {
+  return $.ajax({
+    method: 'GET',
+    url: `api/user_pins/${username}`,
+    data: { page }
+  });
+};
+
 export const fetchPins = () => {
   return $.ajax({
     method: 'GET',

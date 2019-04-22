@@ -4,20 +4,19 @@ import { openModal } from '../../actions/modal_actions';
 import BoardShow from './board_show';
 import { createFollow, deleteFollow } from '../../actions/follow_actions';
 
+
 const msp = (state, ownProps) => {
   const currentUser = state.entities.users[state.session.id];
   const boardId = ownProps.match.params.boardId;
 
   const board = state.entities.boards[boardId];
   const users = Object.values(state.entities.users);
-  const allPins = Object.values(state.entities.pins);
+  const pins = Object.values(state.entities.pins);
 
   let creator;
-  let pins;
 
   if (board) {
     creator = users.filter(user => user.id === board.creator_id)[0];
-    pins = allPins.filter(pin => pin.board_id === board.id);
   }
 
   return ({

@@ -133,7 +133,7 @@ class BoardShow extends React.Component {
 
   render() {
     const { board } = this.props;
-    const count = (this.props.pins) ? this.props.pins.length : '0';
+    const count = (board) ? board.pin_join_ids.length : '0';
     const pinTense = (count === 1) ? 'Pin' : 'Pins';
 
     if (board) {
@@ -161,7 +161,6 @@ class BoardShow extends React.Component {
             <PinBoardIndexContainer
               creator={this.props.creator}
               board={this.props.board}
-              pins={this.props.pins}
             />
           </div>
         </div>

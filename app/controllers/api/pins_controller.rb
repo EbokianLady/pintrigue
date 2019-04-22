@@ -3,7 +3,6 @@
 module Api
   # Pins Controller
   class PinsController < ApplicationController
-    # TO-DO this should rollback if any part fails. How?
     def create
       board = Board.find(params[:board_id])
       pin = Pin.create!(pin_params)
