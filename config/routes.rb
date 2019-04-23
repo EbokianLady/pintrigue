@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-
-  root "static_pages#root"
+  root 'static_pages#root'
 
   namespace :api, defaults: { format: :json } do
     resource :session, only: [:create, :destroy]
@@ -14,4 +13,7 @@ Rails.application.routes.draw do
     resources :follows, only: [:create, :destroy]
   end
 
+  get 'api/all_pins', to: 'api/pin_joins#index_all'
+  get 'api/board_pins/:id', to: 'api/pin_joins#index_board'
+  get 'api/user_pins/:id', to: 'api/pin_joins#index_user'
 end

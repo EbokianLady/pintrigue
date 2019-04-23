@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { logout } from "../../actions/session_actions";
 import Navbar from './navbar';
-import { fetchUsers } from '../../actions/user_actions';
+import { fetchUsers, fetchUser } from '../../actions/user_actions';
 
 
 const msp = (state) => {
@@ -16,7 +16,7 @@ const msp = (state) => {
 const mdp = (dispatch) => {
   return ({
     logout: () => dispatch(logout()),
-    fetchUsers: () => dispatch(fetchUsers()),
+    fetchUser: (username) => dispatch(fetchUser(username)),
   });
 };
 

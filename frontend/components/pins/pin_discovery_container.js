@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PinIndex from './pin_index';
-import { fetchPins } from '../../actions/pin_actions';
+import { fetchAllPins, clearPinIndex } from '../../actions/pin_actions';
 import { openModal } from '../../actions/modal_actions';
 
 const msp = (state, ownProps) => {
@@ -16,7 +16,8 @@ const msp = (state, ownProps) => {
 };
 
 const mdp = dispatch => ({
-  fetchPins: () => dispatch(fetchPins()),
+  clearPinIndex: () => dispatch(clearPinIndex()),
+  fetchPins: (page) => dispatch(fetchAllPins(page)),
   openModal: (modal, objectId) => dispatch(openModal(modal, objectId)),
 });
 

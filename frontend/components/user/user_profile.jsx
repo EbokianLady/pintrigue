@@ -185,7 +185,6 @@ class UserProfile extends React.Component {
       let component = <BoardIndexContainer
         user={this.props.user}
         boards={this.props.boards}
-        pins={this.props.pins}
       />
 
       if (this.state.showing === 'pins') {
@@ -194,7 +193,6 @@ class UserProfile extends React.Component {
         component = <PinUserIndexContainer
           user={this.props.user}
           boards={this.props.boards}
-          pins={this.props.pins}
         />
       }
 

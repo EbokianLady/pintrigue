@@ -10,7 +10,6 @@ const msp = (state, ownProps) => {
   let board;
   let creator;
 
-  // this isn't quite working ...
   if (pin) {
     board = state.entities.boards[pin.board_id];
     creator = state.entities.users[pin.creator.username];

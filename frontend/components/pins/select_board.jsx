@@ -30,7 +30,7 @@ class SelectBoard extends React.Component {
         <button
           className='select-btn'
           onClick={this.handleBoard}>
-          Select
+          {this.props.text}
         </button>
       )
     }

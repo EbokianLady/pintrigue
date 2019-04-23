@@ -12,14 +12,14 @@ class Navbar extends React.Component {
   }
 
   handleLogout(e) {
-    this.props.logout().then(this.props.history.push("/"));
+    this.props.logout().then(this.props.history.push('/'));
   }
 
   displayDropdown() {
     if (this.state.dropdown) {
       return (
-        <div ref={node => this.node = node} className="nav-visible">
-          <button className="dropdown-item"
+        <div ref={node => this.node = node} className='nav-visible'>
+          <button className='dropdown-item'
             onClick={this.handleLogout}>
             Logout
           </button>
@@ -29,7 +29,7 @@ class Navbar extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchUsers();
+    this.props.fetchUser(this.props.currentUser.username);
   }
 
   componentWillUnmount() {
@@ -60,7 +60,7 @@ class Navbar extends React.Component {
 
       if (user.photoUrl) {
         return (
-          <img className="small-profile-image" src={user.photoUrl} />
+          <img className='small-profile-image' src={user.photoUrl} />
         )
       } else {
         return (
@@ -69,7 +69,7 @@ class Navbar extends React.Component {
       }
     } else {
       return (
-        <i className="fas fa-user-circle p-fas"></i>
+        <i className='fas fa-user-circle p-fas'></i>
       )
     }
   }
@@ -80,26 +80,26 @@ class Navbar extends React.Component {
     if (this.props.currentUser.username) {
       return (
           <>
-            <nav className="navbar signedin">
-              <div className="nav-left">
-                <div className="profile-links">
-                  <Link to="/discovery" >
-                    <img src={window.logo} className="nav-logo" />
+            <nav className='navbar signedin'>
+              <div className='nav-left'>
+                <div className='profile-links'>
+                  <Link to='/discovery' >
+                    <img src={window.logo} className='nav-logo' />
                   </Link>
                 </div>
                 <h2>Welcome, {this.props.currentUser.username}</h2>
               </div>
-              <div className="nav-right">
-                <button className="profile-links"
+              <div className='nav-right'>
+                <button className='profile-links'
                   onClick={this.toProfile}>
-                  <div className="nav-img">
+                  <div className='nav-img'>
                     {this.profilePic()}
                   </div>
                 </button>
                 <button
-                  className="profile-links"
+                  className='profile-links'
                   onClick={this.showDropdown} >
-                  <i className="fas fa-ellipsis-h p-fas"></i>
+                  <i className='fas fa-ellipsis-h p-fas'></i>
                 </button>
               </div>
             </nav>
@@ -108,22 +108,22 @@ class Navbar extends React.Component {
         )
     } else {
       return (
-        <nav className="navbar signedout">
-          <div className="nav-left">
-            <div className="profile-links">
-              <Link to="/discovery" >
-                <img src={window.logo} className="nav-logo" />
+        <nav className='navbar signedout'>
+          <div className='nav-left'>
+            <div className='profile-links'>
+              <Link to='/discovery' >
+                <img src={window.logo} className='nav-logo' />
               </Link>
             </div>
             <h2>Welcome to Pintrigue</h2>
           </div>
-          <div className="nav-right">
+          <div className='nav-right'>
             <Link to='/'
-              className="nav-links nav-signup"
+              className='nav-links nav-signup'
               >Sign Up
             </Link>
             <Link to='/login'
-              className="nav-links nav-login"
+              className='nav-links nav-login'
               >Login
             </Link>
           </div>

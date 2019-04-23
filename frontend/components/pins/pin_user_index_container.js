@@ -1,8 +1,7 @@
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import PinIndex from './pin_index';
-import { fetchPins } from '../../actions/pin_actions';
-import { fetchUser } from '../../actions/user_actions';
+import { clearPinIndex, fetchUserPins } from '../../actions/pin_actions';
 import { openModal } from '../../actions/modal_actions';
 
 const msp = (state, ownProps) => {
@@ -10,7 +9,7 @@ const msp = (state, ownProps) => {
   const user = ownProps.user;
   const username = user.username;
   const boards = ownProps.boards;
-  const pins = ownProps.pins;
+  const pins = Object.values(state.entities.pins);
 
   return ({
     type: 'User',
@@ -23,6 +22,8 @@ const msp = (state, ownProps) => {
 };
 
 const mdp = dispatch => ({
+  clearPinIndex: () => dispatch(clearPinIndex()),
+  fetchPins: (username, page) => dispatch(fetchUserPins(username, page)),
   openModal: (modal, objectId) => dispatch(openModal(modal, objectId)),
 });
 

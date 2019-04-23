@@ -8,6 +8,30 @@ module Api
       render 'api/pins/index'
     end
 
+    def index_all
+      ids = current_user.board_ids
+      @pinjoins = PinJoin.includes(:pin, :board, :creator)
+                         .where.not(board_id: ids)
+                         .page(params[:page]).per(10)
+      render 'api/pins/index'
+    end
+
+    def index_board
+      @pinjoins = PinJoin.includes(:pin, :board, :creator)
+                         .where(board_id: params[:id])
+                         .page(params[:page]).per(10)
+      render 'api/pins/index'
+    end
+
+    def index_user
+      user = User.find_by!(username: params[:id])
+      ids = user.board_ids
+      @pinjoins = PinJoin.includes(:pin, :board, :creator)
+                         .where(board_id: ids)
+                         .page(params[:page]).per(10)
+      render 'api/pins/index'
+    end
+
     def update
       @pinjoin = current_user.pin_joins.find(params[:id])
       @pinjoin.update!(pinjoin_params)

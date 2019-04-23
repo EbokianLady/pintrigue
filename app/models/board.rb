@@ -21,4 +21,19 @@ class Board < ApplicationRecord
 
   has_many :follows, as: :followed, dependent: :destroy
   has_many :followers, through: :follows
+
+  def cover_urls
+    urls = []
+    pins = self.pins
+    if pins.length >= 3
+      pins[0..2].each do |pin|
+        urls << Rails.application.routes.url_helpers.rails_blob_path(pin.picture, only_path: true)
+      end
+    else
+      pins.each do |pin|
+        urls << Rails.application.routes.url_helpers.rails_blob_path(pin.picture, only_path: true)
+      end
+    end
+    urls
+  end
 end

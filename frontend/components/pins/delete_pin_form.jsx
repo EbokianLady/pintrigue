@@ -11,7 +11,9 @@ class DeletePinForm extends React.Component {
   }
 
   handleDelete(e) {
-    this.props.deletePin(this.props.pinId).then(this.props.closeModal());
+    this.props.deletePin(this.props.pinId)
+      .then(this.props.closeModal())
+      .then(this.props.history.push(`/boards/${this.props.boardId}`));
   }
 
   render() {
@@ -43,8 +45,12 @@ class DeletePinForm extends React.Component {
 }
 
 const msp = (state, ownProps) => {
+  const pinId = state.ui.currentObject;
+  const boardId = state.entities.pins[pinId].board_id;
+
   return ({
-    pinId: state.ui.currentObject,
+    pinId,
+    boardId,
   })
 };
 
