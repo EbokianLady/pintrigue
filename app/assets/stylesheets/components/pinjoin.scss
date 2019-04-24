@@ -1,20 +1,21 @@
 @import "./base/constants.scss";
 
 .pinjoin-form {
-  width: 730px;
   background-color: $white;
   border-radius: 8px;
   font-family: $font;
+  max-height: 586px;
+  width: 730px;
 
   .pinjoin-header {
-    width: 100%;
     box-sizing: border-box;
     padding: 20px 50px;
     position: relative;
+    width: 100%;
 
     button {
-      position: absolute;
       left: 385px;
+      position: absolute;
     }
 
     h3 {
@@ -38,8 +39,8 @@
   width: 300px;
 
   .pinjoin-pic {
-    width: 216px;
     margin-bottom: 12px;
+    width: 216px;
   }
 
   .pin-title {
@@ -56,18 +57,21 @@
   @extend %flex-column;
   box-sizing: border-box;
   font-family: $font;
-  overflow: scroll;
+  height: 520px;
+  overflow: auto;
   width: 420px;
 
   .board-option {
-    box-sizing: border-box;
-    padding: 8px 24px;
     @extend %flex-row;
-    justify-content: space-between;
     align-items: center;
+    box-sizing: border-box;
     cursor: pointer;
-    width: 420px;
     height: 52px;
+    justify-content: space-between;
+    min-height: 52px;
+    overflow: auto;
+    padding: 8px 24px;
+    width: 420px;
 
     &:hover {
       background-color: $lighter-gray;
@@ -75,20 +79,20 @@
 
     p {
       font-family: $font;
-      font-weight: bold;
       font-size: 18px;
+      font-weight: bold;
     }
 
     .select-btn {
       @extend %flex-row;
       align-items: center;
-      height: 36px;
       background-color: $pop;
-      color: $white;
-      font-weight: 500px;
-      font-size: 14px;
-      padding: 8px 12px;
       border-radius: 4px;
+      color: $white;
+      font-size: 14px;
+      font-weight: 500px;
+      height: 36px;
+      padding: 8px 12px;
     }
   }
 }
