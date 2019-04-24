@@ -9,15 +9,21 @@ class CreatePinForm extends React.Component {
     this.state = {
       pin: { pin_id: '', description: '', link_url: '', title: ''},
       boardscroll: false,
+      chooseFile: false,
       choiceDialogue: 'Choose a board (required)',
       photoFile: null,
       photoUrl: null,
       photoError: null,
+      photoType: null,
     };
     this.showBoardScroll = this.showBoardScroll.bind(this);
     this.hideBoardScroll = this.hideBoardScroll.bind(this);
+    this.showChooseFile = this.showChooseFile.bind(this);
+    this.hideChooseFile = this.hideChooseFile.bind(this);
     this.handleBoard = this.handleBoard.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleExternalFile = this.handleExternalFile.bind(this);
+    this.updateUrl = this.updateUrl.bind(this);
     this.update = this.update.bind(this);
     this.goBack = this.goBack.bind(this);
   }
@@ -31,7 +37,7 @@ class CreatePinForm extends React.Component {
     this.hideBoardScroll();
   }
 
-  handleFile(e) {
+  handleUploadFile(e) {
     const file = e.currentTarget.files[0];
     const fileReader = new FileReader();
 
@@ -42,7 +48,11 @@ class CreatePinForm extends React.Component {
         this.setState({ row_height: rowHeight });
       };
       img.src = fileReader.result;
-      this.setState({ photoFile: file, photoUrl: fileReader.result });
+      this.setState({
+        photoFile: file,
+        photoUrl: fileReader.result,
+        photoType: 'upload'
+      });
     };
     if (file && file.type === 'image/jpeg') {
       if (file.size < 2000000) {
@@ -52,6 +62,19 @@ class CreatePinForm extends React.Component {
         this.setState({ photoError: 'Please use a .jpg less than 2MB' });
       }
     }
+  }
+
+  handleExternalFile(e) {
+    const img = new Image();
+    img.onload = () => {
+      const rowHeight = (`${Math.round(img.height / (img.width / 23.6))}`);
+      this.setState({
+        row_height: rowHeight,
+        chooseFile: false,
+        photoType: 'external'
+      });
+    };
+    img.src = this.state.photoUrl;
   }
 
   displayBoardScroll() {
@@ -75,9 +98,40 @@ class CreatePinForm extends React.Component {
     }
   }
 
+  displayExternalFileForm() {
+    if (this.state.chooseFile) {
+      return (
+        <div className='select-photo-url-frame'>
+          <div className='select-photo-url'>
+            <textarea
+              placeholder='Enter a .img or .png url'
+              onChange={this.updateUrl()}>
+            </textarea>
+          </div>
+          <button
+            className='save-photo-url'
+            onClick={this.hideChooseFile}>
+            Cancel
+          </button>
+          <button
+            className='cancel-photo-url'
+            onClick={this.handleExternalFile}>
+            Submit
+          </button>
+        </div>
+      )
+    }
+  }
+
   update(field) {
     return (e) => {
       this.setState({ pin: { ...this.state.pin, [field]: e.target.value } });
+    };
+  }
+
+  updateUrl() {
+    return (e) => {
+      this.setState({ photoUrl: e.target.value });
     };
   }
 
@@ -89,16 +143,28 @@ class CreatePinForm extends React.Component {
     this.setState({ boardscroll: true });
   }
 
+  hideChooseFile(e) {
+    this.setState({ chooseFile: false });
+  }
+
+  showChooseFile(e) {
+    this.setState({ chooseFile: true });
+  }
+
   handleSubmit(e) {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append('pin[title]', this.state.pin.title);
-    formData.append('pin[description]', this.state.pin.description);
-    formData.append('pin[link_url]', this.state.pin.link_url);
-    formData.append('pin[picture]', this.state.photoFile);
-    formData.append('pin[row_height]', this.state.row_height);
-    this.props.createPin(formData, this.state.boardId)
-      .then(() => this.props.history.push(`/boards/${this.state.boardId}`));
+    if (this.state.photoType === 'upload') {
+      e.preventDefault();
+      const formData = new FormData();
+      formData.append('pin[title]', this.state.pin.title);
+      formData.append('pin[description]', this.state.pin.description);
+      formData.append('pin[link_url]', this.state.pin.link_url);
+      formData.append('pin[picture]', this.state.photoFile);
+      formData.append('pin[row_height]', this.state.row_height);
+      this.props.createPin(formData, this.state.boardId)
+        .then(() => this.props.history.push(`/boards/${this.state.boardId}`));
+    } else if (this.state.photoType === 'external') {
+      debugger
+    }
   }
 
   displayPhoto() {
@@ -149,19 +215,27 @@ class CreatePinForm extends React.Component {
             </button>
           </div>
           <div className='pin-form'>
-            {this.displayPhoto()}
-            <div className='upload-box'>
-              <div className='upload-outline'>
-                  <button className='upload-btn'>
-                    <i className='fas fa-arrow-circle-up'></i>
-                  </button>
-                  <p>Click to upload</p>
-                  <input type="file"
-                    onChange={this.handleFile.bind(this)}>
-                  </input>
-                  <div className="upload-footer">
-                    {this.displayFooter()}
-                  </div>
+            <div className='pin-form-left'>
+              {this.displayPhoto()}
+              {this.displayExternalFileForm()}
+              <div className='upload-box'>
+                <div className='upload-outline'>
+                    <button className='upload-btn'>
+                      <i className='fas fa-arrow-circle-up'></i>
+                    </button>
+                    <p>Click to upload</p>
+                    <input type="file"
+                      onChange={this.handleUploadFile.bind(this)}>
+                    </input>
+                    <div className="upload-footer">
+                      {this.displayFooter()}
+                    </div>
+                </div>
+              </div>
+              <div
+                className='save-from-site'
+                onClick={this.showChooseFile}>
+                <p>Save from site</p>
               </div>
             </div>
             <div className='pin-form-content'>
