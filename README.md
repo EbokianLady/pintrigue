@@ -29,13 +29,13 @@
 
 ![Board](https://github.com/EbokianLady/pintrigue/blob/master/app/assets/images/readme_images/user_boards.jpg)
 
-#### Responsive Display
+### Responsive Display
 
 Utilized CSS grid and media queries for a dynamic display of page content and a smooth UI experience in imitation of Pinterest's aesthetic. Image heights are stored on the database level to guarantee consistant formatting and spacing between pins of varied heights during image load.
 
 ![Masonry](https://github.com/EbokianLady/pintrigue/blob/master/app/assets/images/readme_images/discovery.jpg)
 
-#### Custom Error Handler
+### Custom Error Handler
 
 Wrote a backend error handler to catch expected Pintrigue errors, such incorrect form inputs. Returns error message as determined by en.yml for simpler conversion of the error defaults into flavorful text. Removes unnecessary error logic in the frontend.
 
