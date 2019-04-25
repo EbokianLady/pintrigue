@@ -8,7 +8,7 @@ import { closeModal } from '../../actions/modal_actions';
 
 const msp = (state, ownProps) => {
   const username = state.session.id;
-  const currentUser = state.entities.users[username];
+  const currentUser = state.entities.users[username] || {};
   const pinId = state.ui.currentObject;
   const pin = state.entities.pins[pinId];
   const boards = Object.values(state.entities.boards)

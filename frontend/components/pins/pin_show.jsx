@@ -14,15 +14,15 @@ class PinShow extends React.Component {
   }
 
   displayEdit() {
-      if (this.props.pin.creator.id === this.props.currentUser.id) {
-        return (
-          <button
-          className='prof-buttons'
-          onClick={this.showEditModal}>
-            <i className='fas fa-pen p2-fas'></i>
-          </button>
-        )
-      }
+    if (this.props.pin.creator.id === this.props.currentUser.id) {
+      return (
+        <button
+        className='prof-buttons'
+        onClick={this.showEditModal}>
+          <i className='fas fa-pen p2-fas'></i>
+        </button>
+      )
+    }
   }
 
   displayLink() {

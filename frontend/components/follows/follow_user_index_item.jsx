@@ -42,9 +42,9 @@ class FollowUserIndexItem extends React.Component {
   followBtn() {
     const { user, currentUser } = this.props;
 
-    if (user.id === currentUser.id) {
+    if (currentUser && (user.id === currentUser.id)) {
       return <button className='follow-btn follow-you'>This is you</button>
-    } else if (currentUser.followed_user_ids.includes(user.id)) {
+    } else if (currentUser && (currentUser.followed_user_ids.includes(user.id))) {
       return (
         <button
           className='follow-btn unfollow'

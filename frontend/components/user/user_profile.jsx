@@ -52,7 +52,7 @@ class UserProfile extends React.Component {
   followBtn() {
     const { user, currentUser } = this.props;
 
-    if (currentUser.followed_user_ids.includes(user.id)) {
+    if (currentUser && (currentUser.followed_user_ids.includes(user.id))) {
       return (
         <button
           className='follow-btn unfollow'

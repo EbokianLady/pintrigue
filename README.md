@@ -1,19 +1,6 @@
 # PINTRIGUE
 
-[![Login](https://github.com/EbokianLady/pintrigue/blob/master/app/assets/images/readme_images/sign_in.jpg)](https://pintrigue.herokuapp.com/#/)
-
-## Table of Contents
-
-* [Introduction](#introduction)
-* [Technologies](#technologies)
-* [Features](#features)
-
-<a id="introduction"></a>
-## Introduction
-
-[Pintrigue](https://pintrigue.herokuapp.com/#/) is a single-page web application inspired by [Pinterest](https://www.pinterest.com/). Upload and add photos or projects that inspire you, manage a collection of virtual bulletin boards, and browse your fellow pinners for more ideas.
-
-![Board](https://github.com/EbokianLady/pintrigue/blob/master/app/assets/images/readme_images/user_boards.jpg)
+[![Login](https://github.com/EbokianLady/pintrigue/blob/master/app/assets/images/readme_images/logo-banner.png )](https://pintrigue.herokuapp.com/#/)
 
 <a id="technologies"></a>
 ## Technologies
@@ -25,6 +12,13 @@
 * PostgreSQL database
 * Image hosting through AWS
 
+<a id="introduction"></a>
+## Introduction
+
+[Pintrigue](https://pintrigue.herokuapp.com/#/) is a single-page web application inspired by [Pinterest](https://www.pinterest.com/). Upload and add photos or projects that inspire you, manage a collection of virtual bulletin boards, and browse your fellow pinners for more ideas.
+
+![Login](https://github.com/EbokianLady/pintrigue/blob/master/app/assets/images/readme_images/sign_in.jpg)
+
 <a id="features"></a>
 ## Features
 * Browse pin discovery feed
@@ -33,13 +27,15 @@
 * Follow people and boards for easy access
 * Responsive display
 
-#### Responsive Display
+![Board](https://github.com/EbokianLady/pintrigue/blob/master/app/assets/images/readme_images/user_boards.jpg)
 
-Utilized CSS grid and media queries for a dynamic display of page content and a smooth UI experience in imitation of Pinterest's aesthetic. Image heights are stored on the database level to guarantee consistant formatting and spacing between pins of varied heights during image load. 
+### Responsive Display
+
+Utilized CSS grid and media queries for a dynamic display of page content and a smooth UI experience in imitation of Pinterest's aesthetic. Image heights are stored on the database level to guarantee consistant formatting and spacing between pins of varied heights during image load.
 
 ![Masonry](https://github.com/EbokianLady/pintrigue/blob/master/app/assets/images/readme_images/discovery.jpg)
 
-#### Custom Error Handler
+### Custom Error Handler
 
 Wrote a backend error handler to catch expected Pintrigue errors, such incorrect form inputs. Returns error message as determined by en.yml for simpler conversion of the error defaults into flavorful text. Removes unnecessary error logic in the frontend.
 
@@ -81,7 +77,7 @@ errors:
             password:
               invalid: "The password you entered is incorrect."
               too_short: "Your password is too short! You need 6+ characters."
-              blank: "Your password is too short! You need 6+ characters."             
+              blank: "Your password is too short! You need 6+ characters."
 ~~~~
 
 ## Future Features
@@ -89,4 +85,3 @@ errors:
 * add images from websites in addition to upload
 * Search bar
 * Like pins
-
