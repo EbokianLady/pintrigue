@@ -43,7 +43,7 @@ const App = () => {
           <a className='footer-links'
             target='_blank'
             href='https://ebokianlady.github.io/'>
-            <i className="far fa-circle"></i>
+            <img src={window.personal_logo}></img>
           </a>
           <a className='footer-links'
             target='_blank'
