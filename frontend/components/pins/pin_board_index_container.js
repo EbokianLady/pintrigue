@@ -5,7 +5,7 @@ import { fetchBoardPins, clearPinIndex } from '../../actions/pin_actions';
 import { openModal } from '../../actions/modal_actions';
 
 const msp = (state, ownProps) => {
-  const currentUser = state.entities.users[state.session.id];
+  const currentUser = state.entities.users[state.session.id] || {};
   const creator = ownProps.creator;
   const board = ownProps.board;
   const boardId = board.id;

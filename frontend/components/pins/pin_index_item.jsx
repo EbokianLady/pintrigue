@@ -53,7 +53,8 @@ class PinIndexItem extends React.Component {
         )
       }
 
-      if (this.props.currentUser.username === pin.creator.username) {
+      const { currentUser } = this.props;
+      if (currentUser && (currentUser.username === pin.creator.username)) {
         edit = (
           <button
             className='p-btn'

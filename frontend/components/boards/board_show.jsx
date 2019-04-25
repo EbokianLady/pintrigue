@@ -66,7 +66,7 @@ class BoardShow extends React.Component {
   followBtn() {
     const { board, currentUser } = this.props;
 
-    if (currentUser.followed_board_ids.includes(board.id)) {
+    if (currentUser && (currentUser.followed_board_ids.includes(board.id))) {
       return (
         <button
           className='follow-btn unfollow'

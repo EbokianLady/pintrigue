@@ -29,7 +29,9 @@ class Navbar extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchUser(this.props.currentUser.username);
+    if (this.props.currentUser.username) {
+      this.props.fetchUser(this.props.currentUser.username);
+    }
   }
 
   componentWillUnmount() {

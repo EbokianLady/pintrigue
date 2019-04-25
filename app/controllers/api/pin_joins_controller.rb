@@ -9,7 +9,7 @@ module Api
     end
 
     def index_all
-      ids = current_user.board_ids
+      ids = current_user ? current_user.board_ids : []
       @pinjoins = PinJoin.includes(:pin, :board, :creator)
                          .where.not(board_id: ids)
                          .page(params[:page]).per(10)

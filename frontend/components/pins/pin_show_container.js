@@ -4,7 +4,7 @@ import { fetchPin } from '../../actions/pin_actions';
 import PinShow from './pin_show';
 
 const msp = (state, ownProps) => {
-  const currentUser = state.entities.users[state.session.id];
+  const currentUser = state.entities.users[state.session.id] || {};
   const pinId = ownProps.match.params.pinId;
   const pin = state.entities.pins[pinId];
   let board;

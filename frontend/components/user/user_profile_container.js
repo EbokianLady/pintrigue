@@ -11,7 +11,7 @@ const msp = (state, ownProps) => {
     .filter(board => board.creator_id === user.id);
 
   return ({
-    currentUser: state.entities.users[state.session.id] || {},
+    currentUser: state.entities.users[state.session.id],
     username,
     user,
     boards,
