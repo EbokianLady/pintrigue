@@ -106,7 +106,7 @@ class BoardShow extends React.Component {
       return (
         <div ref={node => this.node = node} className='profile-visible'>
           <Link
-            to={`/${this.props.username}/pin-builder`}
+            to={`/${this.props.currentUser.username}/pin-builder`}
             className='dropdown-item'>
             Create pin
           </Link>

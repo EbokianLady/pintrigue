@@ -115,24 +115,6 @@
   }
 }
 
-.save-from-site {
-  @extend %flex-row;
-  align-items: center;
-  background-color: $lighter-gray;
-  border-radius: 12px;
-  cursor: pointer;
-  font-family: $font;
-  font-size: 18px;
-  font-weight: bold;
-  height: 48px;
-  justify-content: center;
-  width: 340px;
-
-  &:hover {
-    background-color: $light-gray;
-  }
-}
-
 .preview-picture {
   position: absolute;
   height: 510px;
@@ -142,57 +124,6 @@
 
   img {
     border-radius: 12px;
-  }
-}
-
-.select-photo-url-frame {
-  position: absolute;
-  height: 100%;
-  width: 340px;
-  background-color: $white;
-  z-index: 5;
-  @extend %flex-column;
-  justify-content: flex-end;
-  border: 2px dashed rgb(218, 218, 218);
-  border-radius: 6px;
-  color: $med-gray;
-  font-family: $font;
-  align-items: center;
-
-  .select-photo-url {
-    @extend %flex-row;
-    align-items: center;
-    border-bottom: 1px solid $med-gray;
-    height: 30px;
-    margin-bottom: 20px;
-
-    textarea {
-      @extend %text-area;
-      color: $dark-gray;
-      font-size: 18px;
-      resize: vertical;
-      width: 300px;
-      display: inline-block;
-    }
-  }
-
-  button {
-    @extend %flex-row;
-    align-items: center;
-    background-color: $lighter-gray;
-    border-radius: 12px;
-    cursor: pointer;
-    font-family: $font;
-    font-size: 18px;
-    font-weight: bold;
-    height: 48px;
-    justify-content: center;
-    width: 300px;
-    margin-bottom: 10px;
-
-    &:hover {
-      background-color: $light-gray;
-    }
   }
 }
 
