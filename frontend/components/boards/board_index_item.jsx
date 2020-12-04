@@ -45,7 +45,7 @@ class BoardIndexItem extends React.Component {
           <img className="b3-pic3" src={cover_urls[2]} />
         </div>
       )
-    } else if (cover_urls.length === 1) {
+    } else if (cover_urls.length > 0) {
       return (
         <img src={cover_urls[0]} />
       )
